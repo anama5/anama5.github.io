@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一 概述1.1 创建对象的方式1 对象字面量12345678910111213141516171819202122232425262728&#x2F;&#x2F; 1 标准形式let obj &#x3D; &amp;#123;	key: value,	key: function()&amp;#123;&amp;#125;	...&amp;#125;;&#x2F;&#x2F; 2 属性的简写：Property Shorthand&#x2F;&#x2F; 如果属性名和属性值相同，可以简写let nam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04-JS对象">
+<meta property="og:url" content="http://example.com/2022/02/14/04-JS%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:site_name" content="琅嬛福地">
+<meta property="og:description" content="一 概述1.1 创建对象的方式1 对象字面量12345678910111213141516171819202122232425262728&#x2F;&#x2F; 1 标准形式let obj &#x3D; &amp;#123;	key: value,	key: function()&amp;#123;&amp;#125;	...&amp;#125;;&#x2F;&#x2F; 2 属性的简写：Property Shorthand&#x2F;&#x2F; 如果属性名和属性值相同，可以简写let nam">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-14T11:56:53.000Z">
+<meta property="article:modified_time" content="2022-02-14T11:59:25.864Z">
+<meta property="article:author" content="安₃">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/02/14/04-JS%E5%AF%B9%E8%B1%A1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>04-JS对象 | 琅嬛福地</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+<a target="_blank" rel="noopener" href="https://github.com/anama5" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">琅嬛福地</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/04-JS%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          04-JS对象
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:56:53 / 修改时间：19:59:25" itemprop="dateCreated datePublished" datetime="2022-02-14T19:56:53+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><h2 id="1-1-创建对象的方式"><a href="#1-1-创建对象的方式" class="headerlink" title="1.1 创建对象的方式"></a>1.1 创建对象的方式</h2><h3 id="1-对象字面量"><a href="#1-对象字面量" class="headerlink" title="1 对象字面量"></a>1 对象字面量</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 标准形式</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">key</span>: value,</span><br><span class="line">	<span class="attr">key</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 属性的简写：Property Shorthand</span></span><br><span class="line"><span class="comment">// 如果属性名和属性值相同，可以简写</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;mm&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: name,</span><br><span class="line">    <span class="comment">// 简写</span></span><br><span class="line">	name,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3 方法的简写：Method Shorthand</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">key</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">	<span class="comment">// 简写</span></span><br><span class="line">	<span class="function"><span class="title">key</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4 计算属性名：Computed Property Names</span></span><br><span class="line"><span class="comment">// 如果属性名是一个表达式，则使用[]包裹，意思是取表达式的值</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	[expr]: value</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>对象字面量内部调用了 <code>Object</code> 的构造函数</li>
+<li>对象字面量与 <code>json</code> 的区别<ol>
+<li>属性<ul>
+<li>JSON 属性只能是字符串，且必须加双引号</li>
+<li>JS 对象属性可以是字符串和Symbol，可以省略引号（单/双）</li>
+</ul>
+</li>
+<li>值<ul>
+<li>JSON 值不能是函数和 <code>undefined</code></li>
+<li>JS 对象值任意</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-Object-的-create-方法"><a href="#2-Object-的-create-方法" class="headerlink" title="2 Object 的 create 方法"></a>2 Object 的 <code>create</code> 方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 这种方式可以指定原型</span><br><span class="line">Object.create(proto[, propertiesObject])</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-构造函数"><a href="#3-构造函数" class="headerlink" title="3 构造函数"></a>3 构造函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 1 内置构造函数</span><br><span class="line">new Object([value])</span><br><span class="line">new Array()</span><br><span class="line">new Function()</span><br><span class="line">new String()</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">// 2 自定义构造函数</span><br><span class="line">// 2.1 定义构造函数，构造函数名首字母大写</span><br><span class="line">function 构造函数名(形参列表) &#123;</span><br><span class="line">	this.属性 = 值;</span><br><span class="line">	this.方法 = function() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 2.2 使用自定义构造创建对象</span><br><span class="line">new 构造函数名(实参列表);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在其他面向对象的编程语言里面，构造函数是存在于类中的一个方法，称之为构造方法，而在 js 中，构造函数就是一个普通的函数</li>
+<li>js 中普通函数和构造函数的区别：<ol>
+<li>调用方式不同；一个普通的函数被 new 操作符调用，那么这个函数就称为一个构造函数</li>
+<li>通常为了区分普通函数和构造函数，会将构造函数首字母大写</li>
+</ol>
+</li>
+<li>如果一个函数被 new 操作符调用<ol>
+<li>在内存中创建一个新的对象（空对象）</li>
+<li>这个对象内部的[[prototype]]属性会被赋值为该构造函数的prototype属性</li>
+<li>构造函数内部的this，会指向创建出来的新对象</li>
+<li>执行函数的内部代码（函数体代码）</li>
+<li>如果构造函数没有返回非空对象，则返回创建出来的新对象</li>
+</ol>
+</li>
+<li>构造函数的缺点：构造函数中定义的函数是每一个对象的方法，会在每个对象中都存在一份</li>
+</ol>
+<h3 id="4-工厂模式"><a href="#4-工厂模式" class="headerlink" title="4 工厂模式"></a>4 工厂模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">userFactory</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">	<span class="comment">// 1</span></span><br><span class="line">	obj.name = name;</span><br><span class="line">	obj.show = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">	<span class="keyword">return</span> obj;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 2 简写</span></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name,</span><br><span class="line">		<span class="function"><span class="title">show</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>工厂函数是函数调用，自定义构造函数是 <code>new</code></li>
+<li>工厂函数是函数名称小写，自定义构造函数名称通常大写</li>
+<li>工厂函数内部需要显式创建一个对象，然后根据参数赋值后再显式返回</li>
+<li>自定义构造函数根据参数自动创建一个对象并返回</li>
+<li>工厂模式：缺点是不能获取对象的具体类型</li>
+</ol>
+<h2 id="1-2-对象的属性"><a href="#1-2-对象的属性" class="headerlink" title="1.2 对象的属性"></a>1.2 对象的属性</h2><h3 id="1-属性描述符"><a href="#1-属性描述符" class="headerlink" title="1 属性描述符"></a>1 属性描述符</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h4><ol>
+<li><code>property descriptor</code></li>
+<li>JS 提供了一个内部数据结构，用来描述对象的属性，控制它的行为，比如该属性是否可写、可遍历等等。这个内部数据结构称为属性描述符</li>
+<li>元属性：属性描述符中的属性，用来描述对象属性的元信息，即描述对象属性的属性<ol>
+<li>value<ul>
+<li>该属性的值</li>
+<li>默认为 undefined</li>
+</ul>
+</li>
+<li>writable<ul>
+<li>该属性的 value 是否可修改</li>
+<li>直接在一个对象上定义某个属性时，writable 默认为 true</li>
+<li>通过属性描述符定义一个属性时，writable 默认为 false</li>
+</ul>
+</li>
+<li>configurable<ul>
+<li>该属性是否可通过 delete 删除；该属性的属性描述符是否可修改</li>
+<li>直接在一个对象上定义某个属性时，configurable 默认为 true</li>
+<li>通过属性描述符定义一个属性时，configurable 默认为 false</li>
+</ul>
+</li>
+<li>enumerable<ul>
+<li>该属性是否可枚举</li>
+<li>直接在一个对象上定义某个属性时，enumerable 默认为 true</li>
+<li>通过属性描述符定义一个属性时，enumerable 默认为 false</li>
+</ul>
+</li>
+<li>get<ul>
+<li>获取属性时会执行的函数</li>
+<li>默认为 undefined</li>
+</ul>
+</li>
+<li>set<ul>
+<li>设置属性时会执行的函数</li>
+<li>默认为 undefined</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="2-分类"><a href="#2-分类" class="headerlink" title="2 分类"></a>2 分类</h4><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>可以具有的元属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据描述符</td>
+<td><code>configurable enumerable value writable</code></td>
+</tr>
+<tr>
+<td>存取描述符</td>
+<td><code>configurable enumerable get set</code></td>
+</tr>
+</tbody></table>
+<ul>
+<li>一个对象只能取其中一类属性描述符</li>
+</ul>
+<h3 id="2-属性管理"><a href="#2-属性管理" class="headerlink" title="2 属性管理"></a>2 属性管理</h3><h4 id="1-读写"><a href="#1-读写" class="headerlink" title="1 读写"></a>1 读写</h4><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>obj.property</code></td>
+<td>必须是确定的属性名，且名称不特殊（数字、空格…）</td>
+</tr>
+<tr>
+<td><code>obj[&#39;property&#39;]</code></td>
+<td>属性名可以是表达式和变量，或者名称比较特殊</td>
+</tr>
+</tbody></table>
+<h4 id="2-判断"><a href="#2-判断" class="headerlink" title="2 判断"></a>2 判断</h4><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>prop in obj</code></td>
+<td>对象或其原型链上是否有指定属性</td>
+</tr>
+</tbody></table>
+<h4 id="3-删除"><a href="#3-删除" class="headerlink" title="3 删除"></a>3 删除</h4><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>delete object.property</code></td>
+<td>删除属性，所有情况都返回 <code>true</code></td>
+</tr>
+<tr>
+<td><code>delete object[&#39;property&#39;]</code></td>
+<td>删除属性，所有情况都返回 <code>true</code></td>
+</tr>
+</tbody></table>
+<h4 id="4-迭代"><a href="#4-迭代" class="headerlink" title="4 迭代"></a>4 迭代</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> object)&#123;</span><br><span class="line">	statement</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>遍历对象（推荐）<ol>
+<li>遍历对象的所有可枚举属性（包括它的原型链上的可枚举属性）</li>
+<li>每次循环获取的是键（属性名）</li>
+</ol>
+</li>
+<li>遍历数组（不推荐）<ol>
+<li>数组键名是数字，但每次循环获取的是索引的字符串</li>
+<li>除了遍历数组元素外，数组本身以及原型链上的可枚举属性也会被遍历到</li>
+<li>某些情况下，不能保证按顺序返回索引</li>
+</ol>
+</li>
+</ol>
+<h4 id="5-访问器（getter-setter）"><a href="#5-访问器（getter-setter）" class="headerlink" title="5 访问器（getter/setter）"></a>5 访问器（getter/setter）</h4><h5 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1 概述"></a>1 概述</h5><ol>
+<li>JS 中 <code>getter/setter</code> 的调用是当成属性来访问，自动调用方法</li>
+<li>调用方式与属性访问方式一样<ol>
+<li><code>obj.访问器名</code></li>
+<li><code>obj[&#39;访问器名&#39;]</code></li>
+</ol>
+</li>
+<li>访问器名称可以是一个有效标识符或一个表达式</li>
+</ol>
+<h5 id="2-定义方式"><a href="#2-定义方式" class="headerlink" title="2 定义方式"></a>2 定义方式</h5><ol>
+<li><p>通过配置属性描述符的元属性定义访问器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">_name</span> : <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">	<span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> obj._name;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="function"><span class="title">set</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">		obj._name = value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.name; <span class="comment">// 调用get取值</span></span><br><span class="line">obj.name = <span class="string">&#x27;旺财&#x27;</span>; <span class="comment">// 调用set设置值</span></span><br></pre></td></tr></table></figure></li>
+<li><p>对象字面量中直接定义</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">_name</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">	<span class="keyword">get</span> <span class="title">name</span>() &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">this</span>._name;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="keyword">set</span> <span class="title">name</span>(<span class="params">value</span>) &#123;</span><br><span class="line">		<span class="built_in">this</span>._name = value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="二-Object"><a href="#二-Object" class="headerlink" title="二 Object"></a>二 Object</h1><h2 id="2-1-构造函数"><a href="#2-1-构造函数" class="headerlink" title="2.1 构造函数"></a>2.1 构造函数</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>new Object([value])</code></td>
+<td>构造函数</td>
+<td>创建一个对象</td>
+</tr>
+<tr>
+<td><code>Object([value])</code></td>
+<td>类型转换函数</td>
+<td>将 <code>value</code> 转成一个对象</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>value</code> ：<ol>
+<li>为空或者是 <code>undefined null</code>，返回一个空对象</li>
+<li>是基本类型的值则返回其包装对象</li>
+<li>是引用类型则直接返回</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-2-静态方法"><a href="#2-2-静态方法" class="headerlink" title="2.2 静态方法"></a>2.2 静态方法</h2><h3 id="1-属性"><a href="#1-属性" class="headerlink" title="1 属性"></a>1 属性</h3><table>
+<thead>
+<tr>
+<th>静态方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Object.keys(obj)</code></td>
+<td>返回对象自身可枚举属性的键的数组</td>
+</tr>
+<tr>
+<td><code>Object.values(obj)</code></td>
+<td>返回对象自身可枚举属性的值的数组</td>
+</tr>
+<tr>
+<td><code>Object.entries(obj)</code></td>
+<td>返回对象自身可枚举属性的键值对的数组</td>
+</tr>
+<tr>
+<td><code>Object.getOwnPropertyNames(obj)</code></td>
+<td>返回对象自身的所有属性（包含可枚举和不可枚举属性，不包含 <code>Symbol</code> 属性）的键的数组</td>
+</tr>
+<tr>
+<td><code>Object.getOwnPropertySymbols(obj)</code></td>
+<td>返回对象自身的所有 <code>Symbol</code> 属性的数组</td>
+</tr>
+</tbody></table>
+<h3 id="2-属性描述符"><a href="#2-属性描述符" class="headerlink" title="2 属性描述符"></a>2 属性描述符</h3><table>
+<thead>
+<tr>
+<th>静态方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Object.getOwnPropertyDescriptor(obj, prop)</code></td>
+<td>获取对象自身某个属性的属性描述符</td>
+</tr>
+<tr>
+<td><code>Object.getOwnPropertyDescriptors(obj)</code></td>
+<td>获取对象自身所有属性的属性描述符</td>
+</tr>
+<tr>
+<td><code>Object.defineProperty(obj, prop, descriptor)</code></td>
+<td>如果对象自身存在指定属性，则修改它的属性描述符，否则为对象添加指定属性并定义属性描述符，返回该对象</td>
+</tr>
+<tr>
+<td><code>Object.defineProperties(obj, props)</code></td>
+<td>修改或添加对象多个属性的属性描述对象，返回该对象</td>
+</tr>
+</tbody></table>
+<h3 id="3-创建对象"><a href="#3-创建对象" class="headerlink" title="3 创建对象"></a>3 创建对象</h3><table>
+<thead>
+<tr>
+<th>静态方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Object.create(proto[, propertiesObject])</code></td>
+<td>根据原型对象和属性（使用属性描述符定义），创建一个新的对象</td>
+</tr>
+<tr>
+<td><code>Object.fromEntries(iterable)</code></td>
+<td>将一个 entries 转换成对象，是 <code>Object.entries()</code> 的反转</td>
+</tr>
+<tr>
+<td><code>Object.assign(target, ...sources)</code></td>
+<td>将 n 个源对象的所有可枚举属性复制到目标对象，并返回目标对象</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>Object.assign(target, ...sources)</code><ol>
+<li>如果目标对象与源对象有同名属性，或多个源对象有同名属性，后边覆盖前边</li>
+<li><code>Object.assign</code> 方法实行的是浅拷贝</li>
+<li>数组会被当作对象，即相同索引会覆盖</li>
+<li>如果属性值是取值函数，会计算后再复制</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-原型对象"><a href="#4-原型对象" class="headerlink" title="4 原型对象"></a>4 原型对象</h3><table>
+<thead>
+<tr>
+<th>静态方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Object.getPrototypeOf(obj)</code></td>
+<td>获取对象的原型对象，即<code>obj.__proto__</code></td>
+</tr>
+<tr>
+<td><code>Object.setPrototypeOf(obj, prototype)</code></td>
+<td>获取对象的原型对象</td>
+</tr>
+</tbody></table>
+<h3 id="5-比较"><a href="#5-比较" class="headerlink" title="5 比较"></a>5 比较</h3><ul>
+<li><code>Object.is(value1, value2)</code><ul>
+<li>判断两个值是否相等，不会作类型转换</li>
+<li>与<code>===</code>的区别<ol>
+<li><code>===</code> 认为<code>-0</code>和<code>+0</code>相等，此方法认为不相等</li>
+<li><code>===</code> 认为<code>NaN</code>和<code>NaN</code>不相等，此方法认为相等</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-状态"><a href="#6-状态" class="headerlink" title="6 状态"></a>6 状态</h3><table>
+<thead>
+<tr>
+<th>静态方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Object.preventExtensions(obj)</code></td>
+<td>让一个对象变的不可扩展，即永远不能添加新的属性</td>
+</tr>
+<tr>
+<td><code>Object.isExtensible(obj)</code></td>
+<td>判断一个对象是否可扩展</td>
+</tr>
+<tr>
+<td><code>Object.seal(obj)</code></td>
+<td>封闭一个对象，此对象不可扩展且对象所有自身属性的<code>configurable</code>标记为 <code>false</code>，即不能添加、删除属性，属性修饰符不可配置</td>
+</tr>
+<tr>
+<td><code>Object.isSealed(obj)</code></td>
+<td>判断一个对象是否被封闭</td>
+</tr>
+<tr>
+<td><code>Object.freeze(obj)</code></td>
+<td>冻结一个对象，此对象不可扩展且对象所有自身属性 <code>writable configurable</code> 标记为 <code>false</code>，即不能添加、修改和删除属性，属性修饰符不可配置</td>
+</tr>
+<tr>
+<td><code>Object.isFrozen(obj)</code></td>
+<td>判断一个对象是否被冻结</td>
+</tr>
+</tbody></table>
+<h2 id="4-3-原型方法-Object-prototype"><a href="#4-3-原型方法-Object-prototype" class="headerlink" title="4.3 原型方法 Object.prototype."></a>4.3 原型方法 <code>Object.prototype.</code></h2><table>
+<thead>
+<tr>
+<th>原型方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>toString()</code></td>
+<td>默认返回 <code>[object type]</code>，通常会覆盖</td>
+</tr>
+<tr>
+<td><code>toLocaleString()</code></td>
+<td>默认返回 <code>toString()</code> 的结果，可以覆盖</td>
+</tr>
+<tr>
+<td><code>hasOwnProperty(prop)</code></td>
+<td>判断对象自身是否含有某个属性</td>
+</tr>
+<tr>
+<td><code>propertyIsEnumerable(prop)</code></td>
+<td>判断某个属性是否可枚举</td>
+</tr>
+<tr>
+<td><code>isPrototypeOf(object)</code></td>
+<td>判断调用对象是否在传入对象的原型链上</td>
+</tr>
+<tr>
+<td><code>valueOf()</code></td>
+<td>返回对象原始值，若没有原始值，返回对象本身，通常会覆盖</td>
+</tr>
+</tbody></table>
+<ol>
+<li><p><code>isPrototypeOf(object)</code> 和 <code>instanceof</code> 的区别</p>
+<ol>
+<li><code>A instanceof B</code> ：判断 <code>B.prototype</code>是否在 <code>A</code> 的原型链上</li>
+<li><code>B.isPrototypeOf(A)</code>：判断 <code>B</code> 是否在 <code>A</code> 的原型链上</li>
+</ol>
+</li>
+<li><p><code>valueOf()</code> 返回值</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Number</code></td>
+<td>数值</td>
+</tr>
+<tr>
+<td><code>Boolean</code></td>
+<td>布尔值</td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td>字符串值</td>
+</tr>
+<tr>
+<td><code>Object</code></td>
+<td>对象本身</td>
+</tr>
+<tr>
+<td><code>Array</code></td>
+<td>数组本身</td>
+</tr>
+<tr>
+<td><code>Function</code></td>
+<td>函数本身</td>
+</tr>
+<tr>
+<td><code>Date</code></td>
+<td>距离1970-01-01 00:00:00 的毫秒数</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h1 id="三-展开语法（Spread-syntax）"><a href="#三-展开语法（Spread-syntax）" class="headerlink" title="三 展开语法（Spread syntax）"></a>三 展开语法（Spread syntax）</h1><h2 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h2><ol>
+<li><p>展开语法用  <code>...</code> 表示    </p>
+<ol>
+<li>在函数调用或构造字面量数组时, 将<strong>可迭代对象</strong>在语法层面展开</li>
+<li>在构造字面量对象时, 将对象按 <code>key:value</code> 的方式展开</li>
+</ol>
+</li>
+<li><p>展开语法其实是一个浅拷贝</p>
+</li>
+</ol>
+<h2 id="3-2-应用"><a href="#3-2-应用" class="headerlink" title="3.2 应用"></a>3.2 应用</h2><ol>
+<li><p>函数调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function show(x, y, z) &#123;&#125;</span><br><span class="line">let args = [0, 1, 2];</span><br><span class="line">show(...args); // 等价于 show(0, 1, 2)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>构造字面量数组</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [0, 1, 2];</span><br><span class="line">let arr2 = [3, 4, 5];</span><br><span class="line">let arr3 = [...arr1, ...arr2]; // [0,1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>构造字面量对象</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123; foo: &#x27;bar&#x27;, x: 42 &#125;;</span><br><span class="line">let obj2 = &#123; foo: &#x27;baz&#x27;, y: 13 &#125;;</span><br><span class="line">let clonedObj = &#123; ...obj1 &#125;; // 克隆后的对象: &#123; foo: &quot;bar&quot;, x: 42 &#125;</span><br><span class="line">let mergedObj = &#123; ...obj1, ...obj2 &#125;; // 合并后的对象: &#123; foo: &quot;baz&quot;, x: 42, y: 13 &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="四-解构赋值"><a href="#四-解构赋值" class="headerlink" title="四 解构赋值"></a>四 解构赋值</h1><h2 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h2><ol>
+<li> ES6 中新增了一个从数组或对象中方便获取数据的方法，称之为解构 Destructuring</li>
+<li> 解构赋值：从数组和对象中提取值，对变量进行赋值</li>
+<li> 解构对象时会查找原型链（如果属性不在对象自身，将从原型链中查找）</li>
+</ol>
+<h2 id="4-2-应用"><a href="#4-2-应用" class="headerlink" title="4.2 应用"></a>4.2 应用</h2><h3 id="1-解构数组"><a href="#1-解构数组" class="headerlink" title="1 解构数组"></a>1 解构数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 先声明后赋值的解构</span></span><br><span class="line"><span class="keyword">let</span> a, b;</span><br><span class="line">[a, b] = [<span class="number">10</span>, <span class="number">20</span>]; <span class="comment">// a=10 b=20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 声明并赋值的解构</span></span><br><span class="line"><span class="keyword">let</span> [a,b] = [<span class="number">10</span>, <span class="number">20</span>]; <span class="comment">// a=10 b=20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3 有默认值的解构</span></span><br><span class="line"><span class="keyword">let</span> [a = <span class="number">3</span>, b = <span class="number">4</span>] = [<span class="number">1</span>]; <span class="comment">// a=1 b=4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4 变量数量小于数组值数量时，忽略多余值</span></span><br><span class="line"><span class="keyword">let</span> [a, b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]; <span class="comment">// a=1 b=2</span></span><br><span class="line"><span class="keyword">let</span> [, ,a,b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]; <span class="comment">// a=3 b=4</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5 可用于交换变量</span></span><br><span class="line"><span class="keyword">let</span> a =<span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">[a, b] = [b, a]; <span class="comment">// a=2 b=1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 6 剩余参数</span></span><br><span class="line"><span class="keyword">let</span> [a, ...b] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]; <span class="comment">// a=1 b=[2,3]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-解构对象"><a href="#3-解构对象" class="headerlink" title="3 解构对象"></a>3 解构对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 基本语法</span></span><br><span class="line"><span class="keyword">let</span> &#123;key&#125; = &#123;<span class="attr">key</span>:value&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 重命名属性</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">key</span>:newKey&#125; = &#123;<span class="attr">key</span>:value&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3 先声明后赋值的解构</span></span><br><span class="line"><span class="keyword">let</span> name, age;</span><br><span class="line"><span class="comment">// 错误： 赋值时必须使用 `()` 包括，因为左边`&#123;name, age&#125;`会被认为是块而不是对象字面量</span></span><br><span class="line">&#123;name,age&#125; =  &#123;<span class="attr">name</span>:<span class="string">&#x27;an3&#x27;</span>, <span class="attr">age</span>:<span class="number">18</span>&#125;); </span><br><span class="line"><span class="comment">// 正确：name=&#x27;an3&#x27; age=18</span></span><br><span class="line">(&#123;name, age&#125; = &#123;<span class="attr">name</span>:<span class="string">&#x27;an3&#x27;</span>, <span class="attr">age</span>:<span class="number">18</span>&#125;); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 4 有默认值的解构</span></span><br><span class="line"><span class="keyword">let</span> &#123;name=<span class="string">&#x27;haha&#x27;</span>, age=<span class="number">10</span>&#125; = &#123;<span class="attr">name</span>:<span class="string">&#x27;an3&#x27;</span>&#125;; <span class="comment">// name=&#x27;an3&#x27; age=10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5 变量数量小于对象键值对数量时，忽略多余值</span></span><br><span class="line"><span class="keyword">let</span> &#123;name=<span class="string">&#x27;haha&#x27;</span>, age=<span class="number">10</span>&#125; = &#123;<span class="attr">name</span>:<span class="string">&#x27;an3&#x27;</span>,<span class="attr">age</span>:<span class="number">10</span>,<span class="attr">sex</span>:<span class="number">1</span>&#125;; <span class="comment">// name=&#x27;an3&#x27; age=18</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 6 解构嵌套</span></span><br><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;xiaoming&#x27;</span>,</span><br><span class="line">	<span class="attr">lesson</span>:&#123;</span><br><span class="line">		<span class="attr">title</span>:<span class="string">&#x27;js&#x27;</span>,</span><br><span class="line">		<span class="attr">score</span>:<span class="number">90</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> &#123;name,<span class="attr">lesson</span>:&#123;title,score&#125;&#125; = user;</span><br></pre></td></tr></table></figure>
+
+<h1 id="五-对象拷贝"><a href="#五-对象拷贝" class="headerlink" title="五 对象拷贝"></a>五 对象拷贝</h1><h2 id="5-1-概念"><a href="#5-1-概念" class="headerlink" title="5.1 概念"></a>5.1 概念</h2><ol>
+<li><p>浅拷贝</p>
+<ul>
+<li>如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是内存地址 </li>
+<li>一个对象修改可能会影响到另一个对象</li>
+</ul>
+</li>
+<li><p>深拷贝</p>
+<ul>
+<li>将一个对象从内存中完整的拷贝一份出来,从堆内存中开辟一个新的区域存放新对象</li>
+<li>一个对象修改不会影响到另一个对象</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-2-浅拷贝方式"><a href="#5-2-浅拷贝方式" class="headerlink" title="5.2 浅拷贝方式"></a>5.2 浅拷贝方式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 1 创建新对象，然后使用`for...in`遍历原对象属性并连同值一起添加到新对象上</span><br><span class="line">let source = &#123;name:&#x27;an3&#x27;, age:18&#125;;</span><br><span class="line">let cp = &#123;&#125;;</span><br><span class="line">for (const key in source)&#123;</span><br><span class="line">	if(source.hasOwnProperty(key)&#123;</span><br><span class="line">		cp[key] = source[key];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 2 Object.assign(target, ...sources)：将目标对象设为空对象，就相当于返回了原对象的浅拷贝</span><br><span class="line">let source = &#123;name:&#x27;an3&#x27;, age:18&#125;;</span><br><span class="line">let cp = Object.assign(&#123;&#125;, source);</span><br><span class="line"></span><br><span class="line">// 3 展开语法</span><br><span class="line">let source = &#123;name:&#x27;an3&#x27;, age:18&#125;;</span><br><span class="line">let cp = &#123;...source&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-3-深拷贝方式"><a href="#5-3-深拷贝方式" class="headerlink" title="5.3 深拷贝方式"></a>5.3 深拷贝方式</h2><h3 id="1-JSON"><a href="#1-JSON" class="headerlink" title="1 JSON"></a>1 JSON</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;&#125;</span><br><span class="line">const jsonString = JSON.stringify(obj);</span><br><span class="line">const objCopy = JSON.parse(jsonString)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>对象属性的值中如果有 <code>函数、undefined、symbol</code> 则经过 <code>JSON.stringify()</code> 序列化后的 <code>JSON</code> 字符串中这个键值对会消失，也就无法拷贝</li>
+<li>无法拷贝不可枚举的属性，无法拷贝对象的原型链</li>
+<li>拷贝 <code>Date</code> 引用类型会变成字符串</li>
+<li>拷贝 <code>RegExp</code> 引用类型会变成空对象</li>
+<li>对象中含有 <code>NaN、Infinity、-Infinity</code> ，则序列化的结果会变成 <code>null</code></li>
+<li>无法拷贝对象的循环应用，即 <code>obj[key] = obj</code></li>
+</ol>
+<h3 id="2-递归"><a href="#2-递归" class="headerlink" title="2 递归"></a>2 递归</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原理：浅拷贝只拷贝一层，利用递归，如果这一层属性的值是引用类型，就再拷贝一层 ...</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 对象的属性值有可能是数组，判断一下防止递归时把数组变成了对象</span></span><br><span class="line">	<span class="keyword">let</span> cpObj = obj <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? [] : &#123;&#125;;</span><br><span class="line">	<span class="comment">// Object.entries()方法对于对象和数组返回结果形式是一样的</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">const</span> [k, v] <span class="keyword">of</span> <span class="built_in">Object</span>.entries(obj)) &#123;</span><br><span class="line">		<span class="comment">// 判断对象属性如果是引用类型就递归拷贝</span></span><br><span class="line">		cpObj[k] = <span class="keyword">typeof</span> v == <span class="string">&#x27;object&#x27;</span> ? deepCopy(v) : v;</span><br><span class="line">	&#125;  </span><br><span class="line">	<span class="keyword">return</span> cpObj;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="六-内置对象"><a href="#六-内置对象" class="headerlink" title="六 内置对象"></a>六 内置对象</h1><h2 id="6-1-Math"><a href="#6-1-Math" class="headerlink" title="6.1 Math"></a>6.1 Math</h2><h3 id="1-静态属性"><a href="#1-静态属性" class="headerlink" title="1 静态属性"></a>1 静态属性</h3><table>
+<thead>
+<tr>
+<th>静态属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Math.E</code></td>
+<td>欧拉常数 <code>e</code></td>
+</tr>
+<tr>
+<td><code>Math.PI</code></td>
+<td><code>π</code></td>
+</tr>
+</tbody></table>
+<h3 id="2-静态方法"><a href="#2-静态方法" class="headerlink" title="2 静态方法"></a>2 静态方法</h3><table>
+<thead>
+<tr>
+<th>静态方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Math.abs(x)</code></td>
+<td>绝对值</td>
+</tr>
+<tr>
+<td><code>Math.ceil(x)</code></td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td><code>Math.floor(x) </code></td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td><code>Math.pow(x, y)</code></td>
+<td>返回 x 的 y 次幂</td>
+</tr>
+<tr>
+<td><code>Math.random()</code></td>
+<td>返回 <code>[0-1) </code>之间的伪随机数</td>
+</tr>
+<tr>
+<td><code>Math.round(x)</code></td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td><code>Math.sqrt(x)</code></td>
+<td>平方</td>
+</tr>
+<tr>
+<td><code>Math.log(x)</code></td>
+<td>对数</td>
+</tr>
+<tr>
+<td><code>Math.exp(x)</code></td>
+<td><code>e</code> 的指数，即 e<sup>x</sup></td>
+</tr>
+<tr>
+<td><code>Math.min([value1[,value2, ...]])</code></td>
+<td>返回一组数字中的最小值。如果有任一参数不能转换为数值，则返回 <code>NaN</code></td>
+</tr>
+<tr>
+<td><code>Math.max(value1[,value2, ...]) </code></td>
+<td>返回一组数字中的最大值。如果有任一参数不能转换为数值，则返回 <code>NaN</code></td>
+</tr>
+<tr>
+<td><code>Math.sin(x)</code></td>
+<td>正弦</td>
+</tr>
+<tr>
+<td><code>Math.cos(x)</code></td>
+<td>余弦</td>
+</tr>
+<tr>
+<td><code>Math.tan(x)</code></td>
+<td>正切</td>
+</tr>
+</tbody></table>
+<h2 id="6-2-Date"><a href="#6-2-Date" class="headerlink" title="6.2 Date"></a>6.2 Date</h2><h3 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1 构造函数"></a>1 构造函数</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Date([value])</code></td>
+<td>普通函数</td>
+<td>无论有没有参数，都返回当前日期和时间的字符串</td>
+</tr>
+<tr>
+<td><code>new Date()</code></td>
+<td>构造函数</td>
+<td>创建一个当前日期和时间的 <code>Date</code> 对象</td>
+</tr>
+<tr>
+<td><code>new Date(stamp)</code></td>
+<td>构造函数</td>
+<td>创建一个指定时间戳的 <code>Date</code> 对象</td>
+</tr>
+<tr>
+<td><code>new Date(dateString)</code></td>
+<td>构造函数</td>
+<td>创建一个 <code>Date</code> 对象，时间由 <code>dateString</code> 决定，该字符串能被 <code>Date.parse() </code>正确识别</td>
+</tr>
+</tbody></table>
+<h3 id="2-静态方法-1"><a href="#2-静态方法-1" class="headerlink" title="2 静态方法"></a>2 静态方法</h3><table>
+<thead>
+<tr>
+<th>静态方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Date.now()</code></td>
+<td>返回当前时间距离时间零点的毫秒数</td>
+</tr>
+<tr>
+<td><code>Date.parse(dateString)</code></td>
+<td>解析日期字符串，返回该时间距离时间零点的毫秒数</td>
+</tr>
+</tbody></table>
+<h3 id="3-原型方法-Date-prototype"><a href="#3-原型方法-Date-prototype" class="headerlink" title="3 原型方法 Date.prototype."></a>3 原型方法 <code>Date.prototype.</code></h3><h4 id="1-to"><a href="#1-to" class="headerlink" title="1 to"></a>1 to</h4><table>
+<thead>
+<tr>
+<th>原型方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>toString()</code></td>
+<td>返回日期时间字符串字符串</td>
+</tr>
+<tr>
+<td><code>toLocaleString()</code></td>
+<td>返回本地日期时间字符串</td>
+</tr>
+<tr>
+<td><code>toUTCString()</code></td>
+<td>返回 UTC 日期时间字符串</td>
+</tr>
+<tr>
+<td><code>toISOString()</code></td>
+<td>返回 ISO8601 写法的日期时间字符串，通常用于网络服务</td>
+</tr>
+<tr>
+<td><code>toJSON()</code></td>
+<td>与<code>toISOString()</code>方法的返回结果完全相同</td>
+</tr>
+</tbody></table>
+<h4 id="2-get"><a href="#2-get" class="headerlink" title="2 get"></a>2 get</h4><table>
+<thead>
+<tr>
+<th>原型方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>getTime</code></td>
+<td>返回距离事件元点的毫秒数</td>
+</tr>
+<tr>
+<td><code>getFullYear</code></td>
+<td>年（四位数）</td>
+</tr>
+<tr>
+<td><code>getMonth()</code></td>
+<td>月 <code>0-11</code></td>
+</tr>
+<tr>
+<td><code>getDate()</code></td>
+<td>日 <code>1-31</code></td>
+</tr>
+<tr>
+<td><code>getDay()</code></td>
+<td>星期 <code>0-6</code></td>
+</tr>
+<tr>
+<td><code>getHours()</code></td>
+<td>时 <code>0-23</code></td>
+</tr>
+<tr>
+<td><code>getMinutes()</code></td>
+<td>分 <code>0-59</code></td>
+</tr>
+<tr>
+<td><code>getSeconds()</code></td>
+<td>秒 <code>0-59</code></td>
+</tr>
+<tr>
+<td><code>getMilliseconds()</code></td>
+<td>毫秒 <code>0-999</code></td>
+</tr>
+</tbody></table>
+<h4 id="3-set"><a href="#3-set" class="headerlink" title="3 set"></a>3 set</h4><ul>
+<li>set 与 get 一一相对应，除了没有 <code>setDay()</code>，因为星期是算的</li>
+</ul>
+<h2 id="6-3-RegExp"><a href="#6-3-RegExp" class="headerlink" title="6.3 RegExp"></a>6.3 RegExp</h2><h3 id="1-构造函数-1"><a href="#1-构造函数-1" class="headerlink" title="1 构造函数"></a>1 构造函数</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>new RegExp(pattern [, flags])</code></td>
+<td>创建 <code>RegExp</code> 对象，<code>flags</code>：可以是<code>g i m u y s</code>的任意组合</td>
+</tr>
+<tr>
+<td><code>RegExp()</code></td>
+<td>同 <code>new RegExp()</code></td>
+</tr>
+</tbody></table>
+<h3 id="2-字面量"><a href="#2-字面量" class="headerlink" title="2 字面量"></a>2 字面量</h3><ul>
+<li><code>/pattern/flags</code><ul>
+<li><code>/</code> 斜杠表示开始和结束</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-原型属性-RegExp-prototype"><a href="#3-原型属性-RegExp-prototype" class="headerlink" title="3 原型属性 RegExp.prototype."></a>3 原型属性 <code>RegExp.prototype.</code></h3><table>
+<thead>
+<tr>
+<th>原型属性</th>
+<th>权限</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>global</code></td>
+<td>只读</td>
+<td>返回一个布尔值，判断是否设置了修饰符<code>g</code></td>
+</tr>
+<tr>
+<td><code>ignoreCase</code></td>
+<td>只读</td>
+<td>返回一个布尔值，判断是否设置了修饰符<code>i</code></td>
+</tr>
+<tr>
+<td><code>multiline</code></td>
+<td>只读</td>
+<td>返回一个布尔值，判断是否设置了修饰符<code>m</code></td>
+</tr>
+<tr>
+<td><code>unicode</code></td>
+<td>只读</td>
+<td>返回一个布尔值，判断是否设置了修饰符<code>y</code></td>
+</tr>
+<tr>
+<td><code>sticky</code></td>
+<td>只读</td>
+<td>返回一个布尔值，判断是否设置了修饰符<code>y</code></td>
+</tr>
+<tr>
+<td><code>dotAll</code></td>
+<td>只读</td>
+<td>返回一个布尔值，判断是否设置了修饰符<code>s</code></td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>只读</td>
+<td>返回一个字符串，包含已经设置的所有修饰符，按字母排序</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>只读</td>
+<td>返回正则表达式文本字符串，该字符串不包含正则字面量两边的斜杠以及任何的标志字符</td>
+</tr>
+<tr>
+<td><code>lastIndex</code></td>
+<td>读写</td>
+<td>指定下一次匹配的起始索引。正则表达式必须有 <code>g</code></td>
+</tr>
+</tbody></table>
+<h3 id="4-原型方法-RegExp-prototype"><a href="#4-原型方法-RegExp-prototype" class="headerlink" title="4 原型方法 RegExp.prototype."></a>4 原型方法 <code>RegExp.prototype.</code></h3><table>
+<thead>
+<tr>
+<th>原型方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>test(str)</code></td>
+<td>判断是否匹配，会更新正则对象的 <code>lastIndex</code> 属性</td>
+</tr>
+<tr>
+<td><code>exec(str)</code></td>
+<td>返回一个包含匹配项的数组（包含附加属性），若匹配失败返回 <code>null</code>，并将 <code>lastIndex</code> 重置为 0</td>
+</tr>
+</tbody></table>
+<h2 id="6-4-JSON"><a href="#6-4-JSON" class="headerlink" title="6.4 JSON"></a>6.4 JSON</h2><h3 id="1-语法"><a href="#1-语法" class="headerlink" title="1 语法"></a>1 语法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 1 简单值：数字、字符串、布尔、null</span><br><span class="line">value</span><br><span class="line"></span><br><span class="line">// 2 对象：键必须用双引号 &quot;&quot; 包裹，值（简单值、对象、数组）</span><br><span class="line">&#123;</span><br><span class="line">	&quot;key&quot;: value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 3 数组：数组元素（简单值、对象、数组）</span><br><span class="line">[</span><br><span class="line">	value,</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;key&quot;: value</span><br><span class="line">    &#125;,</span><br><span class="line">    []</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-静态方法-2"><a href="#2-静态方法-2" class="headerlink" title="2 静态方法"></a>2 静态方法</h3><h4 id="1-JSON-stringify"><a href="#1-JSON-stringify" class="headerlink" title="1 JSON.stringify"></a>1 JSON.stringify</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSON.stringify(value[, replacer [, space]])</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>序列化：将对象转为字符串，该字符串符合 JSON 格式，并且可以被JSON.parse 方法还原</li>
+<li>参数<ol>
+<li>value：要被序列化的对象，如果对象有自定义的 <code>toJSON</code> 方法，会直接使用 <code>toJSON</code> 方法的结果</li>
+<li>replacer<ul>
+<li>如果是一个函数 <code>(key, value) =&gt; &#123;return newValue&#125;</code>，则在序列化过程中，被序列化的对象的每个属性都会经过该函数的处理</li>
+<li>如果是一个数组，则只有包含在这个数组中的属性才会被序列化到最终的 JSON 字符串中</li>
+</ul>
+</li>
+<li>space<ul>
+<li>指定缩进用的空白字符串，用于美化输出（pretty-print）增加可读性。</li>
+<li>可以是数字或字符串（不超过 10），会将每个键值对换行，并在前边添加相应的空格数或字符串</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="2-JSON-parse"><a href="#2-JSON-parse" class="headerlink" title="2 JSON.parse"></a>2 JSON.parse</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSON.parse(text[, reviver])</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>反序列化：将 JSON 字符串转换成对应的对象</li>
+<li>参数：<ol>
+<li>text：JSON 字符串</li>
+<li>reviver<ol>
+<li>转换器，此函数调用时机在 parse 函数返回之前，用于在返回之前对所得到的对象执行操作</li>
+<li>转成的对象的所有属性都会调用 reviver 函数，并且会将 reviver 返回值作为新值，如果 reviver 返回 <code>undefined</code>，会删除当前属性</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="6-5-集合"><a href="#6-5-集合" class="headerlink" title="6.5 集合"></a>6.5 集合</h2><h3 id="1-Set"><a href="#1-Set" class="headerlink" title="1 Set"></a>1 Set</h3><h4 id="1-概述-2"><a href="#1-概述-2" class="headerlink" title="1 概述"></a>1 概述</h4><ol>
+<li>Set 中的元素有序（存取顺序一致） 唯一</li>
+<li>可以存储基本数据类型和引用数据类型（包括 <code>NaN undefined null</code>）</li>
+<li>判断元素相等： 基于 <code>sameValueZero</code> 算法<ul>
+<li>类似 <code>===</code>，除了 NaN，<code>NaN === NaN</code> 返回 <code>false</code>，但是在 Set 中看作相等</li>
+</ul>
+</li>
+<li>set 是可迭代对象，支持 for…of</li>
+</ol>
+<h4 id="2-构造函数"><a href="#2-构造函数" class="headerlink" title="2 构造函数"></a>2 构造函数</h4><ul>
+<li><code>new Set([iterable])</code><ul>
+<li><code>iterable</code><ul>
+<li>可迭代对象，它的所有元素将不重复地被添加到 Set 中。</li>
+<li>如果省略或其值为 <code>null</code>，则新的 Set 为空</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-原型属性-Set-prototype"><a href="#3-原型属性-Set-prototype" class="headerlink" title="3 原型属性 Set.prototype."></a>3 原型属性 <code>Set.prototype.</code></h4><table>
+<thead>
+<tr>
+<th>原型属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>size</code></td>
+<td>Set 集合的元素个数</td>
+</tr>
+</tbody></table>
+<h4 id="4-原型方法-Set-prototype"><a href="#4-原型方法-Set-prototype" class="headerlink" title="4 原型方法 Set.prototype."></a>4 原型方法 <code>Set.prototype.</code></h4><table>
+<thead>
+<tr>
+<th>原型方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>add(value)</code></td>
+<td>向 Set 末尾添加元素，返回 Set</td>
+</tr>
+<tr>
+<td><code>delete(value)</code></td>
+<td>从 Set 中删除指定元素，成功删除返回 true，否则返回 false</td>
+</tr>
+<tr>
+<td><code>has(value)</code></td>
+<td>判断 Set 中是否有指定的元素</td>
+</tr>
+<tr>
+<td><code>clear()</code></td>
+<td>清空 Set</td>
+</tr>
+<tr>
+<td><code>keys()</code></td>
+<td>由于 Set 结构没有键只有值，<code>keys()</code> 与 <code>values() </code> 完全一样</td>
+</tr>
+<tr>
+<td><code>values()</code></td>
+<td>返回值的迭代器对象，值就是 Set 元素</td>
+</tr>
+<tr>
+<td><code>entries()</code></td>
+<td>返回键值对的迭代器对象，键值对形式为<code>[value, value]</code>，Set 中的元素即是键也是值</td>
+</tr>
+<tr>
+<td><code>forEach(callback[, thisArg])</code></td>
+<td>遍历 Set，按插入顺序依次执行回调函数</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>callback([currentValue[, currentKey[, set]]])</code><ul>
+<li><code>currentValue</code><ul>
+<li>当前元素</li>
+</ul>
+</li>
+<li><code>currentKey</code><ul>
+<li>由于 Set 没有键，<code>currentKey</code> 与 <code>currentValue</code> 永远都一样，也是当前元素</li>
+</ul>
+</li>
+<li><code>set</code><ul>
+<li>当前Set</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-Set-↔-数组"><a href="#5-Set-↔-数组" class="headerlink" title="5 Set ↔ 数组"></a>5 Set ↔ 数组</h4><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>转换</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[...set]</code></td>
+<td>Set → 数组</td>
+<td>展开语法，可以展开可迭代对象</td>
+</tr>
+<tr>
+<td><code>Array.from(set)</code></td>
+<td>Set → 数组</td>
+<td>数组静态方法，将可迭代对象转为数组</td>
+</tr>
+<tr>
+<td><code>new Set(arr)</code></td>
+<td>数组 → Set</td>
+<td>Set 构造方法，将数组转为 Set</td>
+</tr>
+</tbody></table>
+<h3 id="2-WeakSet"><a href="#2-WeakSet" class="headerlink" title="2 WeakSet"></a>2 WeakSet</h3><ol>
+<li>用法同 Set 大致相同</li>
+<li>与 Set 的区别<ol>
+<li>WeakSet 只能存引用数据类型</li>
+<li>WeakSet 对元素的引用是弱引用<ul>
+<li>如果没有其他引用对元素进行引用，那么 GC 可以对该元素进行回收</li>
+</ul>
+</li>
+<li>WeakSet 不可遍历<ul>
+<li>因为 WeakSet 是弱引用，其中的对象随时有可能别垃圾回收掉</li>
+<li>如果我们遍历获取到其中的元素，那么有可能造成对象不能正常的销毁</li>
+<li>所以存储到 WeakSet 中的对象是没办法获取的</li>
+</ul>
+</li>
+<li>没有<code>size</code> 属性</li>
+<li>原型方法只有 <code>add() delete() has()</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="3-Map"><a href="#3-Map" class="headerlink" title="3 Map"></a>3 Map</h3><h4 id="1-概述-3"><a href="#1-概述-3" class="headerlink" title="1 概述"></a>1 概述</h4><ol>
+<li>Map 是键值对的集合，且键有序（存取一致）</li>
+<li>对象的键只能是字符串（后来加了 Symbol），Map 的键可以是任何类型</li>
+<li>如果键相等，后边的值回覆盖前边</li>
+<li>判断键相等 基于 <code>sameValueZero</code> 算法<ul>
+<li>类似 <code>===</code>，除了NaN，<code>NaN === NaN </code>返回 <code>false</code>，但是在 Map 中看作相等</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-构造函数-1"><a href="#2-构造函数-1" class="headerlink" title="2 构造函数"></a>2 构造函数</h4><ul>
+<li><code>new Map([iterable])</code><ul>
+<li><code>iterable</code><ul>
+<li>可迭代对象，其元素为键值对。</li>
+<li>如数组为 <code>[[&#39;name&#39;,&#39;xiaoming&#39;],[&#39;age&#39;,18]]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-原型属性-Map-prototype"><a href="#3-原型属性-Map-prototype" class="headerlink" title="3 原型属性 Map.prototype."></a>3 原型属性 <code>Map.prototype.</code></h4><table>
+<thead>
+<tr>
+<th>原型属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>size</code></td>
+<td>Map 集合中键值对的个数</td>
+</tr>
+</tbody></table>
+<h4 id="4-原型方法-Map-prototype"><a href="#4-原型方法-Map-prototype" class="headerlink" title="4 原型方法 Map.prototype."></a>4 原型方法 <code>Map.prototype.</code></h4><table>
+<thead>
+<tr>
+<th>原型方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>set(key, value)</code></td>
+<td>向 Map 添加键值对，返回 Map</td>
+</tr>
+<tr>
+<td><code>get(key)</code></td>
+<td>根据 <code>key</code> 获取 <code>value</code>，没有返回 <code>undefined</code></td>
+</tr>
+<tr>
+<td><code>delete(key)</code></td>
+<td>根据 <code>key</code> 删除键值对，删除成功返回 <code>true</code>，否则返回 <code>false</code></td>
+</tr>
+<tr>
+<td><code>clear()</code></td>
+<td>清空 Map</td>
+</tr>
+<tr>
+<td><code>has(key)</code></td>
+<td>判断指定 <code>key</code> 的元素是否存在</td>
+</tr>
+<tr>
+<td><code>keys()</code></td>
+<td>返回键的迭代器对象</td>
+</tr>
+<tr>
+<td><code>values()</code></td>
+<td>返回值的迭代器对象</td>
+</tr>
+<tr>
+<td><code>entries()</code></td>
+<td>返回键值对的迭代器对象，键值对形式为<code>[key, value]</code></td>
+</tr>
+<tr>
+<td><code>forEach(callback[, thisArg])</code></td>
+<td>遍历 Map，按键插入顺序依次执行回调函数</td>
+</tr>
+</tbody></table>
+<h4 id="5-Map-↔-数组"><a href="#5-Map-↔-数组" class="headerlink" title="5 Map ↔ 数组"></a>5 Map ↔ 数组</h4><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>转换</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[...map]</code></td>
+<td>Map → 数组</td>
+<td>展开语法，可以展开可迭代对象</td>
+</tr>
+<tr>
+<td><code>Array.from(map)</code></td>
+<td>Map → 数组</td>
+<td>数组静态方法，将可迭代对象转为数组</td>
+</tr>
+<tr>
+<td><code>new Map([[&quot;key1&quot;, &quot;value1&quot;], [&quot;key2&quot;, &quot;value2&quot;]])</code></td>
+<td>数组 → Map</td>
+<td>将一个二维键值对数组转换成一个 Map 对象</td>
+</tr>
+</tbody></table>
+<h3 id="4-WeakMap"><a href="#4-WeakMap" class="headerlink" title="4 WeakMap"></a>4 WeakMap</h3><ol>
+<li>用法同Map大致相同</li>
+<li>与Map的区别<ol>
+<li>WeakMap 的键只能是引用数据类型（不能为 <code>null</code> ）</li>
+<li>WeakMap 的键是弱引用</li>
+<li>WeakMap 不能遍历</li>
+<li>WeakMap 没有<code>size</code>属性</li>
+<li>WeakMap 原型方法只有 <code>set() get() delete() has()</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="6-6-WeakRefs"><a href="#6-6-WeakRefs" class="headerlink" title="6.6 WeakRefs"></a>6.6 WeakRefs</h2><ol>
+<li><p>默认将一个对象赋值给另外一个引用，那么这个引用是一个强引用</p>
+</li>
+<li><p>如果我们希望是一个弱引用的话，可以使用 WeakRef</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;&#125;;</span><br><span class="line">let info = new WeakRef(obj);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="6-7-FinalizationRegistry"><a href="#6-7-FinalizationRegistry" class="headerlink" title="6.7 FinalizationRegistry"></a>6.7 FinalizationRegistry</h2><ol>
+<li><p>FinalizationRegistry 对象可以让你在对象被垃圾回收时请求一个回调</p>
+</li>
+<li><p>FinalizationRegistry 提供了这样的一种方法：当一个在注册表中注册的对象被回收时，请求在某个时间点上调用一个清理回调。（清理回调有时被称为 finalizer ）;</p>
+</li>
+<li><p>通过调用register方法，注册任何你想要清理回调的对象，传入该对象和所含的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 创建 FinalizationRegistry 对象并传入回调函数</span><br><span class="line">const fr = new FinalizationRegistry(callback)</span><br><span class="line"></span><br><span class="line">2. 注册对象</span><br><span class="line">fr.register(obj, &quot;haha&quot;);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="七-响应式"><a href="#七-响应式" class="headerlink" title="七 响应式"></a>七 响应式</h1><h2 id="7-1-概述"><a href="#7-1-概述" class="headerlink" title="7.1 概述"></a>7.1 概述</h2><ol>
+<li>当数据（更多是对象）发生变化时，自动执行一些代码，就称为响应式</li>
+<li>监听对象的操作<ol>
+<li>通过属性描述符中的存储属性描述符来监听，但有弊端<ol>
+<li>Object.defineProperty 设计的初衷，不是为了去监听截止一个对象中所有的属性的</li>
+<li>想监听更加丰富的操作，比如新增属性、删除属性，那么 Object.defineProperty 是无能为力的</li>
+</ol>
+</li>
+<li>ES6 新增的 Proxy 类，如果希望监听一个对象的相关操作，可以先创建一个代理对象（Proxy对象）</li>
+</ol>
+</li>
+</ol>
+<h2 id="7-2-Proxy"><a href="#7-2-Proxy" class="headerlink" title="7.2 Proxy"></a>7.2 Proxy</h2><h3 id="1-构造函数-2"><a href="#1-构造函数-2" class="headerlink" title="1 构造函数"></a>1 构造函数</h3><ul>
+<li><code>new Proxy(target, handler)</code><ul>
+<li>返回一个代理对象</li>
+<li><code>target</code><ul>
+<li>用 <code>Proxy</code> 包装的目标对象（可以是任何类型的对象，包括原生数组，函数，甚至另一个代理）</li>
+</ul>
+</li>
+<li><code>handler</code><ul>
+<li>处理器对象，有 13 个拦截相应操作的函数，如果没有配置，则执行默认操作</li>
+<li>注意：处理操作都是针对代理对象的，目标对象无效。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-handler（处理器对象）"><a href="#2-handler（处理器对象）" class="headerlink" title="2 handler（处理器对象）"></a>2 handler（处理器对象）</h3><ol>
+<li><p><code>get(target, property, receiver)</code></p>
+<ul>
+<li><p>get 方法拦截属性的获取，可以返回任何值</p>
+</li>
+<li><p>参数</p>
+<ul>
+<li><p><code>target</code></p>
+<ul>
+<li>目标对象（侦听的对象）</li>
+</ul>
+</li>
+<li><p><code>property</code></p>
+<ul>
+<li>被获取的属性名</li>
+</ul>
+</li>
+<li><p><code>reveiver</code></p>
+<ul>
+<li>调用的代理对象</li>
+<li>如果源对象有setter、getter的访问器属性，那么可以通过 receiver 来改变里面的 this</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>set(target, property, value, receiver)</code></p>
+<ul>
+<li><p>set 方法拦截属性的设置，严格模式下必须返回布尔值，且如果返回 false 会报错</p>
+</li>
+<li><p>参数</p>
+<ul>
+<li><code>value</code><ul>
+<li>被设置的新值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>apply(target, thisArg, argumentsList)</code></p>
+<ul>
+<li>参数<ul>
+<li><code>target</code><ul>
+<li>目标函数</li>
+</ul>
+</li>
+<li><code>thisArg</code><ul>
+<li>被调用时的上下文对象</li>
+</ul>
+</li>
+<li><code>argumentsList</code><ul>
+<li>被调用时的参数数组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>说明<ul>
+<li>apply 方法拦截函数调用，可以返回任何值<ol>
+<li>直接调用</li>
+<li><code>Function.prototype.call()</code> 方式调用</li>
+<li><code>Function.prototype.apply()</code> 方式调用</li>
+<li><code>Reflet.apply()</code> 方式调用</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>has(target, prop)</code></p>
+<ul>
+<li>参数<ul>
+<li><code>target</code><ul>
+<li>目标对象</li>
+</ul>
+</li>
+<li><code>prop</code><ul>
+<li>需要检查是否存在的属性.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>说明<ul>
+<li>拦截 <code>prop in object</code> 语句，返回布尔值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>construct(target, argumentsList, newTarget)</code></p>
+<ul>
+<li>参数<ul>
+<li><code>target</code><ul>
+<li>目标构造函数</li>
+</ul>
+</li>
+<li><code>argumentsList</code><ul>
+<li>constructor的参数列表</li>
+</ul>
+</li>
+<li><code>newTarget</code><ul>
+<li>生成的代理对象（即代理构造函数）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>说明<ul>
+<li>拦截new操作，必须返回一个对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>deleteProperty(target, prop)</code></p>
+<ul>
+<li>拦截<code>delete</code> 操作，必须返回布尔值</li>
+</ul>
+</li>
+<li><p><code>defineProperty(target, property, descriptor)</code></p>
+<ul>
+<li>拦截<code>Object.defineProperty()</code>，必须返回布尔值</li>
+</ul>
+</li>
+<li><p><code>getOwnPropertyDescriptor(target, prop)</code></p>
+<ul>
+<li>拦截 <code>Object.getOwnPropertyDescriptor()</code>，必须返回一个对象或undefined</li>
+</ul>
+</li>
+<li><p><code>getPrototypeOf(target)</code></p>
+<ul>
+<li>拦截获取原型操作，即方法 <code>Object.getPrototypeOf</code></li>
+</ul>
+</li>
+<li><p><code>setPrototypeOf(target, prototype)</code></p>
+</li>
+</ol>
+<ul>
+<li>拦截设置原型操作，返回布尔值，即方法 <code>Object.setPrototypeOf</code></li>
+</ul>
+<ol start="11">
+<li><p><code>preventExtensions(target)</code></p>
+<ul>
+<li>拦截 <code>Object.preventExtensions()</code>，返回一个布尔值</li>
+</ul>
+</li>
+<li><p><code>isExtensible(target)</code></p>
+<ul>
+<li>拦截<code>Object.isExtensible()</code>，必须返回布尔值</li>
+</ul>
+</li>
+<li><p><code>ownKeys(target)</code></p>
+<ul>
+<li>拦截 <code>Object.getOwnPropertyNames</code> 和 <code>Object.getOwnPropertySymbols</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="7-3-Reflect"><a href="#7-3-Reflect" class="headerlink" title="7.3 Reflect"></a>7.3 Reflect</h2><ol>
+<li><p><code>Reflect</code> 是一个对象而并非构造函数，不能 <code>new</code>，<code>Reflect</code> 的所有属性和方法都是静态的</p>
+</li>
+<li><p>为何会有 Reflect</p>
+<ol>
+<li>早期的ECMA规范中没有考虑到这种对 对象本身 的操作如何设计会更加规范，所以将这些API放到了Object上面，但是Object作为一个构造函数，这些操作实际上放到它身上并不合适</li>
+<li>一些类似于 in、delete操作符，让JS看起来是会有一些奇怪的</li>
+</ol>
+</li>
+<li><p>Reflect 的作用</p>
+<ol>
+<li>将 <code>Object</code> 对象的一些明显属于语言内部的方法（如<code>Object.defineProperty()</code>），放到 <code>Reflect</code> 对象上</li>
+<li>修改某些 <code>Object</code> 方法的返回结果，让其变得更合理，如 <code>Object.defineProperty()</code>无法定义属性时，会抛出错误，而<code>Reflect.defineProperty()</code>会返回false</li>
+<li>让 <code>Object</code> 操作都变成函数行为<ul>
+<li> <code>prop in object</code> ，对应`Reflect.has(obj, prop)``</li>
+<li> ``delete obj.prop<code>，对应</code>Reflect.deleteProperty(obj, prop)`</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>API</p>
+<ol>
+<li><p>Reflect 对象的方法和 handler 是一一对应的，也是 13 个</p>
+</li>
+<li><p>在使用代理拦截某些操作时，使用 Reflect 的方法可以保证原生行为能正常执行</p>
+</li>
+<li><p>reflect 的 constructor 方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Dog(args)&#123;</span><br><span class="line">	code...</span><br><span class="line">&#125;</span><br><span class="line">function Cat()&#123;&#125;</span><br><span class="line">// 执行构造函数 Dog 中的内容，但是创建出的是 Cat 类型</span><br><span class="line">Reflect.constructor(Dog, args, Cat);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #66ccff;font-size:14px;">-------------The End&nbsp;&nbsp;<i class="fa fa-paw"></i>&nbsp;&nbsp;客官请自便-------------</div>
+    
+</div
+      
+    </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/14/03-JS%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0/" rel="prev" title="03-JS数组和函数">
+      <i class="fa fa-chevron-left"></i> 03-JS数组和函数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/14/05-JS%E5%8E%9F%E5%9E%8B/" rel="next" title="05-JS原型">
+      05-JS原型 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 创建对象的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">1 对象字面量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Object-%E7%9A%84-create-%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">2 Object 的 create 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.3.</span> <span class="nav-text">3 构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.4.</span> <span class="nav-text">4 工厂模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 对象的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="nav-number">1.2.1.</span> <span class="nav-text">1 属性描述符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2 分类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B1%9E%E6%80%A7%E7%AE%A1%E7%90%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">2 属性管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AF%BB%E5%86%99"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">1 读写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%88%A4%E6%96%AD"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2 判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%A0%E9%99%A4"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">3 删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%BF%AD%E4%BB%A3"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">4 迭代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E8%AE%BF%E9%97%AE%E5%99%A8%EF%BC%88getter-setter%EF%BC%89"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">5 访问器（getter&#x2F;setter）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-1"><span class="nav-number">1.2.2.5.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.2.5.2.</span> <span class="nav-text">2 定义方式</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-Object"><span class="nav-number">2.</span> <span class="nav-text">二 Object</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B1%9E%E6%80%A7"><span class="nav-number">2.2.1.</span> <span class="nav-text">1 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="nav-number">2.2.2.</span> <span class="nav-text">2 属性描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.3.</span> <span class="nav-text">3 创建对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.4.</span> <span class="nav-text">4 原型对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%AF%94%E8%BE%83"><span class="nav-number">2.2.5.</span> <span class="nav-text">5 比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%8A%B6%E6%80%81"><span class="nav-number">2.2.6.</span> <span class="nav-text">6 状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95-Object-prototype"><span class="nav-number">2.3.</span> <span class="nav-text">4.3 原型方法 Object.prototype.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E5%B1%95%E5%BC%80%E8%AF%AD%E6%B3%95%EF%BC%88Spread-syntax%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三 展开语法（Spread syntax）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%BA%94%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">四 解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E5%BA%94%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%A7%A3%E6%9E%84%E6%95%B0%E7%BB%84"><span class="nav-number">4.2.1.</span> <span class="nav-text">1 解构数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A7%A3%E6%9E%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.2.2.</span> <span class="nav-text">3 解构对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94-%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D"><span class="nav-number">5.</span> <span class="nav-text">五 对象拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%96%B9%E5%BC%8F"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 浅拷贝方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%96%B9%E5%BC%8F"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 深拷贝方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-JSON"><span class="nav-number">5.3.1.</span> <span class="nav-text">1 JSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%80%92%E5%BD%92"><span class="nav-number">5.3.2.</span> <span class="nav-text">2 递归</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD-%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">6.</span> <span class="nav-text">六 内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-Math"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 Math</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7"><span class="nav-number">6.1.1.</span> <span class="nav-text">1 静态属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">6.1.2.</span> <span class="nav-text">2 静态方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-Date"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 Date</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">6.2.1.</span> <span class="nav-text">1 构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95-1"><span class="nav-number">6.2.2.</span> <span class="nav-text">2 静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95-Date-prototype"><span class="nav-number">6.2.3.</span> <span class="nav-text">3 原型方法 Date.prototype.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-to"><span class="nav-number">6.2.3.1.</span> <span class="nav-text">1 to</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-get"><span class="nav-number">6.2.3.2.</span> <span class="nav-text">2 get</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-set"><span class="nav-number">6.2.3.3.</span> <span class="nav-text">3 set</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-RegExp"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 RegExp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-1"><span class="nav-number">6.3.1.</span> <span class="nav-text">1 构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">6.3.2.</span> <span class="nav-text">2 字面量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%8E%9F%E5%9E%8B%E5%B1%9E%E6%80%A7-RegExp-prototype"><span class="nav-number">6.3.3.</span> <span class="nav-text">3 原型属性 RegExp.prototype.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95-RegExp-prototype"><span class="nav-number">6.3.4.</span> <span class="nav-text">4 原型方法 RegExp.prototype.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-JSON"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AF%AD%E6%B3%95"><span class="nav-number">6.4.1.</span> <span class="nav-text">1 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95-2"><span class="nav-number">6.4.2.</span> <span class="nav-text">2 静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-JSON-stringify"><span class="nav-number">6.4.2.1.</span> <span class="nav-text">1 JSON.stringify</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-JSON-parse"><span class="nav-number">6.4.2.2.</span> <span class="nav-text">2 JSON.parse</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-5-%E9%9B%86%E5%90%88"><span class="nav-number">6.5.</span> <span class="nav-text">6.5 集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Set"><span class="nav-number">6.5.1.</span> <span class="nav-text">1 Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-2"><span class="nav-number">6.5.1.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">6.5.1.2.</span> <span class="nav-text">2 构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8E%9F%E5%9E%8B%E5%B1%9E%E6%80%A7-Set-prototype"><span class="nav-number">6.5.1.3.</span> <span class="nav-text">3 原型属性 Set.prototype.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95-Set-prototype"><span class="nav-number">6.5.1.4.</span> <span class="nav-text">4 原型方法 Set.prototype.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Set-%E2%86%94-%E6%95%B0%E7%BB%84"><span class="nav-number">6.5.1.5.</span> <span class="nav-text">5 Set ↔ 数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-WeakSet"><span class="nav-number">6.5.2.</span> <span class="nav-text">2 WeakSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Map"><span class="nav-number">6.5.3.</span> <span class="nav-text">3 Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-3"><span class="nav-number">6.5.3.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-1"><span class="nav-number">6.5.3.2.</span> <span class="nav-text">2 构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8E%9F%E5%9E%8B%E5%B1%9E%E6%80%A7-Map-prototype"><span class="nav-number">6.5.3.3.</span> <span class="nav-text">3 原型属性 Map.prototype.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95-Map-prototype"><span class="nav-number">6.5.3.4.</span> <span class="nav-text">4 原型方法 Map.prototype.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Map-%E2%86%94-%E6%95%B0%E7%BB%84"><span class="nav-number">6.5.3.5.</span> <span class="nav-text">5 Map ↔ 数组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-WeakMap"><span class="nav-number">6.5.4.</span> <span class="nav-text">4 WeakMap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-6-WeakRefs"><span class="nav-number">6.6.</span> <span class="nav-text">6.6 WeakRefs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-7-FinalizationRegistry"><span class="nav-number">6.7.</span> <span class="nav-text">6.7 FinalizationRegistry</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83-%E5%93%8D%E5%BA%94%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">七 响应式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-Proxy"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 Proxy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-2"><span class="nav-number">7.2.1.</span> <span class="nav-text">1 构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-handler%EF%BC%88%E5%A4%84%E7%90%86%E5%99%A8%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="nav-number">7.2.2.</span> <span class="nav-text">2 handler（处理器对象）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-Reflect"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 Reflect</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="安₃"
+      src="/images/an3.JPG">
+  <p class="site-author-name" itemprop="name">安₃</p>
+  <div class="site-description" itemprop="description">我未成名君未嫁 可能俱是不如人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-star-and-crescent"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">安₃</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

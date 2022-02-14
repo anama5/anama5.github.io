@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一 数组1.1 概述 数组都是 Array 的实例 数组可以存任意类型的数据 数组长度可变 ES6 明确数组中空位值为 undefined  1.2 数组的创建和清空1 创建数组1234&#x2F;&#x2F; 1 数组字面量let arr &#x3D; [ele0, ele1, ..., eleN];&#x2F;&#x2F; 2 Array 构造函数  2 清空数组1234567891011121314151617&#x2F;&#x2F; 1 将原数组指向一个空数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="03-JS数组和函数">
+<meta property="og:url" content="http://example.com/2022/02/14/03-JS%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="琅嬛福地">
+<meta property="og:description" content="一 数组1.1 概述 数组都是 Array 的实例 数组可以存任意类型的数据 数组长度可变 ES6 明确数组中空位值为 undefined  1.2 数组的创建和清空1 创建数组1234&#x2F;&#x2F; 1 数组字面量let arr &#x3D; [ele0, ele1, ..., eleN];&#x2F;&#x2F; 2 Array 构造函数  2 清空数组1234567891011121314151617&#x2F;&#x2F; 1 将原数组指向一个空数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-14T11:56:43.000Z">
+<meta property="article:modified_time" content="2022-02-14T11:59:21.462Z">
+<meta property="article:author" content="安₃">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/02/14/03-JS%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>03-JS数组和函数 | 琅嬛福地</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+<a target="_blank" rel="noopener" href="https://github.com/anama5" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">琅嬛福地</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/03-JS%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          03-JS数组和函数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:56:43 / 修改时间：19:59:21" itemprop="dateCreated datePublished" datetime="2022-02-14T19:56:43+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一-数组"><a href="#一-数组" class="headerlink" title="一 数组"></a>一 数组</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><ol>
+<li>数组都是 <code>Array</code> 的实例</li>
+<li>数组可以存任意类型的数据</li>
+<li>数组长度可变</li>
+<li>ES6 明确数组中空位值为 <code>undefined</code></li>
+</ol>
+<h2 id="1-2-数组的创建和清空"><a href="#1-2-数组的创建和清空" class="headerlink" title="1.2 数组的创建和清空"></a>1.2 数组的创建和清空</h2><h3 id="1-创建数组"><a href="#1-创建数组" class="headerlink" title="1 创建数组"></a>1 创建数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 数组字面量</span></span><br><span class="line"><span class="keyword">let</span> arr = [ele0, ele1, ..., eleN];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 Array 构造函数</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-清空数组"><a href="#2-清空数组" class="headerlink" title="2 清空数组"></a>2 清空数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 将原数组指向一个空数组</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">arr = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 将数组长度置为 0</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">arr.length = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3 使用 splice() 方法</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">arr.splice(<span class="number">0</span>, arr.length);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4 循环一个个删</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">while</span> (arr.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">	arr.pop();   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-Array"><a href="#1-3-Array" class="headerlink" title="1.3 Array"></a>1.3 Array</h2><h3 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="1 构造函数"></a>1 构造函数</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>new Array(arrayLength)</code></td>
+<td>创建一个指定长度的数组，<code>arrayLength</code> ：0-2<sup>32</sup>-1 之间的整数</td>
+</tr>
+<tr>
+<td><code>new Array(ele0, ele1[, ...[, eleN]])</code></td>
+<td>创建一个包含指定元素的数组</td>
+</tr>
+<tr>
+<td><code>Array(...)</code></td>
+<td>和 <code>new Array(...)</code> 是等同的</td>
+</tr>
+</tbody></table>
+<h3 id="2-实例属性"><a href="#2-实例属性" class="headerlink" title="2 实例属性"></a>2 实例属性</h3><table>
+<thead>
+<tr>
+<th>实例属性</th>
+<th>权限</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>length</code></td>
+<td>读写</td>
+<td>数组元素个数</td>
+</tr>
+</tbody></table>
+<h3 id="3-静态方法"><a href="#3-静态方法" class="headerlink" title="3  静态方法"></a>3  静态方法</h3><ol>
+<li><code>Array.isArray(obj)</code><ul>
+<li>如果值是 Array，则返回true，否则返回false（用来弥补<code>typeof</code>，因为<code>typeof 数组</code> 返回的是<code>object</code>）</li>
+</ul>
+</li>
+<li><code>Array.of(element0[, element1[, ...[, elementN]]])</code><ul>
+<li>将一组值转换为数组（用来弥补构造函数，构造函数参数个数不同会导致结果不同。）</li>
+</ul>
+</li>
+<li><code>Array.from(arrayLike[, mapFn[, thisArg]])</code><ul>
+<li>从一个类数组对象或可迭代对象创建一个新的浅拷贝的数组实例并返回</li>
+<li><code>mapFn</code><ul>
+<li>如果指定了该参数，新数组中的每个元素都会执行该回调函数</li>
+</ul>
+</li>
+<li><code>thisArg</code><ul>
+<li>执行回调函数 mapFn 时的 this 对象</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-原型方法"><a href="#4-原型方法" class="headerlink" title="4 原型方法"></a>4 原型方法</h3><h4 id="1-获取"><a href="#1-获取" class="headerlink" title="1 获取"></a>1 获取</h4><ol>
+<li><code>valueOf()</code><ul>
+<li>返回数组本身</li>
+</ul>
+</li>
+<li><code>toString()</code><ul>
+<li>返回数组的字符串形式</li>
+</ul>
+</li>
+<li><code>join([separator])</code><ul>
+<li>以指定分隔符（默认为逗号）将所有数组成员连接为一个字符串返回</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-增删改"><a href="#2-增删改" class="headerlink" title="2 增删改"></a>2 增删改</h4><ol>
+<li><code>push(element1, ..., elementN)</code><ul>
+<li>将一个或多个元素添加到数组的末尾，并返回该数组的新长度，改变原数组</li>
+<li>如果参数为数组，把数组作为元素添加到数组中。(二维数组)</li>
+</ul>
+</li>
+<li><code>pop()</code><ul>
+<li>删除并返回最后一个元素，改变原数组</li>
+</ul>
+</li>
+<li><code>unshift(element1, ..., elementN)</code><ul>
+<li>将一个或多个元素添加到数组的开头，并返回该数组的新长度，改变原数组</li>
+<li>参数可以是数组（二维数组）</li>
+</ul>
+</li>
+<li><code>shift()</code><ul>
+<li>删除并返回第一个元素，改变原数组</li>
+</ul>
+</li>
+<li><code>fill(value[, start[, end]])</code><ul>
+<li>使用指定值填充数组，可指定开始结束索引，返回修改后的数组</li>
+</ul>
+</li>
+<li><code>splice(start[, deleteCount[, item1[, item2[, ...]]]])</code><ul>
+<li>删除目标数组的一部分成员，并可以在删除的位置添加新的数组成员，返回被删除的元素组成的数组，改变原数组</li>
+</ul>
+</li>
+<li><code>slice([begin[, end]])</code><ul>
+<li>提取目标数组的一部分，返回一个浅拷贝新数组，原数组不变</li>
+</ul>
+</li>
+<li><code>concat(value1, value2, ..., valueN)</code><ul>
+<li>将一个或多个值合并到数组中，返回新数组，不改变原数组</li>
+</ul>
+</li>
+<li><code>copyWithin(target[, start[, end]])</code><ul>
+<li>复制数组的一部分到数组指定位置（覆盖原有成员），并返回数组，改变原数组但不改变数组长度（因为会覆盖原有成员）</li>
+<li><code>target</code><ul>
+<li>目标位置</li>
+</ul>
+</li>
+<li><code>start</code><ul>
+<li>复制的起始索引，默认为0</li>
+</ul>
+</li>
+<li><code>end</code><ul>
+<li>复制的终止索引（不含），默认为尾部</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>flat([depth])</code><ul>
+<li>将数组降维，按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回</li>
+<li><code>depth</code><ul>
+<li>指定结构深度，默认值为 1，即只可以将二维数组合并成一维数组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>flatMap(callback[, thisArg])</code><ul>
+<li>flatMap 是先进行 map 操作，再做 flat 的操作（深度为1）</li>
+<li><code>callback(currentValue[, index[, array]])</code><ul>
+<li><code>currentValue</code>：当前遍历的元素</li>
+<li><code>index</code>：当前遍历到的索引</li>
+<li><code>array</code>：当前数组</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-查"><a href="#3-查" class="headerlink" title="3 查"></a>3 查</h4><ol>
+<li><code>indexOf(searchElement[, fromIndex])</code><ul>
+<li>返回第一个匹配索引，如果不存在，则返回 <code>-1</code></li>
+</ul>
+</li>
+<li><code>lastIndexOf(searchElement[, fromIndex])</code><ul>
+<li>返回从后往前的第一个匹配索引，如果不存在，则返回 <code>-1</code></li>
+</ul>
+</li>
+<li><code>includes(valueToFind[, fromIndex])</code><ul>
+<li>判断数组是否包含指定元素</li>
+</ul>
+</li>
+<li><code>find(callback[, thisArg])</code><ul>
+<li>返回数组中第一个满足所提供测试函数（返回true）的元素的值，否则返回 undefined</li>
+<li><code>callback(element[, index[, array]])</code><ul>
+<li><code>element</code>：当前遍历的元素</li>
+<li><code>index</code>：当前遍历到的索引</li>
+<li><code>array</code>：当前数组</li>
+</ul>
+</li>
+<li><code>thisArg</code><ul>
+<li>执行回调时函数时this 指向的对象。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>findIndex(callback[, thisArg])</code><ul>
+<li>返回数组中第一个满足所提供测试函数（返回true）的元素的索引，否则返回 -1</li>
+</ul>
+</li>
+</ol>
+<h4 id="4-排序"><a href="#4-排序" class="headerlink" title="4 排序"></a>4 排序</h4><ol>
+<li><code>reverse()</code><ul>
+<li>反转数组并返回，改变原数组</li>
+</ul>
+</li>
+<li><code>sort([compareFunction])</code><ul>
+<li>默认是按照字典顺序排序，返回排序后的数组，改变原数组</li>
+<li><code>compareFunction(value1, value2)</code><ul>
+<li>返回一个数字，如果小于0则value1排在value2之前</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="5-循环遍历"><a href="#5-循环遍历" class="headerlink" title="5 循环遍历"></a>5 循环遍历</h4><ol>
+<li><code>forEach(callback[, thisArg])</code><ul>
+<li><code>callback(currentValue[, index[, array]])</code><ul>
+<li><code>currentValue</code>：当前遍历的元素</li>
+<li><code>index</code>：当前遍历到的索引</li>
+<li><code>array</code>：当前数组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>keys()</code><ul>
+<li>返回数组元素键的迭代器对象</li>
+</ul>
+</li>
+<li><code>values()</code><ul>
+<li>返回数组元素值的迭代器对象</li>
+</ul>
+</li>
+<li><code>entries()</code><ul>
+<li>返回数组元素键值对的迭代器对象</li>
+</ul>
+</li>
+</ol>
+<h4 id="6-扩展方法"><a href="#6-扩展方法" class="headerlink" title="6 扩展方法"></a>6 扩展方法</h4><ol>
+<li><code>every(callback[, thisArg])</code><ul>
+<li>判断数组元素是否全部能通过指定测试函数，返回布尔值，一个元素返回 <code>false</code>，则 <code>every()</code>立即返回 <code>false</code></li>
+<li><code>callback(currentValue[, index[, array]])</code><ul>
+<li><code>currentValue</code>：当前遍历的元素</li>
+<li><code>index</code>：当前遍历到的索引</li>
+<li><code>array</code>：当前数组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>some(callback[, thisArg])</code><ul>
+<li>数组中有至少一个元素通过回调函数的测试就会返回 <code>true</code>；</li>
+</ul>
+</li>
+<li><code>filter(callback[, thisArg])</code><ul>
+<li>返回一个新的由通过测试的元素组成的数组，如果没有任何数组元素通过测试，则返回空数组</li>
+</ul>
+</li>
+<li><code>map(callback[, thisArg])</code><ul>
+<li> 对数组中每一个元素执行回调函数，返回每一个回调函数结果组成的新数组</li>
+</ul>
+</li>
+<li><code>reduce(callback[, initialValue])</code><ul>
+<li>返回回调函数累计处理的结果</li>
+<li><code>callback(accumulator, currentValue[, index[, array]])</code><ul>
+<li><code>accumulator</code><ul>
+<li>第一次循环<ol>
+<li>有<code>initialValue</code>，则为<code>initialValue</code></li>
+<li>无<code>initialValue</code>，则为数组第一个元素</li>
+</ol>
+</li>
+<li>从第二次循环往后为回调函数返回值</li>
+</ul>
+</li>
+<li><code>currentValue</code><ul>
+<li>数组中当前循环的元素</li>
+<li>第一次循环时，如果没有<code>initialValue</code>，由于<code>accumulator</code>是数组第一个元素，则<code>currentValue</code>会从第二个元素开始循环</li>
+</ul>
+</li>
+<li><code>index</code><ul>
+<li>数组中当前循环的元素的索引</li>
+</ul>
+</li>
+<li><code>array</code><ul>
+<li>当前数组</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>reduceRight(callback[, initialValue])</code><ul>
+<li>与<code>reduce()</code>相似，只是从右向左遍历数组</li>
+</ul>
+</li>
+</ol>
+<h1 id="二-函数"><a href="#二-函数" class="headerlink" title="二 函数"></a>二 函数</h1><h2 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h2><ol>
+<li>每个 JavaScript 函数都是一个 <code>Function</code> 实例</li>
+<li>函数作为对象中的属性通常称为方法</li>
+</ol>
+<h2 id="2-2-定义函数"><a href="#2-2-定义函数" class="headerlink" title="2.2 定义函数"></a>2.2 定义函数</h2><h3 id="1-方式"><a href="#1-方式" class="headerlink" title="1 方式"></a>1 方式</h3><ol>
+<li><p>函数声明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function 函数名(参数列表) &#123;</span><br><span class="line">	函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>函数提升（提升优先级高于 <code>var</code> 变量提升），所以可以在定义函数之前的位置调用函数</li>
+<li>全局声明的函数会添加到 <code>window</code> 对象中</li>
+<li>优先级高于函数表达式</li>
+</ol>
+</li>
+<li><p>函数表达式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var/let/const 函数名 = function (参数列表) &#123;</span><br><span class="line">	函数体</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// var 虽然有变量提升，但赋值操作不会提升，所以函数表达式必须先声明后调用</span><br></pre></td></tr></table></figure></li>
+<li><p>Function 构造函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var/let/const 函数名 = new Function(&quot;参数列表&quot;,&quot;函数体&quot;);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="2-参数"><a href="#2-参数" class="headerlink" title="2 参数"></a>2 参数</h3><h4 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h4><ol>
+<li><p>形参 <code>parameter</code> ；实参 <code>argument</code></p>
+<ul>
+<li>形参是默认声明的，不需用 <code>var/let/const</code> 修饰</li>
+<li>实参数量小于形参时，没有传递的形参值为 <code>undefined</code></li>
+<li>实参数量大于形参时，多余的实参将忽略并不会报错</li>
+</ul>
+</li>
+<li><p>参数默认值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function sum(a, b = 2) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在形参上可以直接定义参数默认值，当对应实参没有值或值为 undefined 时，使用默认值</li>
+<li>带默认值的参数通常写最后，如果写前面，传参时需要用 undefined 占位</li>
+<li>带默认值会改变函数的 length 的个数，默认值及其后面的参数都不计算在 length 之内</li>
+<li>当参数有默认值时，会形成一个参数作用域</li>
+</ol>
+</li>
+</ol>
+<h4 id="2-arguments"><a href="#2-arguments" class="headerlink" title="2 arguments"></a>2 arguments</h4><ol>
+<li>所有函数（箭头函数除外）内部都有 arguments，箭头函数中使用 arguments 会去上层作用域查找</li>
+<li>arguments 是一个类数组(array-like)对象（长得像一个数组，本质是一个对象），存储了传递的所有实参<ol>
+<li>有数组的一些特性，如 length 和 index，但没有数组的方法</li>
+<li><code>arguments.callee</code>：获取当前 arguments 所在的函数</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-剩余参数"><a href="#3-剩余参数" class="headerlink" title="3 剩余参数"></a>3 剩余参数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function(a, b, ...theArgs) &#123;</span><br><span class="line">	// ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>剩余参数是一个数组，用于接收形参外的所有参数（类似于 java 可变参数）</li>
+<li>剩余参数必须是最后一个参数</li>
+<li>剩余参数只包含那些没有对应形参的实参，而 arguments 对象包含了传给函数的所有实参</li>
+<li>arguments 对象不是一个真正的数组，而剩余参数是真正的 Array 实例，即剩余参数可以使用所有的数组方法</li>
+</ol>
+<h2 id="2-3-立即执行函数-IIFE"><a href="#2-3-立即执行函数-IIFE" class="headerlink" title="2.3 立即执行函数 IIFE"></a>2.3 立即执行函数 IIFE</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 形式 一</span></span><br><span class="line">(</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">形参列表</span>)</span>&#123;&#125;(实参列表)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形式 二</span></span><br><span class="line">(</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">形参列表</span>)</span>&#123;&#125;</span><br><span class="line">)(实参列表)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>Imdiately Invoked Function Expression</code></li>
+<li>形成单独的作用域，封装遍历，避免重名…</li>
+</ol>
+<h2 id="2-4-箭头函数（lambda）"><a href="#2-4-箭头函数（lambda）" class="headerlink" title="2.4 箭头函数（lambda）"></a>2.4 箭头函数（lambda）</h2><h3 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1 概述"></a>1 概述</h3><ol>
+<li>箭头函数内部不绑定 this，是根据外层作用域来决定，指向定义时所在作用域的 this</li>
+<li>箭头函数没有 <code>prototype</code> 属性，不可以当作构造函数，也就是说，不可以使用 <code>new</code> 命令</li>
+<li>箭头函数内部不存在 <code>arguments</code> 对象</li>
+<li>箭头函数不可以使用 <code>yield</code> 命令，因此箭头函数不能用作 <code>Generator</code> 函数</li>
+</ol>
+<h3 id="2-语法"><a href="#2-语法" class="headerlink" title="2 语法"></a>2 语法</h3><ol>
+<li><p>基础语法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(param1, param2, …, paramN) =&gt; &#123; statements &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>没有参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">() =&gt; &#123; statements &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>当且仅当只有一个参数时，小括号可以省略</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">singleParam =&gt; &#123; statements &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>函数体只有一句且是返回语句时，<code>return</code>、分号和大括号都可以省略</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(param1, param2, …, paramN) =&gt;&#123; <span class="keyword">return</span> expression; &#125;</span><br><span class="line"><span class="comment">// 简写</span></span><br><span class="line">(param1, param2, …, paramN) =&gt; expression</span><br><span class="line"></span><br><span class="line"><span class="comment">//  注意：如果返回的是一个对象，要用()包括，因为&#123;&#125;会被认为是一个代码块</span></span><br><span class="line">(param1, param2, …, paramN) =&gt; (&#123;<span class="attr">name</span>: <span class="string">&#x27;xiaoming&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="2-5-Function"><a href="#2-5-Function" class="headerlink" title="2.5 Function"></a>2.5 Function</h2><h3 id="1-构造函数-1"><a href="#1-构造函数-1" class="headerlink" title="1 构造函数"></a>1 构造函数</h3><ul>
+<li><code>new Function (variableStr, functionBodyStr)</code><ul>
+<li><code>variableStr</code><ul>
+<li>形参字符串，字符串中多个参数用逗号分隔</li>
+</ul>
+</li>
+<li><code>functionBodyStr</code><ul>
+<li>函数体的字符串</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-实例属性-1"><a href="#2-实例属性-1" class="headerlink" title="2 实例属性"></a>2 实例属性</h3><table>
+<thead>
+<tr>
+<th>实例属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>length</code></td>
+<td>函数的形参个数</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>函数的名称</td>
+</tr>
+</tbody></table>
+<h3 id="3-原型方法-Function-prototype"><a href="#3-原型方法-Function-prototype" class="headerlink" title="3 原型方法 Function.prototype."></a>3 原型方法 <code>Function.prototype.</code></h3><table>
+<thead>
+<tr>
+<th>原型方法</th>
+<th>说明</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>call(thisArg, arg1, arg2, ...)</code></td>
+<td>使用指定的 <code>this</code> 值和实参列表来调用函数</td>
+<td>执行函数</td>
+</tr>
+<tr>
+<td><code>apply(thisArg, [argsArray])</code></td>
+<td>同<code>call()</code>，不同的是接受的是一个实参数组</td>
+<td>执行函数</td>
+</tr>
+<tr>
+<td><code>bind(thisArg[, arg1[, arg2[, ...]]])</code></td>
+<td>使用指定的 <code>this</code> 和实参列表创建一个原函数的拷贝并返回，<code>bind</code> 实参优先级高于调用实参</td>
+<td>创建函数</td>
+</tr>
+</tbody></table>
+<h2 id="2-6-全局函数"><a href="#2-6-全局函数" class="headerlink" title="2.6 全局函数"></a>2.6 全局函数</h2><table>
+<thead>
+<tr>
+<th>全局函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>encodeURI(URI)</code></td>
+<td>使用 UTF-8 编码，编码后的格式为UTF-8编码的每个字节前加 <code>%</code>，如 <code>安</code> 编码后 <code>%E5%AE%89</code></td>
+</tr>
+<tr>
+<td><code>decodeURI(encodedURI)</code></td>
+<td><code>encodeURI(URI)</code> 对应的解码函数</td>
+</tr>
+<tr>
+<td><code>encodeURIComponent(str)</code></td>
+<td>类似<code>encodeURI()</code>，区别在于不会编码的字符</td>
+</tr>
+<tr>
+<td><code>decodeURIComponent(encodedURI)</code></td>
+<td><code>encodeURIComponent()</code>对应的解码函数</td>
+</tr>
+<tr>
+<td><code>isFinite(value)</code></td>
+<td>同 <code>Number.isFinite(value)</code></td>
+</tr>
+<tr>
+<td><code>isNaN(value)</code></td>
+<td>同 <code>Number.isNaN(value)</code></td>
+</tr>
+<tr>
+<td><code>parseInt(string[, radix])</code></td>
+<td>同 <code>Number.parseInt(string[, radix])</code></td>
+</tr>
+<tr>
+<td><code>parseFloat(string)</code></td>
+<td>同 <code>Number.parseFloat(string)</code></td>
+</tr>
+<tr>
+<td><code>eval(string)</code>（不要使用）</td>
+<td>将传入的字符串当做 JavaScript 代码进行执行</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>encodeURI(URI)</code> 和 <code>encodeURIComponent(str)</code> 区别<ol>
+<li><code>encodeURI(URI)</code> 不会编码的字符    <ol>
+<li><code>; , / ? : @ &amp; = + $</code>        </li>
+<li><code>字母 数字 - _ . ! ~ * &#39; ( )</code></li>
+<li><code>#</code></li>
+</ol>
+</li>
+<li><code>encodeURIComponent(str)</code> 不会编码的字符<ol>
+<li><code>字母 数字 - _ . ! ~ * &#39; ( )</code></li>
+</ol>
+</li>
+<li>使用场景<ol>
+<li>对整个 URI 编码，使用 <code>encodeURI(URI)</code></li>
+<li>对 URI 中的参数编码，使用 <code>encodeURIComponent(str)</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="三-函数式编程"><a href="#三-函数式编程" class="headerlink" title="三 函数式编程"></a>三 函数式编程</h1><h2 id="3-1-纯函数"><a href="#3-1-纯函数" class="headerlink" title="3.1 纯函数"></a>3.1 纯函数</h2><ol>
+<li>纯函数在相同的输入值时，需产生相同的输出</li>
+<li>纯函数的输出和输入值以外的其他隐藏信息或状态无关，也和由I/O设备产生的外部输出无关</li>
+<li>纯函数不能有语义上可观察的函数副作用，诸如“触发事件”，使输出设备输出，或更改输出值以外物件的内容等<ul>
+<li>副作用表示在执行一个函数时，除了返回函数值之外，还对调用函数产生了附加的影响，比如修改了全局变量，修改参数或者改变外部的存储</li>
+<li>如数组的 slice 就是一个纯函数，不会修改传入的参数，截取数组时不会对原数组进行任何操作,而是生成一个新的数组；而 splice 截取数组, 会返回一个新的数组, 也会对原数组进行修改，所以 splice 不是纯函数</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-2-柯里化（currying）"><a href="#3-2-柯里化（currying）" class="headerlink" title="3.2 柯里化（currying）"></a>3.2 柯里化（currying）</h2><ol>
+<li><p>柯里化是把接收多个参数的函数，变成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数，而且返回结果的新函数的技术</p>
+</li>
+<li><p>柯里化声称 “如果你固定某些参数，你将得到接受余下参数的一个函数”</p>
+</li>
+<li><p>只传递给函数一部分参数来调用它，让它返回一个函数去处理剩余的参数，这个过程就称之为柯里化</p>
+</li>
+<li><p>柯里化的好处</p>
+<ol>
+<li>单一职责</li>
+<li>对一些逻辑的复用</li>
+</ol>
+</li>
+<li><p>自动柯里化函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function currying(fn) &#123;</span><br><span class="line">	function curried(...args) &#123;</span><br><span class="line">		// 如果参数已足够，执行函数并返回结果</span><br><span class="line">		if(args.length &gt;= fn.length) &#123;</span><br><span class="line">			return fn.call(this, ...args);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return function(...restArgs) &#123;</span><br><span class="line">				return curried.call(this, ...args, ...restArgs);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return curried;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="3-3-组合函数"><a href="#3-3-组合函数" class="headerlink" title="3.3 组合函数"></a>3.3 组合函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function compose(...fns) &#123;</span><br><span class="line">	// 遍历所有原生，如果不是函数直接报错</span><br><span class="line">	let len = fns.length;</span><br><span class="line">	for (let i = 0; i &lt; len; i++) &#123;</span><br><span class="line">		let fn = fns[i];</span><br><span class="line">		if(typeof fn !== &#x27;function&#x27;) &#123;</span><br><span class="line">			throw new TypeError(&#x27;需要一个函数&#x27;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// 取出所有函数一次调用</span><br><span class="line">	return function(...arg) &#123;</span><br><span class="line">		// 先获取第一次执行结果</span><br><span class="line">		let index = 0;</span><br><span class="line">		let result = len ? fns[index].apply(this, args) : args;</span><br><span class="line">		while(++index &lt; len) &#123;</span><br><span class="line">			result = fns[index].call(this, result);</span><br><span class="line">		&#125;</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>组合（Compose）函数是在JavaScript开发过程中一种对函数的使用技巧、模式</li>
+<li>比如我们现在需要对某一个数据进行函数的调用，执行两个函数fn1和fn2，这两个函数是依次执行的，如果每次我们都需要进行两个函数的调用，操作上就会显得重复，将这两个函数组合起来，自动依次调用的过程就是对函数的组合，我们称之为 组合函数（Compose Function）</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #66ccff;font-size:14px;">-------------The End&nbsp;&nbsp;<i class="fa fa-paw"></i>&nbsp;&nbsp;客官请自便-------------</div>
+    
+</div
+      
+    </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/14/02-JS%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="prev" title="02-JS基本数据类型">
+      <i class="fa fa-chevron-left"></i> 02-JS基本数据类型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/14/04-JS%E5%AF%B9%E8%B1%A1/" rel="next" title="04-JS对象">
+      04-JS对象 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">一 数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E6%B8%85%E7%A9%BA"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 数组的创建和清空</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">1 创建数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B8%85%E7%A9%BA%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.2.</span> <span class="nav-text">2 清空数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Array"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">1 构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7"><span class="nav-number">1.3.2.</span> <span class="nav-text">2 实例属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.3.</span> <span class="nav-text">3  静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.4.</span> <span class="nav-text">4 原型方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%8E%B7%E5%8F%96"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">1 获取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%A2%9E%E5%88%A0%E6%94%B9"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">2 增删改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9F%A5"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">3 查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%8E%92%E5%BA%8F"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">4 排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86"><span class="nav-number">1.3.4.5.</span> <span class="nav-text">5 循环遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.4.6.</span> <span class="nav-text">6 扩展方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">二 函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 定义函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text">1 方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%82%E6%95%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">2 参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-arguments"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">2 arguments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">3 剩余参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0-IIFE"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 立即执行函数 IIFE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%EF%BC%88lambda%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 箭头函数（lambda）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-1"><span class="nav-number">2.4.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%AD%E6%B3%95"><span class="nav-number">2.4.2.</span> <span class="nav-text">2 语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-Function"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-1"><span class="nav-number">2.5.1.</span> <span class="nav-text">1 构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7-1"><span class="nav-number">2.5.2.</span> <span class="nav-text">2 实例属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95-Function-prototype"><span class="nav-number">2.5.3.</span> <span class="nav-text">3 原型方法 Function.prototype.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 全局函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">三 函数式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E7%BA%AF%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 纯函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E6%9F%AF%E9%87%8C%E5%8C%96%EF%BC%88currying%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 柯里化（currying）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E7%BB%84%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 组合函数</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="安₃"
+      src="/images/an3.JPG">
+  <p class="site-author-name" itemprop="name">安₃</p>
+  <div class="site-description" itemprop="description">我未成名君未嫁 可能俱是不如人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-star-and-crescent"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">安₃</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

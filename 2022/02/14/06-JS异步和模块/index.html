@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一 promise1.1 概述 Promise 对象本质上表示的是一系列操作的中间状态，或者说是未来某时刻一个操作完成或失败后返回的结果 Promise 的三种状态 pending：待定状态，初始化时的状态 fulfilled：异步操作成功 rejected：异步操作失败   promise 状态的改变是一次性的，一旦从 pending 变成 fulfilled 或 rejected，该 Prom">
+<meta property="og:type" content="article">
+<meta property="og:title" content="06-JS异步和模块">
+<meta property="og:url" content="http://example.com/2022/02/14/06-JS%E5%BC%82%E6%AD%A5%E5%92%8C%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="琅嬛福地">
+<meta property="og:description" content="一 promise1.1 概述 Promise 对象本质上表示的是一系列操作的中间状态，或者说是未来某时刻一个操作完成或失败后返回的结果 Promise 的三种状态 pending：待定状态，初始化时的状态 fulfilled：异步操作成功 rejected：异步操作失败   promise 状态的改变是一次性的，一旦从 pending 变成 fulfilled 或 rejected，该 Prom">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:/学无止境/00-教程/coderwhy/01-前端/03-JavaScript/img/ES模块阶段一.png">
+<meta property="og:image" content="d:/学无止境/00-教程/coderwhy/01-前端/03-JavaScript/img/ES模块阶段二三.png">
+<meta property="article:published_time" content="2022-02-14T11:57:35.000Z">
+<meta property="article:modified_time" content="2022-02-14T11:59:37.093Z">
+<meta property="article:author" content="安₃">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/学无止境/00-教程/coderwhy/01-前端/03-JavaScript/img/ES模块阶段一.png">
+
+<link rel="canonical" href="http://example.com/2022/02/14/06-JS%E5%BC%82%E6%AD%A5%E5%92%8C%E6%A8%A1%E5%9D%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>06-JS异步和模块 | 琅嬛福地</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+<a target="_blank" rel="noopener" href="https://github.com/anama5" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">琅嬛福地</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/06-JS%E5%BC%82%E6%AD%A5%E5%92%8C%E6%A8%A1%E5%9D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          06-JS异步和模块
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:57:35 / 修改时间：19:59:37" itemprop="dateCreated datePublished" datetime="2022-02-14T19:57:35+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一-promise"><a href="#一-promise" class="headerlink" title="一 promise"></a>一 promise</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><ol>
+<li>Promise 对象本质上表示的是一系列操作的中间状态，或者说是未来某时刻一个操作完成或失败后返回的结果</li>
+<li>Promise 的三种状态<ol>
+<li>pending：待定状态，初始化时的状态</li>
+<li>fulfilled：异步操作成功</li>
+<li>rejected：异步操作失败</li>
+</ol>
+</li>
+<li>promise 状态的改变是一次性的，一旦从 pending 变成 fulfilled 或 rejected，该 Promise 的状态不再可更改</li>
+<li>promise 的结果：<ol>
+<li>成功的值</li>
+<li>失败的原因</li>
+</ol>
+</li>
+</ol>
+<h2 id="1-2-构造函数"><a href="#1-2-构造函数" class="headerlink" title="1.2 构造函数"></a>1.2 构造函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">new Promise(executor)</span><br><span class="line"></span><br><span class="line">new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    resolve(value)</span><br><span class="line">    reject(reason)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>executor</code>：一个回调函数，其两个参数也是回调函数</li>
+<li>Promise 构造函数执行时立即执行 <code>executor</code> 函数</li>
+<li><code>executor</code> 的返回值会被忽略</li>
+<li>创建出的 promise 的状态<ol>
+<li>如果 <code>executor</code> 内部有错误抛出，promise 状态会变为 <code>rejected</code></li>
+<li>调用 reject 方法，无论传入什么值只会影响 promise 的结果，promise 状态都会变为 rejected</li>
+<li>调用 resolve 方法<ol>
+<li>传入一个普通值（包括 undefined、对象、…）：当前 promise 状态变为 fulfilled，结果为此值</li>
+<li>传入一个 thenable 对象（对象实现了 then 方法）：会执行该对象的 then 方法，当前 promise 状态根据 then 方法的结果来决定</li>
+<li>传入一个 Promise，当前 promise 状态由传入的 Promise 状态决定</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="1-3-原型方法"><a href="#1-3-原型方法" class="headerlink" title="1.3 原型方法"></a>1.3 原型方法</h2><h3 id="1-then"><a href="#1-then" class="headerlink" title="1 then"></a>1 then</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p.then(onFulfilled[, onRejected]);</span><br><span class="line"></span><br><span class="line">p.then(value =&gt; &#123;</span><br><span class="line">  // fulfillment</span><br><span class="line">&#125;, reason =&gt; &#123;</span><br><span class="line">  // rejection</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>当 promise 状态为 fulfilled 时执行 onFulfilled 函数</li>
+<li>当 promise 状态为 rejected 时执行 onRejected 函数</li>
+<li>onFulfilled 和 onRejected 函数的参数分别接收成功和失败的结果</li>
+<li>一个 promise 的 then 方法可以被调用多次，当 Promise 的状态变成 fulfilled 的时候，这些 then 的回调函数都会被执行</li>
+<li>then 方法的返回值是一个新的 promise<ol>
+<li>当 then 方法中的回调函数本身在执行的时候，新的 promise 处于 pending 状态</li>
+<li>当 then 方法抛出一个异常时，新的 promise 为 rejected 状态</li>
+<li>then 方法执行完毕（无论是 onFulfilled 还是 onRejected）返回一个结果，此结果会作为新的 promise 的 resolve 函数的参数。resolve 函数接受参数有三种情况，所以新的 promise 的状态根据 then 方法返回值不同也分三种情况<ol>
+<li>返回一个普通的值（包含默认返回的 undefined），promise 状态变为 fulfilled，结果为此值</li>
+<li>返回一个 thenable 对象，根据  then 方法的结果来决定新 promsie 的状态</li>
+<li>返回一个 promise，新 promsie 的状态由返回的 promise 决定</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-catch"><a href="#2-catch" class="headerlink" title="2 catch"></a>2 catch</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">catch(onRejected)</span><br><span class="line"></span><br><span class="line">catch(reason =&gt; &#123;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 等价于</span><br><span class="line">then(undefined, onRejected)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>一个 Promise 的 catch方法是可以被多次调用的，当 Promise 的状态变成 rejected 的时候，这些回调函数都会被执行</p>
+</li>
+<li><p>catch 返回一个 promise，其状态与 then 方法的情况一样</p>
+<ol>
+<li>如果 onRejected 返回一个 rejected 状态的 Promise 或着抛出一个错误，则 catch 返回的 promise 状态为 rejected</li>
+<li>否则，catch 返回的 promise 状态为 fulfilled</li>
+</ol>
+</li>
+<li><p>链式调用时，catch 之前任一 promise 状态变为 rejected，如果此 promise自己没有处理，则会被 catch 捕获 </p>
+</li>
+</ol>
+<h3 id="3-finally"><a href="#3-finally" class="headerlink" title="3 finally"></a>3 finally</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">finally(onFinally)</span><br><span class="line"></span><br><span class="line">finally(() =&gt; &#123;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Promise 结束后，无论状态是 fulfilled 还是 rejected，都会执行 finally 中的 onFinally 回调函数</li>
+<li>onFinally 函数不接收参数</li>
+<li>返回一个设置了 finally 回调函数的 Promise 对象，但通常用不到</li>
+</ol>
+<h2 id="1-4-静态方法"><a href="#1-4-静态方法" class="headerlink" title="1.4 静态方法"></a>1.4 静态方法</h2><h3 id="1-resolve"><a href="#1-resolve" class="headerlink" title="1 resolve"></a>1 resolve</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.resolve(value)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>返回一个以给定值解析后的 Promise 对象</li>
+<li>用法相当于 new Promise，并且执行 resolve 操作（value 有三种情况）</li>
+</ol>
+<h3 id="2-reject"><a href="#2-reject" class="headerlink" title="2 reject"></a>2 reject</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.reject(reason)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>返回一个带有拒绝原因的 Promise 对象</li>
+<li>用法相当于 new Promise，并且执行 reject 操作</li>
+</ol>
+<h3 id="3-all"><a href="#3-all" class="headerlink" title="3 all"></a>3 all</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.all(iterable);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>将多个 promise 包裹在一起形成一个新的 promise 对象</p>
+</li>
+<li><p>新的 promise 对象状态由包裹的所有 Promise 共同决定</p>
+<ol>
+<li>当所有的 Promise 状态变成 fulfilled 状态时，新的 Promise 状态为 fulfilled，并且会将所有 Promise 的返回值组成一个数组；</li>
+<li>当有一个 Promise 状态为 rejected 时，新的 Promise 状态为 rejected，并且会将第一个 rejected 的返回值作为结果</li>
+</ol>
+</li>
+<li><p>iterable 的不同情况：iterable 中非 promise 元素会被转为 promise</p>
+<ol>
+<li><p>一个空的可迭代对象：新的 promise 状态为 fulfilled，结果为空数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Promis.all([]).then(</span><br><span class="line">	value =&gt; console.log(value), // []</span><br><span class="line">	reason =&gt; console.log(reason)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+<li><p>不包含任何 promise：新的 promise 状态为 fulfilled，结果为由参数的元素构成的数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Promis.all(&quot;abc&quot;).then(</span><br><span class="line">	value =&gt; console.log(value), // [&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;]</span><br><span class="line">	reason =&gt; console.log(reason)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+<li><p>包含有 promise</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 1 包含的所有 promise 都成功，则新的 promise 状态为 fulfilled，结果为所有 promise 的成功结果和非promise的值组成的数组</span><br><span class="line"></span><br><span class="line">const p1 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">	resolve(&#x27;p1-success&#x27;);</span><br><span class="line">&#125;);</span><br><span class="line">Promis.all([p1, 3, 4, &#x27;abc&#x27;]).then(</span><br><span class="line">	value =&gt; console.log(value), // [&#x27;p1-success&#x27;,3,4,&#x27;abc&#x27;]</span><br><span class="line">	reason =&gt; console.log(reason)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">// 2 包含的promise 有一个失败，则新的 promise 状态为 rejected，结果为第一个失败的 promise 的失败原因</span><br><span class="line"></span><br><span class="line">const p1 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">	reject(&#x27;p1-fail&#x27;);</span><br><span class="line">&#125;);</span><br><span class="line">Promis.all([p1, 3, 4, &#x27;abc&#x27;]).then(</span><br><span class="line">	value =&gt; console.log(value), </span><br><span class="line">	reason =&gt; console.log(reason) // p1-fail</span><br><span class="line">);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h3 id="4-allSettled"><a href="#4-allSettled" class="headerlink" title="4 allSettled"></a>4 allSettled</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.allSettled(iterable)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>all 方法有一个缺陷：当有其中一个 Promise 变成 rejected 状态时，新 Promise 就会立即变成 rejected 状态，对于 resolved 状态以及依然处于 pending 状态的 Promise，我们是获取不到对应的结果的</p>
+</li>
+<li><p>allSettled</p>
+<ol>
+<li><p>会在所有的 Promise 都有结果（无论是 fulfilled，还是 rejected）后，才会有最终的状态</p>
+</li>
+<li><p>返回的新的 promise 一定是 fulfilled 状态，其结果是一个数组，每个数组元素是一个对应 promise 结果的对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;status: &quot;fulfilled&quot;, value: ...&#125;</span><br><span class="line">    &#123;status: &quot;rejected&quot;, reason: ...&#125;</span><br><span class="line">    ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h3 id="5-race"><a href="#5-race" class="headerlink" title="5 race"></a>5 race</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.race(iterable)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>返回一个 promise，此 promise 结果取决于 iterable 参数中的 promise 成功/失败的最快的那个</li>
+<li>如果有一个 Promise 有了结果，我们就希望决定最终新 Promise 的状态，也就是说多个 Promise 相互竞争，谁先有结果，那么就使用谁的结果</li>
+</ol>
+<h3 id="6-any"><a href="#6-any" class="headerlink" title="6 any"></a>6 any</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.any(iterable)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>any 会等到 iterable 参数中的 promise 有一个状态变为 fulfilled，则将新的 promise 状态变为 fulfilled</li>
+<li>如果 iterable 参数中所有的 Promise 都是 rejected 的，那么会等到所有的 Promise 都变成 rejected 状态后，报一个 AggregateError 的错误</li>
+</ol>
+<h1 id="二-迭代器"><a href="#二-迭代器" class="headerlink" title="二 迭代器"></a>二 迭代器</h1><h2 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h2><ol>
+<li>迭代器是用来对某个数据结构进行遍历的对象，让我们无需关心数据结构内部的实现细节</li>
+<li>迭代器对象需要符合迭代器协议（<strong>iterator protocol</strong>）<ol>
+<li>迭代器协议定义了产生一系列值（无论是有限还是无限个）的标准方式</li>
+<li>在 JS 中标准为：具有特定 <code>next()</code> 方法的对象就是一个迭代器</li>
+</ol>
+</li>
+<li><code>next()</code> 方法的要求<ol>
+<li>参数：无参或一个参数</li>
+<li>返回值：拥有以下两个属性的对象<ol>
+<li>done（boolean）<ul>
+<li>false：迭代器可以产生序列中的下一个值，即迭代没结束，可以省略</li>
+<li>true：迭代完毕，此时 value 可省略</li>
+</ul>
+</li>
+<li>value：迭代器返回的任何 JavaScript 值</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-2-可迭代对象"><a href="#2-2-可迭代对象" class="headerlink" title="2.2 可迭代对象"></a>2.2 可迭代对象</h2><ol>
+<li>当一个对象实现了 <strong>iterable protocol</strong> 协议时，它就是一个可迭代对象</li>
+<li>JS 中一个可迭代对象必须实现 <code>@@iterator</code> 方法，这意味着对象（或其原型链上的某个对象）必须有一个键为 <code>@@iterator</code> 的属性<ol>
+<li>此属性指向一个函数，用于获取对象的迭代器</li>
+<li>此属性可以通过 <code>Symbol.iterator</code> 访问，对象（或者其原型链）上拥有 <code>Symbol.iterator</code> 属性，就是可迭代对象</li>
+<li><code>const iterator = obj[Symbol.iterator]()</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-内置可迭代对象"><a href="#2-3-内置可迭代对象" class="headerlink" title="2.3 内置可迭代对象"></a>2.3 内置可迭代对象</h2><table>
+<thead>
+<tr>
+<th>内置可迭代对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>String</code></td>
+<td>字符串</td>
+</tr>
+<tr>
+<td><code>Array</code></td>
+<td>数组</td>
+</tr>
+<tr>
+<td><code>Set / Map</code></td>
+<td>集合</td>
+</tr>
+<tr>
+<td><code>arguments</code></td>
+<td>类数组对象</td>
+</tr>
+<tr>
+<td><code>DOM NodeList</code></td>
+<td>类数组对象</td>
+</tr>
+<tr>
+<td><code>Generator</code></td>
+<td>生成器对象</td>
+</tr>
+<tr>
+<td><code>TypedArray</code></td>
+<td>类型化数组</td>
+</tr>
+</tbody></table>
+<ol>
+<li>可枚举属性：属性描述符 <code>enumerable: true</code> 的属性</li>
+<li>普通对象：没有数字键和 <code>length</code> 属性的对象</li>
+<li>类数组对象：存在数值键名和 <code>length</code> 属性的对象</li>
+<li>可迭代对象：实现了 <strong>iterable protocol</strong> 协议的对象</li>
+</ol>
+<h2 id="2-4-for…of"><a href="#2-4-for…of" class="headerlink" title="2.4 for…of"></a>2.4 for…of</h2><h3 id="1-语法"><a href="#1-语法" class="headerlink" title="1 语法"></a>1 语法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (let value of iterable) &#123;</span><br><span class="line">    statement</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>用来遍历可迭代对象，每次循环取出的是值</li>
+<li>for… of 内部就是调用了可迭代对象的 <code>Symbol.iterator</code> 生成了迭代器</li>
+</ol>
+<h3 id="2-自定义-for…of"><a href="#2-自定义-for…of" class="headerlink" title="2 自定义 for…of"></a>2 自定义 for…of</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myForOf</span>(<span class="params">iterableObj</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 1 获取迭代器</span></span><br><span class="line">	<span class="keyword">let</span> it = iterableObj[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line">    <span class="comment">// 2 判断迭代是否结束</span></span><br><span class="line">	<span class="keyword">let</span> res = it.next();</span><br><span class="line">	<span class="keyword">while</span>(!res.done) &#123;</span><br><span class="line">		<span class="comment">// 3 获取值</span></span><br><span class="line">	    <span class="built_in">console</span>.log(res.value);</span><br><span class="line">	    res = it.next();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-5-迭代器的中断"><a href="#2-5-迭代器的中断" class="headerlink" title="2.5 迭代器的中断"></a>2.5 迭代器的中断</h2><ol>
+<li><p>迭代器在某些情况下会在没有完全迭代的情况下中断</p>
+<ol>
+<li>比如遍历的过程中通过 break、continue、return、throw 中断了循环操作</li>
+<li>比如在解构的时候，没有解构所有的值</li>
+</ol>
+</li>
+<li><p>如果想要监听中断的话，可以在迭代器对象中添加 return 方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	next() &#123;</span><br><span class="line">		return &#123;done: false, value: 123&#125;;</span><br><span class="line">	&#125;,</span><br><span class="line">	return() &#123;</span><br><span class="line">		console.log(&#x27;迭代器提前终止了&#x27;);</span><br><span class="line">		// 也需要返回值</span><br><span class="line">		return &#123;done: true&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="三-生成器"><a href="#三-生成器" class="headerlink" title="三 生成器"></a>三 生成器</h1><h2 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function* generator() &#123;</span><br><span class="line">  yield 1;</span><br><span class="line">  yield 2;</span><br><span class="line">  yield 3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const gen = generator(); // &quot;Generator &#123; &#125;&quot;</span><br><span class="line"></span><br><span class="line">console.log(gen.next().value); // 1</span><br><span class="line">console.log(gen.next().value); // 2</span><br><span class="line">console.log(gen.next().value); // 3</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>生成器是 ES6 中新增的一种函数控制、使用的方案，它可以让我们更加灵活的控制函数什么时候继续执行、暂停执行等</li>
+<li>生成器不能直接创建，而是由生成器函数返回，生成器其实是一种特殊的迭代器，遵循 iterator protocol 和 iterable protocol</li>
+<li>生成器函数的调用与普通函数一样，但是和普通的函数有一些区别<ol>
+<li>生成器函数需要在 function 的后面加一个符号 *</li>
+<li>生成器函数可以通过 yield 关键字来控制函数的执行流程（生成器函数会被 yield 或 return 分段）</li>
+<li>生成器函数的返回值是一个 Generator（生成器）</li>
+<li>生成器函数调用之后并不执行，而是每调用一次生成器的 next 方法就执行一段</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-2-yield-和-yield"><a href="#3-2-yield-和-yield" class="headerlink" title="3.2 yield 和 yield*"></a>3.2 yield 和 yield*</h2><h3 id="1-yield"><a href="#1-yield" class="headerlink" title="1 yield"></a>1 yield</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[rv] = yield [expression]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>expression</code>：作为 next 方法返回的对象的 value 属性的值 <code>&#123;value: expression, done: false&#125;</code></li>
+<li>rv：<ol>
+<li>yield 语句本身没有返回值，即 rv 总是为  undefined</li>
+<li>调用 <code>next(value)</code> 函数时，会将参数 value 赋给上一段 yield 语句的 rv</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-yield"><a href="#2-yield" class="headerlink" title="2 yield*"></a>2 yield*</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yield* expression</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>expression</code>：返回一个可迭代对象</li>
+<li>yield* 相当于是一种 yield 的语法糖，只不过会依次迭代这个可迭代对象</li>
+</ol>
+<h2 id="3-2-原型方法"><a href="#3-2-原型方法" class="headerlink" title="3.2 原型方法"></a>3.2 原型方法</h2><h3 id="1-next"><a href="#1-next" class="headerlink" title="1 next"></a>1 next</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">next(value)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>用来迭代执行生成器函数的每一段</li>
+<li>参数：value 会传给上一段 yield 语句的 rv</li>
+<li>返回值：一个带有 done 和 value 属性的对象，其中 value 就是 yield 表达式的返回值</li>
+</ol>
+<h3 id="2-return"><a href="#2-return" class="headerlink" title="2 return"></a>2 return</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return(value)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>return 传值后这个生成器函数就会结束，之后调用 next 不会继续生成值</li>
+<li>参数：value 即返回对象的 value 属性的值</li>
+<li>返回一个对象：<code>&#123;value: value, done: true&#125;</code></li>
+</ol>
+<h3 id="3-throw"><a href="#3-throw" class="headerlink" title="3 throw"></a>3 throw</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">throw(exception)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>可以给生成器内部抛出异常</li>
+<li>返回值：一个带有 done 和 value 属性的对象</li>
+<li>如果用 try…catch 处理，也相当于进行了一次迭代</li>
+</ol>
+<h1 id="四-async-await"><a href="#四-async-await" class="headerlink" title="四 async / await"></a>四 async / await</h1><h2 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h2><ol>
+<li>async / await 是 Generator 的语法糖<ul>
+<li>sync 是 synchronous 单词的缩写，表示同步、同时</li>
+<li>async 是 asynchronous 单词的缩写，表示异步、非同步</li>
+</ul>
+</li>
+<li>async 用来声明一个异步函数，await 操作符只能用在异步函数中</li>
+</ol>
+<h2 id="4-2-异步函数的声明"><a href="#4-2-异步函数的声明" class="headerlink" title="4.2 异步函数的声明"></a>4.2 异步函数的声明</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">async function show()&#123;&#125;</span><br><span class="line"></span><br><span class="line">let show = async function()&#123;&#125;</span><br><span class="line"></span><br><span class="line">let show = async () =&gt; &#123;&#125;</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">	async show()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class xxx&#123;</span><br><span class="line">	async show() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>异步函数的执行过程和普通的函数是一致的，默认情况下也是会被同步执行（直到遇到 await）</li>
+<li>异步函数会返回一个新的 promise<ol>
+<li>异步函数如果抛出了一个异常，程序并不会像普通函数一样报错，而是会将返回的 promise 状态改为 rejected，可以调用catch 来处理</li>
+<li>异步函数内部显式的返回值有多种情况，决定了返回的新的promise 的状态<ol>
+<li>返回一个普通值，新的 promise 状态为 fulfilled</li>
+<li>返回一个 thenable 对象，新的 promise 的状态由对象的then 方法来决定</li>
+<li>返回一个 promise，新的 promise 的状态会由返回的 promise 决定</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="4-3-await"><a href="#4-3-await" class="headerlink" title="4.3 await"></a>4.3 await</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[return_value] = await expression;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>await 语句会返回一个 promise，return_value 用于接收 promise 的结果</p>
+<ol>
+<li>一旦 await 表达式 promise 状态变为 rejected，会直接决定异步函数返回的 promise 的状态，需要 try…catch 或 catch 处理</li>
+<li>expression<ol>
+<li>普通值</li>
+<li>thenable 对象</li>
+<li>promise</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>await 会暂停当前 async function 的执行，等待表达式的 promise 处理完成才会继续向下执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[return_value1] = await expression1;</span><br><span class="line">console.log(&#x27;后续代码1&#x27;)</span><br><span class="line">console.log(&#x27;后续代码2&#x27;)</span><br><span class="line">console.log(&#x27;后续代码3&#x27;)</span><br><span class="line">[return_value2] = await expression2;</span><br><span class="line"></span><br><span class="line">* 执行到第一个 await 会等待，直到其表达式的 promise 处理完毕，之后会向下执行直到遇到下一个 await</span><br><span class="line">* 也就是说当前 await 和下一个 await 之间的代码，就相当于当前 await 表达式的 promise 的 then 方法中的代码</span><br></pre></td></tr></table></figure></li>
+<li><p>await的并行</p>
+<ol>
+<li>让promise先执行后再使用await处理结果</li>
+<li>使用 Promise.all() 处理多个promise并行执行</li>
+</ol>
+</li>
+</ol>
+<h1 id="五-事件循环"><a href="#五-事件循环" class="headerlink" title="五 事件循环"></a>五 事件循环</h1><h2 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h2><ol>
+<li>JavaScript是单线程的，但是 JavaScript 的线程应该有自己的容器进程：浏览器或者Node</li>
+<li>目前多数的浏览器其实都是多进程的，当我们打开一个tab页面时就会开启一个新的进程，这是为了防止一个页面卡死而造成所有页面无法响应，整个浏览器需要强制退出，浏览器每个进程中又有很多的线程，其中包括执行 JavaScript 代码的线程</li>
+<li>JavaScript的代码执行是在一个单独的线程中执行的<ol>
+<li>意味着JavaScript的代码，在同一个时刻只能做一件事，如果这件事是非常耗时的，JavaScript 线程就会被阻塞</li>
+<li>所以真正耗时的操作，实际上并不是由 JavaScript 线程执行的，可以由浏览器的其他线程来完成</li>
+</ol>
+</li>
+</ol>
+<h2 id="5-2-任务"><a href="#5-2-任务" class="headerlink" title="5.2 任务"></a>5.2 任务</h2><h3 id="1-任务分类"><a href="#1-任务分类" class="headerlink" title="1 任务分类"></a>1 任务分类</h3><h4 id="1-根据类型分"><a href="#1-根据类型分" class="headerlink" title="1 根据类型分"></a>1 根据类型分</h4><ol>
+<li>同步任务<ol>
+<li>在主线程上排队执行的任务，形成一个执行栈</li>
+<li>前一个任务执行完毕，才能执行后一个任务</li>
+</ol>
+</li>
+<li>异步任务<ol>
+<li>JS 的异步是通过回调函数实现的</li>
+<li>异步任务相关回调函数会进入任务队列（消息队列）</li>
+<li>异步任务不具有“堵塞”效应</li>
+<li>异步任务通常有三种<ol>
+<li>普通事件，如 <code>click resize ...</code></li>
+<li>资源加载，如 <code>load, error ...</code></li>
+<li>定时器</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="2-根据机制分"><a href="#2-根据机制分" class="headerlink" title="2 根据机制分"></a>2 根据机制分</h4><ol>
+<li>宏任务（macrotask）<ol>
+<li>整个脚本代码（第一个宏任务）</li>
+<li>ajax</li>
+<li>定时器（setTimeout setInterval ..）</li>
+<li>DOM 监听</li>
+<li>事件 I/O</li>
+<li>UI Rendering（渲染）</li>
+<li>…</li>
+</ol>
+</li>
+<li>微任务（microtask）<ol>
+<li><code>promise.then</code></li>
+<li>Mutation Observer API</li>
+<li>queueMicrotask()</li>
+<li>…</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-任务队列"><a href="#2-任务队列" class="headerlink" title="2 任务队列"></a>2 任务队列</h3><ol>
+<li><p>任务队列（task queue）</p>
+<ul>
+<li>用于存放异步任务</li>
+<li>根据异步任务的类型，可以存在多个任务队列<ol>
+<li>宏任务队列（macrotask queue）</li>
+<li>微任务队列（microtask queue）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>事件循环（Event Loop）</p>
+<ul>
+<li>主线程栈执行完毕后，引擎会在任务队列循环检查，如果有可以执行的异步任务，则结束等待状态，进入主线程开始执行</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-3-浏览器的事件循环"><a href="#5-3-浏览器的事件循环" class="headerlink" title="5.3 浏览器的事件循环"></a>5.3 浏览器的事件循环</h2><p>![](D:\唯手熟尔\02-CS\03-招式\01-前端\03-JavaScript\img\JS 执行机制.png)</p>
+<ol>
+<li>原则：<ol>
+<li>任何一个宏任务开始执行前，微任务队列必须为空</li>
+<li>每个任务执行时，其内部代码中：<ol>
+<li>同步任务代码直接执行</li>
+<li>异步任务根据其是宏任务还是微任务，交给各自异步处理进程，当满足条件时（如 事件触发，定时器到时…）<ol>
+<li>宏任务进入宏任务队列 <code>macrotask queue</code></li>
+<li>微任务进入微任务队列 <code>microtask queue</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>执行过程<ol>
+<li>整个脚本代码（main script）作为第一个宏任务开始执行（刚开始，微任务队列为空）</li>
+<li>事件循环微任务队列，依次读入主线程执行栈并执行（清空微任务队列）</li>
+<li>事件循环宏任务队列，将一个宏任务读入主线程执行栈执行</li>
+<li>重复 2、3，直到任务队列都清空</li>
+</ol>
+</li>
+</ol>
+<h2 id="5-4-Node-的事件循环"><a href="#5-4-Node-的事件循环" class="headerlink" title="5.4 Node 的事件循环"></a>5.4 Node 的事件循环</h2><ol>
+<li>浏览器中的 EventLoop 是根据 HTML5 定义的规范来实现的，不同的浏览器可能会有不同的实现，而 Node 中是由 libuv 实现的</li>
+<li>Node 一次完整的事件循环 Tick 分成很多个阶段<ol>
+<li>定时器（Timers）：本阶段执行已经被 setTimeout() 和 setInterval() 的调度回调函数</li>
+<li>轮询（Poll）：检索新的 I/O 事件；执行与 I/O 相关的回调</li>
+<li>检测（check）：setImmediate() 回调函数在这里执行</li>
+<li>待定回调（Pending Callback）：对某些系统操作（如TCP错误类型）执行回调，比如TCP连接时接收到ECONNREFUSED</li>
+<li>idle, prepare：仅系统内部使用</li>
+<li>关闭的回调函数：一些关闭的回调函数，如：socket.on(‘close’, …)。</li>
+</ol>
+</li>
+<li>Node中的事件循环不只是 微任务队列和 宏任务队列<ol>
+<li>微任务队列<ol>
+<li>next tick queue：process.nextTick</li>
+<li>other queue：Promise的then回调、queueMicrotask</li>
+</ol>
+</li>
+<li>宏任务队列<ol>
+<li>timer queue：setTimeout、setInterval</li>
+<li>poll queue：IO事件</li>
+<li>check queue：setImmediate</li>
+<li>close queue：close事件</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Node事件循环的顺序<ol>
+<li>next tick microtask queue</li>
+<li>other microtask queue</li>
+<li>timer queue</li>
+<li>poll queue</li>
+<li>check queue</li>
+<li>close queue</li>
+</ol>
+</li>
+</ol>
+<h1 id="六-模块"><a href="#六-模块" class="headerlink" title="六 模块"></a>六 模块</h1><h2 id="6-1-概述"><a href="#6-1-概述" class="headerlink" title="6.1 概述"></a>6.1 概述</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015302578">网上概述</a></li>
+<li>什么是模块化、模块化开发<ul>
+<li>模块化开发最终的目的是将程序划分成一个个小的结构</li>
+<li>每个结构中编写属于自己的逻辑代码，有自己的作用域，不会影响到其他的结构</li>
+<li>每个结构可以将自己希望暴露的变量、函数、对象等导出给其结构使用，也可以通过某种方式，导入另外结构中的变量、函数、对象等</li>
+<li>上述结构，就是模块；按照这种结构划分开发程序的过程，就是模块化开发的过程</li>
+</ul>
+</li>
+<li>ES6 之前 JS 本身没有模块化，为了让 JS 支持模块化，涌现出了很多不同的模块化规范<ul>
+<li><code>CommonJS</code>：用于 Node.js</li>
+<li><code>AMD</code>：主要用于浏览器，AMD 规范的常见实现 <code>require.js</code> 和 <code>curl.js</code></li>
+<li><code>CMD</code>：主要用于浏览器，CMD 规范的常见实现 <code>SeaJS</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="6-2-CommonJS"><a href="#6-2-CommonJS" class="headerlink" title="6.2 CommonJS"></a>6.2 CommonJS</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h3><ol>
+<li>CommonJS 是一个<strong>规范</strong>，最初提出来是在浏览器以外的地方使用，并且当时被命名为 ServerJS，后来为了体现它的广泛性，修改为 CommonJS，也会简称为 CJS</li>
+<li>CommonJS 是一个<strong>规范</strong>，有不同的<strong>实现</strong><ol>
+<li>Node 是CommonJS 在服务器端一个具有代表性的<strong>实现</strong>，Node 中每一个js文件都是一个单独的模块</li>
+<li>Browserify 是 CommonJS 在浏览器中的一种<strong>实现</strong></li>
+<li>webpack 打包工具具备对 CommonJS 的支持和转换</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-导出"><a href="#2-导出" class="headerlink" title="2  导出"></a>2  导出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;&#125;</span><br><span class="line">exports = module.exports</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>只要将需要导出的内容添加到 <code>module.exports</code> 对象上即可</li>
+<li><code>exports</code> 只是 <code>module.exports</code> 对象的一个变量引用，注意：<ol>
+<li>只有 <code>module.exports</code> 对象才能导出</li>
+<li>由于 <code>exports</code> 指向 <code>module.exports</code>，所以向 <code>exports</code> 上添加属性也可以导出</li>
+<li>但如果给 <code>exports</code> 赋一个对象，相当于修改了它的指向，那么导出就跟它无关了，当然就无法导出</li>
+</ol>
+</li>
+<li>导入函数的返回值指向了 <code>module.exports</code> 对象</li>
+</ol>
+<h3 id="3-导入"><a href="#3-导入" class="headerlink" title="3 导入"></a>3 导入</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require(X)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>X 是一个 Node核心模块，比如 path、http，直接返回核心模块，并且停止查找</li>
+<li>X 是以 ./ 或 ../ 或 /（根目录）开头的路径<ol>
+<li>将X当做一个文件在对应的目录下查找<ol>
+<li>如果有后缀名，按照后缀名的格式查找对应的文件</li>
+<li>如果没有后缀名<ol>
+<li>查找 X 文件</li>
+<li>查找 X.js 文件</li>
+<li>查找 X.json 文件</li>
+<li>查找 X.node 文件</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>没有找到对应的文件，则将 X 作为一个目录，并在目录下<ol>
+<li>查找 X/index 文件</li>
+<li>查找 X/index.js 文件</li>
+<li>查找 X/index.json 文件</li>
+<li>查找 X/index.node 文件</li>
+</ol>
+</li>
+<li>没有找到，那么报错：not found</li>
+</ol>
+</li>
+<li>X 不是路径也不是一个核心模块（通常用于第三方包）<ol>
+<li>从当前路径开始，每次往上一层，直到根路径，在每个路径下查找 <code>/node_modules/X</code></li>
+<li>若找到，X 如果是一个文件夹则会自动拼接 <code>X/index.js</code></li>
+<li>若未找到，报错：not found</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-Node-中模块加载过程"><a href="#4-Node-中模块加载过程" class="headerlink" title="4 Node 中模块加载过程"></a>4 Node 中模块加载过程</h3><ol>
+<li>模块在被第一次引入时，模块中的 js 代码会被运行一次</li>
+<li>模块被多次引入时，会缓存，最终只加载（运行）一次<ol>
+<li>因为每个模块对象 module 都有一个属性：loaded</li>
+<li>loaded 为 false 表示还没有加载，为 true 表示已经加载</li>
+</ol>
+</li>
+<li>如果有循环引入，会形成图结构，Node 采用深度优先遍历</li>
+<li>CommonJS 加载模块是同步的，意味着只有等到对应的模块加载完毕，当前模块中的内容才能被运行<ol>
+<li>在服务器不会有什么问题，因为服务器加载的 js 文件都是本地文件，加载速度非常快</li>
+<li>浏览器加载 js 文件需要先从服务器将文件下载下来，之后再加载运行，所以在浏览器中，通常不使用 CommonJS 规范（在 webpack 中使用 CommonJS是另外一回事，因为它会将我们的代码转成浏览器可以直接执行的代码）</li>
+</ol>
+</li>
+</ol>
+<h2 id="6-3-ES-Module"><a href="#6-3-ES-Module" class="headerlink" title="6.3 ES Module"></a>6.3 ES Module</h2><h3 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1 概述"></a>1 概述</h3><ol>
+<li><p>模块就是一个独立的文件，文件内部的变量，函数，类…外部无法获取</p>
+</li>
+<li><p>模块都有独立的顶级作用域，不同模块间不能相互访问，类似函数作用域</p>
+</li>
+<li><p>模块默认运行在严格模式</p>
+</li>
+<li><p>使用模块可以解决全局变量冲突</p>
+</li>
+<li><p>模块可以避免滥用全局变量，造成代码不可控</p>
+</li>
+<li><p>模块的加载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 1 加载普通 js 文件，内部不能使用模块语法</span><br><span class="line">&lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">// 2 将 js 文件当作模块加载</span><br><span class="line">&lt;script src=&quot;index.js&quot; type=&quot;module&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">* 异步加载，即模块总是会在所有html解析后才执行</span><br><span class="line">* 模块的加载不能使用 file:// 协议，即不能加载本地模块</span><br></pre></td></tr></table></figure></li>
+<li><p>CommonJS 和 ESModule 的相互引用</p>
+<ol>
+<li>浏览器环境：不行，浏览器不支持 CommonJS</li>
+<li>Node环境：看 Node 的版本</li>
+<li>webpack环境：可以</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-导出-1"><a href="#2-导出-1" class="headerlink" title="2 导出"></a>2 导出</h3><h4 id="1-导出单个"><a href="#1-导出单个" class="headerlink" title="1 导出单个"></a>1 导出单个</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export 声明语句</span><br><span class="line"></span><br><span class="line">// 例</span><br><span class="line">export let name = &#x27;xiaoqiang&#x27;;</span><br><span class="line">export let obj = &#123;&#125;;</span><br><span class="line">export function show() &#123;&#125;;</span><br><span class="line">export class User &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-导出-n-个"><a href="#2-导出-n-个" class="headerlink" title="2 导出 n 个"></a>2 导出 n 个</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 注意：&#123;&#125; 是固定语法，不是对象，导出时可以起别名</span><br><span class="line">export &#123;</span><br><span class="line">	variable1 [as name1],</span><br><span class="line">	variable2 [as name2], </span><br><span class="line">	…, </span><br><span class="line">	variableN [as nameN]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 例</span><br><span class="line">let name = &#x27;xiaoqiang&#x27;;</span><br><span class="line">let obj = &#123;&#125;;</span><br><span class="line">function show() &#123;&#125;;</span><br><span class="line">class User &#123;&#125;</span><br><span class="line"> </span><br><span class="line">export &#123;</span><br><span class="line">	name as userName,</span><br><span class="line">	obj,</span><br><span class="line">	show,</span><br><span class="line">	User</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-导出默认"><a href="#3-导出默认" class="headerlink" title="3 导出默认"></a>3 导出默认</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 1 将 expression 的值赋给 default 导出</span><br><span class="line">export default expression;</span><br><span class="line"></span><br><span class="line">// 2 由于默认导出本质是导出一个名为default的属性，所以可以说使用别名的方式实现默认导出</span><br><span class="line">export &#123; variable1 as default, … &#125;;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用<code>import</code>命令时，需要知道<code>export</code>导出的属性名称</li>
+<li><code>export default</code> 本质是导出一个名为<code>defualt</code>的属性，使用<code>import</code>导入时可以以任意名称导入</li>
+<li>一个模块只能有一个默认导出，可以与普通导出共存</li>
+</ol>
+<h4 id="4-导出导入"><a href="#4-导出导入" class="headerlink" title="4 导出导入"></a>4 导出导入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export &#123; </span><br><span class="line">	defaultExport，</span><br><span class="line">	export1 [as alias1], </span><br><span class="line">	export2 [as alias2],</span><br><span class="line">	..., </span><br><span class="line">	exportN [as aliasN] </span><br><span class="line">&#125; from &quot;module_path&quot;</span><br><span class="line"></span><br><span class="line">export * from &quot;module_path&quot;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>export 关建字 + import 语法，可以将导入的模块直接导出</li>
+<li>相当于一个转发，并没有导入到当前模块，即当前模块不能使用导入导出的功能</li>
+</ol>
+<h3 id="3-导入-1"><a href="#3-导入-1" class="headerlink" title="3 导入"></a>3 导入</h3><h4 id="1-概述-2"><a href="#1-概述-2" class="headerlink" title="1 概述"></a>1 概述</h4><ol>
+<li>import 用于导入其它模块提供的功能。</li>
+<li>import 导入的变量名要与export导出的一致</li>
+<li>import 导入的变量是只读的</li>
+<li>import 命令具有提升效果，会提升到整个模块的头部，首先执行 </li>
+<li>import 是静态导入，不能使用表达式和变量</li>
+<li>在浏览器中引用模块必须添加路径，但在打包工具如 webpack 中则可能不需要，因为他们有自己的存放方式</li>
+<li><code>import.meta</code> 是一个给 JavaScript 模块暴露特定上下文的元数据属性的对象<ul>
+<li>在ES11（ES2020）中新增的特性</li>
+<li><code>import.meta.url = 当前模块所在的路径</code></li>
+</ul>
+</li>
+</ol>
+<h4 id="2-导入指定导出"><a href="#2-导入指定导出" class="headerlink" title="2 导入指定导出"></a>2 导入指定导出</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import &#123; </span><br><span class="line">	defaultExport，</span><br><span class="line">	export1 [as alias1], </span><br><span class="line">	export2 [as alias2],</span><br><span class="line">	..., </span><br><span class="line">	exportN [as aliasN] </span><br><span class="line">&#125; from &quot;module_path&quot;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>导入默认导出时名称任意</li>
+<li>由于默认导出只有一个，所以不需要<code>&#123;&#125;</code></li>
+</ol>
+<h4 id="3-导入所有导出"><a href="#3-导入所有导出" class="headerlink" title="3 导入所有导出"></a>3 导入所有导出</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 将 module_path 所有导出导入到 obj 上，使用 default 获取默认导出</span><br><span class="line">import * as obj from &quot;module_path&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-动态导入"><a href="#4-动态导入" class="headerlink" title="4 动态导入"></a>4 动态导入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import(&#x27;module_path&#x27;)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>静态导入：</p>
+<ol>
+<li>必须在模块导入完毕才会继续向下执行</li>
+<li>静态导入不能放在其它逻辑代码中，因为ES Module在被JS引擎解析时，就必须知道它的依赖关系</li>
+</ol>
+</li>
+<li><p>动态导入：</p>
+<ol>
+<li>使用<code>import()</code> 函数可以动态导入模块，它返回一个 promise 对象，可以按需加载</li>
+<li><code>import()</code> 函数可以用在任何地方，不仅仅是模块，非模块的脚本也可以使用。它是运行时执行，也就是说，什么时候运行到这一句，就会加载指定的模块</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-ES-Module-原理"><a href="#4-ES-Module-原理" class="headerlink" title="4 ES Module 原理"></a>4 ES Module 原理</h3><p><img src="D:\学无止境\00-教程\coderwhy\01-前端\03-JavaScript\img\ES模块阶段一.png"></p>
+<p><img src="D:\学无止境\00-教程\coderwhy\01-前端\03-JavaScript\img\ES模块阶段二三.png"></p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/">参考文章</a></li>
+<li>ES Module的解析过程可以划分为三个阶段<ol>
+<li>构建（Construction）：根据地址查找js文件，并且下载，将其解析成模块记录（Module Record）</li>
+<li>实例化（Instantiation）：对模块记录进行实例化，并且分配内存空间，解析模块的导入和导出语句，把模块指向<br>对应的内存地址</li>
+<li>运行（Evaluation）：运行代码，计算值，并且将值填充到内存地址中</li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #66ccff;font-size:14px;">-------------The End&nbsp;&nbsp;<i class="fa fa-paw"></i>&nbsp;&nbsp;客官请自便-------------</div>
+    
+</div
+      
+    </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/14/05-JS%E5%8E%9F%E5%9E%8B/" rel="prev" title="05-JS原型">
+      <i class="fa fa-chevron-left"></i> 05-JS原型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/14/07-BOM/" rel="next" title="07-BOM">
+      07-BOM <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-promise"><span class="nav-number">1.</span> <span class="nav-text">一 promise</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 原型方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-then"><span class="nav-number">1.3.1.</span> <span class="nav-text">1 then</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-catch"><span class="nav-number">1.3.2.</span> <span class="nav-text">2 catch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-finally"><span class="nav-number">1.3.3.</span> <span class="nav-text">3 finally</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 静态方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-resolve"><span class="nav-number">1.4.1.</span> <span class="nav-text">1 resolve</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-reject"><span class="nav-number">1.4.2.</span> <span class="nav-text">2 reject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-all"><span class="nav-number">1.4.3.</span> <span class="nav-text">3 all</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-allSettled"><span class="nav-number">1.4.4.</span> <span class="nav-text">4 allSettled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-race"><span class="nav-number">1.4.5.</span> <span class="nav-text">5 race</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-any"><span class="nav-number">1.4.6.</span> <span class="nav-text">6 any</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">二 迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 可迭代对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%86%85%E7%BD%AE%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 内置可迭代对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-for%E2%80%A6of"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 for…of</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AF%AD%E6%B3%95"><span class="nav-number">2.4.1.</span> <span class="nav-text">1 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89-for%E2%80%A6of"><span class="nav-number">2.4.2.</span> <span class="nav-text">2 自定义 for…of</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%B8%AD%E6%96%AD"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 迭代器的中断</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">三 生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-yield-%E5%92%8C-yield"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 yield 和 yield*</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-yield"><span class="nav-number">3.2.1.</span> <span class="nav-text">1 yield</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-yield"><span class="nav-number">3.2.2.</span> <span class="nav-text">2 yield*</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">3.2 原型方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-next"><span class="nav-number">3.3.1.</span> <span class="nav-text">1 next</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-return"><span class="nav-number">3.3.2.</span> <span class="nav-text">2 return</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-throw"><span class="nav-number">3.3.3.</span> <span class="nav-text">3 throw</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B-async-await"><span class="nav-number">4.</span> <span class="nav-text">四 async &#x2F; await</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 异步函数的声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-await"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 await</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="nav-number">5.</span> <span class="nav-text">五 事件循环</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E4%BB%BB%E5%8A%A1"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%BB%E5%8A%A1%E5%88%86%E7%B1%BB"><span class="nav-number">5.2.1.</span> <span class="nav-text">1 任务分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A0%B9%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%88%86"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">1 根据类型分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%A0%B9%E6%8D%AE%E6%9C%BA%E5%88%B6%E5%88%86"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">2 根据机制分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97"><span class="nav-number">5.2.2.</span> <span class="nav-text">2 任务队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 浏览器的事件循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-Node-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 Node 的事件循环</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD-%E6%A8%A1%E5%9D%97"><span class="nav-number">6.</span> <span class="nav-text">六 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-CommonJS"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 CommonJS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">6.2.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AF%BC%E5%87%BA"><span class="nav-number">6.2.2.</span> <span class="nav-text">2  导出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%BC%E5%85%A5"><span class="nav-number">6.2.3.</span> <span class="nav-text">3 导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Node-%E4%B8%AD%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="nav-number">6.2.4.</span> <span class="nav-text">4 Node 中模块加载过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-ES-Module"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 ES Module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-1"><span class="nav-number">6.3.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AF%BC%E5%87%BA-1"><span class="nav-number">6.3.2.</span> <span class="nav-text">2 导出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AF%BC%E5%87%BA%E5%8D%95%E4%B8%AA"><span class="nav-number">6.3.2.1.</span> <span class="nav-text">1 导出单个</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AF%BC%E5%87%BA-n-%E4%B8%AA"><span class="nav-number">6.3.2.2.</span> <span class="nav-text">2 导出 n 个</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AF%BC%E5%87%BA%E9%BB%98%E8%AE%A4"><span class="nav-number">6.3.2.3.</span> <span class="nav-text">3 导出默认</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%AF%BC%E5%87%BA%E5%AF%BC%E5%85%A5"><span class="nav-number">6.3.2.4.</span> <span class="nav-text">4 导出导入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%BC%E5%85%A5-1"><span class="nav-number">6.3.3.</span> <span class="nav-text">3 导入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-2"><span class="nav-number">6.3.3.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AF%BC%E5%85%A5%E6%8C%87%E5%AE%9A%E5%AF%BC%E5%87%BA"><span class="nav-number">6.3.3.2.</span> <span class="nav-text">2 导入指定导出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AF%BC%E5%85%A5%E6%89%80%E6%9C%89%E5%AF%BC%E5%87%BA"><span class="nav-number">6.3.3.3.</span> <span class="nav-text">3 导入所有导出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%8A%A8%E6%80%81%E5%AF%BC%E5%85%A5"><span class="nav-number">6.3.3.4.</span> <span class="nav-text">4 动态导入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ES-Module-%E5%8E%9F%E7%90%86"><span class="nav-number">6.3.4.</span> <span class="nav-text">4 ES Module 原理</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="安₃"
+      src="/images/an3.JPG">
+  <p class="site-author-name" itemprop="name">安₃</p>
+  <div class="site-description" itemprop="description">我未成名君未嫁 可能俱是不如人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-star-and-crescent"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">安₃</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
