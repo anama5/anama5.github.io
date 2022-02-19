@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一 概述 HTML（Hyper Text Markup Language）：超文本标记语言  XHTML：可扩展超文本标记语言，是更严格更纯净的 HTML 版本  WEB 标准：W3C 组织及其它标准化组织制定的一系列标准的集合  结构：Html 表现：Css 行为：Javascript   浏览器内核（渲染引擎）：浏览器中专门对代码解析渲染的部分    浏览器 内核 说明    IE Tride">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML">
+<meta property="og:url" content="http://example.com/2022/02/19/HTML/index.html">
+<meta property="og:site_name" content="琅嬛福地">
+<meta property="og:description" content="一 概述 HTML（Hyper Text Markup Language）：超文本标记语言  XHTML：可扩展超文本标记语言，是更严格更纯净的 HTML 版本  WEB 标准：W3C 组织及其它标准化组织制定的一系列标准的集合  结构：Html 表现：Css 行为：Javascript   浏览器内核（渲染引擎）：浏览器中专门对代码解析渲染的部分    浏览器 内核 说明    IE Tride">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-19T05:53:33.000Z">
+<meta property="article:modified_time" content="2022-02-19T05:57:12.690Z">
+<meta property="article:author" content="安₃">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/02/19/HTML/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HTML | 琅嬛福地</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+<a target="_blank" rel="noopener" href="https://github.com/anama5" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">琅嬛福地</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/19/HTML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-19 13:53:33 / 修改时间：13:57:12" itemprop="dateCreated datePublished" datetime="2022-02-19T13:53:33+08:00">2022-02-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><ol>
+<li><p>HTML（Hyper Text Markup Language）：超文本标记语言</p>
+</li>
+<li><p>XHTML：可扩展超文本标记语言，是更严格更纯净的 HTML 版本</p>
+</li>
+<li><p>WEB 标准：W3C 组织及其它标准化组织制定的一系列标准的集合</p>
+<ul>
+<li>结构：Html</li>
+<li>表现：Css</li>
+<li>行为：Javascript</li>
+</ul>
+</li>
+<li><p>浏览器内核（渲染引擎）：浏览器中专门对代码解析渲染的部分</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>内核</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE</td>
+<td>Trident</td>
+<td>IE、猎豹、360、百度</td>
+</tr>
+<tr>
+<td>FireFox</td>
+<td>Gecko</td>
+<td>火狐</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>Webkit</td>
+<td>苹果</td>
+</tr>
+<tr>
+<td>Chrome/Opera</td>
+<td>Blink</td>
+<td>其实是 Webkit 的分支</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h1 id="二-Html网页骨架"><a href="#二-Html网页骨架" class="headerlink" title="二 Html网页骨架"></a>二 Html网页骨架</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 文档声明 --&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;网页标题&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="三-标签"><a href="#三-标签" class="headerlink" title="三 标签"></a>三 标签</h1><h2 id="3-1-骨架标签"><a href="#3-1-骨架标签" class="headerlink" title="3.1 骨架标签"></a>3.1 骨架标签</h2><h3 id="1-html"><a href="#1-html" class="headerlink" title="1 html"></a>1 html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">lang：标识网页使用的语言，用于搜索引擎和浏览器翻译</span><br><span class="line">	1 作用：搜索引擎无法判断页面中的内容是什么语言，需要我们告诉它，浏览器会将读取到的页面语言和本地语言进行比较判断，如果一致，不做处理，否则提示是否需要翻译（如果有此功能），有时候明明页面是中文由于设置了lang=&quot;en&quot;，还会提示是否翻译，就是此原因</span><br><span class="line">	</span><br><span class="line">	2 取值</span><br><span class="line">		英文：en</span><br><span class="line">		中文：</span><br><span class="line">            zh-CN 		用的最多其实已过时</span><br><span class="line">            zh-Hans 	简体中文</span><br><span class="line">            zh-cmn-Hans 以简体中文书写的普通话用词</span><br><span class="line">            zh-yue-Hans 以简体中文书写的粤语用词</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-head"><a href="#2-head" class="headerlink" title="2 head"></a>2 head</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 标识网页使用的字符编码，即告诉浏览器用什么编码解析网页 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            width：视口(viewport) 的宽度 = 设备宽度（逻辑分辨率），PC 端视口宽度默认100%，但移动端默认为 980px</span></span><br><span class="line"><span class="comment">            initial-scale：初始缩放比</span></span><br><span class="line"><span class="comment">            maximum-scale：最大缩放比</span></span><br><span class="line"><span class="comment">            minimum-scale：最小缩放比</span></span><br><span class="line"><span class="comment">            user-scalable：是否可以缩放</span></span><br><span class="line"><span class="comment">       </span></span><br><span class="line"><span class="comment">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximu-scale=1.0, minimum-scale=1.0, user-scalable=no&quot;&gt;</span></span><br><span class="line"><span class="comment">    	&lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;</span></span><br><span class="line"><span class="comment">    	&lt;meta name=&quot;keywords&quot; content=&quot;&quot;&gt;</span></span><br><span class="line"><span class="comment">     	--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">&quot;此页面中所有相对 URL 的根 URL&quot;</span> <span class="attr">target</span>=<span class="string">&quot;此页面新连接的打开方式：_self（default）、_blank、_parent、_top&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>SEO（Search Engine Optimization)：搜索引擎优化</p>
+<ol>
+<li><p>作用：让网站在搜索引擎上排名靠前</p>
+</li>
+<li><p>提升 SEO 的常见方法</p>
+<ol>
+<li>竞价排名</li>
+<li>网页使用 html 后缀</li>
+<li>标签语义化（在合适的地方使用合适的标签）</li>
+<li>…</li>
+</ol>
+</li>
+<li><p>SEO 三大标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;&quot;&gt;</span><br><span class="line">&lt;title&gt;网页标题&lt;/title&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h2 id="3-2-语义化标签"><a href="#3-2-语义化标签" class="headerlink" title="3.2 语义化标签"></a>3.2 语义化标签</h2><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;header&gt;</code></td>
+<td>网页头部</td>
+</tr>
+<tr>
+<td><code>&lt;nav&gt;</code></td>
+<td>网页导航</td>
+</tr>
+<tr>
+<td><code>&lt;main&gt;</code></td>
+<td>文档主体标签，只能有一个</td>
+</tr>
+<tr>
+<td><code>&lt;section&gt;</code></td>
+<td>网页区块</td>
+</tr>
+<tr>
+<td><code>&lt;artical&gt;</code></td>
+<td>内容标签，可以是任何独立、自述的内容片段</td>
+</tr>
+<tr>
+<td><code>&lt;aside&gt;</code></td>
+<td>网页侧边栏，和主体不直接相关的内容</td>
+</tr>
+<tr>
+<td><code>&lt;footer&gt;</code></td>
+<td>网页底部</td>
+</tr>
+<tr>
+<td><code>&lt;figure&gt;</code></td>
+<td>插图标签</td>
+</tr>
+<tr>
+<td><code>&lt;figcaption&gt;</code></td>
+<td>插图文字说明标签</td>
+</tr>
+<tr>
+<td><code>&lt;mark&gt;</code></td>
+<td>高亮或标记文字标签</td>
+</tr>
+<tr>
+<td><code>&lt;time&gt;</code></td>
+<td>日期标签</td>
+</tr>
+</tbody></table>
+<h2 id="3-3-排版标签"><a href="#3-3-排版标签" class="headerlink" title="3.3 排版标签"></a>3.3 排版标签</h2><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;!-- --&gt;</code></td>
+<td>注释</td>
+</tr>
+<tr>
+<td><code>&lt;br&gt;</code></td>
+<td>换行</td>
+</tr>
+<tr>
+<td><code>&lt;hr&gt;</code></td>
+<td>横线</td>
+</tr>
+<tr>
+<td><code>&lt;div&gt;</code></td>
+<td>块标签，独占一行</td>
+</tr>
+<tr>
+<td><code>&lt;span&gt;</code></td>
+<td>行内标签</td>
+</tr>
+<tr>
+<td><code>&lt;h1&gt;~&lt;h6&gt;</code></td>
+<td>标题标签，独占一行</td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td>段落标签，独占一行，段落之间有空行</td>
+</tr>
+</tbody></table>
+<h2 id="3-4-文本格式化标签"><a href="#3-4-文本格式化标签" class="headerlink" title="3.4 文本格式化标签"></a>3.4 文本格式化标签</h2><table>
+<thead>
+<tr>
+<th>标签</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;strong&gt;</code></td>
+<td>强调，加粗显示</td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code></td>
+<td>着重，斜体显示</td>
+</tr>
+<tr>
+<td><code>&lt;del&gt;</code></td>
+<td>删除线</td>
+</tr>
+<tr>
+<td><code>&lt;ins&gt;</code></td>
+<td>下划线</td>
+</tr>
+<tr>
+<td><code>&lt;pre&gt;</code></td>
+<td>原样显示文本内容包括空白、换行等</td>
+</tr>
+<tr>
+<td><code>&lt;abbr&gt;</code></td>
+<td>缩写</td>
+</tr>
+<tr>
+<td><code>&lt;sub&gt;</code></td>
+<td>下标</td>
+</tr>
+<tr>
+<td><code>&lt;sup&gt;</code></td>
+<td>上标</td>
+</tr>
+<tr>
+<td><code>&lt;blockquote&gt;</code></td>
+<td>块引用</td>
+</tr>
+<tr>
+<td><code>&lt;q&gt;</code></td>
+<td>行内引用文本</td>
+</tr>
+<tr>
+<td><code>&lt;progress&gt;</code></td>
+<td>进度条</td>
+</tr>
+</tbody></table>
+<h2 id="3-5-媒体标签"><a href="#3-5-媒体标签" class="headerlink" title="3.5 媒体标签"></a>3.5 媒体标签</h2><h3 id="1-图片标签"><a href="#1-图片标签" class="headerlink" title="1 图片标签"></a>1 图片标签</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>src</td>
+<td>图片地址</td>
+</tr>
+<tr>
+<td>alt</td>
+<td>即可描述图片，也可在图片无法显示时替换图片</td>
+</tr>
+<tr>
+<td>title</td>
+<td>鼠标悬浮时的提示文字</td>
+</tr>
+<tr>
+<td>width</td>
+<td>图片宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>图片高度</td>
+</tr>
+</tbody></table>
+<ol>
+<li>title 属性也可用于其它标签</li>
+<li>若只设置 width 和 height 中的一个，则会等比例缩放</li>
+</ol>
+<h3 id="2-音频标签"><a href="#2-音频标签" class="headerlink" title="2 音频标签"></a>2 音频标签</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio&gt;&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">目前支持：mp3、wav、ogg</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src</code></td>
+<td><code>url</code></td>
+<td>音频源</td>
+</tr>
+<tr>
+<td><code>autoplay</code></td>
+<td>布尔类型，出现即为真</td>
+<td>自动播放</td>
+</tr>
+<tr>
+<td><code>controls</code></td>
+<td>布尔类型，出现即为真</td>
+<td>显示播放的控件</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td>布尔类型，出现即为真</td>
+<td>循环播放</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td>布尔类型，出现即为真</td>
+<td>静音</td>
+</tr>
+<tr>
+<td><code>preload</code></td>
+<td><code>metadata</code></td>
+<td>预加载</td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td><code>0.0 ~ 1.0</code></td>
+<td>音量</td>
+</tr>
+</tbody></table>
+<h3 id="3-视频标签"><a href="#3-视频标签" class="headerlink" title="3 视频标签"></a>3 视频标签</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;video&gt;&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">目前支持：mp4、webm、ogg</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src</code></td>
+<td><code>url</code></td>
+<td>视频源</td>
+</tr>
+<tr>
+<td><code>autoplay</code></td>
+<td>布尔类型，出现即为真</td>
+<td>自动播放，需要静音才生效</td>
+</tr>
+<tr>
+<td><code>controls</code></td>
+<td>布尔类型，出现即为真</td>
+<td>显示控件</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td>布尔类型，出现即为真</td>
+<td>循环播放</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td>布尔类型，出现即为真</td>
+<td>静音，默认 <code>false</code></td>
+</tr>
+<tr>
+<td><code>poster</code></td>
+<td><code>url</code></td>
+<td>视频封面图</td>
+</tr>
+<tr>
+<td><code>preload</code></td>
+<td><code>metadata</code></td>
+<td>预加载</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><code>px</code></td>
+<td>视频宽度</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>px</code></td>
+<td>视频高度</td>
+</tr>
+</tbody></table>
+<h2 id="3-6-超链接标签"><a href="#3-6-超链接标签" class="headerlink" title="3.6 超链接标签"></a>3.6 超链接标签</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span> <span class="attr">target</span>=<span class="string">&quot;&quot;</span> <span class="attr">title</span>=<span class="string">&quot;链接提示文本&quot;</span> <span class="attr">download</span>=<span class="string">&quot;没有值，可省略引号和等号，可以设置下载文件名&quot;</span>&gt;</span> </span><br><span class="line">    链接显示文本</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">1. 超链接标签可以用在网页中的各种元素，如文本、图像、表格、音频、视频等等</span><br><span class="line">2. a 标签默认文字有下划线</span><br><span class="line">3. a 标签默认未点击过文字显示蓝色，点击过文字显示紫色</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>href</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>url</code></td>
+<td>根据协议不同，可以跳转到内部链接、外部链接、邮件…</td>
+</tr>
+<tr>
+<td><code>#id</code></td>
+<td>锚点，跳转到当前页面指定位置</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>跳转到当前页面顶部</td>
+</tr>
+<tr>
+<td><code>javascript:void(0);</code></td>
+<td>不跳转</td>
+</tr>
+<tr>
+<td><code>javascript:;</code></td>
+<td>不跳转</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>target</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>_selt（默认）</code></td>
+<td>当前窗口打开</td>
+</tr>
+<tr>
+<td><code>_blank</code></td>
+<td>新窗口打开</td>
+</tr>
+<tr>
+<td><code>_parent</code></td>
+<td>父级窗口打开</td>
+</tr>
+<tr>
+<td><code>_top</code></td>
+<td>祖先窗口打开</td>
+</tr>
+<tr>
+<td><code>具体的name属性</code></td>
+<td>后边三个需配合 <code>iframe</code> 才有效</td>
+</tr>
+</tbody></table>
+<h2 id="3-7-表格标签"><a href="#3-7-表格标签" class="headerlink" title="3.7 表格标签"></a>3.7 表格标签</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">1. 使用 &lt;thead&gt;&lt;tbody&gt;&lt;tfoot&gt; 的好处是规定位置，即使代码的顺序是乱的，显示也是正确的，且可以优化搜索</span></span><br><span class="line"><span class="comment">2. &lt;thead&gt;&lt;tfoot&gt; 可以没有，&lt;tbody&gt; 不写也存在，且可以有多个</span></span><br><span class="line"><span class="comment">3. 行列合并不能跨结构标签（thead tbody tfoot）</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">cellspacing</span>=<span class="string">&quot;单元格边框之间的距离&quot;</span> <span class="attr">cellpadding</span>=<span class="string">&quot;单元格内容和边框的距离&quot;</span> <span class="attr">align</span>=<span class="string">&quot;水平对齐方式&quot;</span> <span class="attr">border</span>=<span class="string">&quot;表格边框&quot;</span> <span class="attr">width</span>=<span class="string">&quot;表格宽&quot;</span> <span class="attr">height</span>=<span class="string">&quot;表格高&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">caption</span>&gt;</span>表格大标题<span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>表头单元格，内容默认居中，加粗<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span>	</span><br><span class="line">	<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;列合并，将 n 列的单元格水平合并&quot;</span> <span class="attr">rowspan</span>=<span class="string">&quot;行合并，将 n 行的单元格垂直合并&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tfoot</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tfoot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-8-列表标签"><a href="#3-8-列表标签" class="headerlink" title="3.8 列表标签"></a>3.8 列表标签</h2><h3 id="1-无序列表-unorder-list"><a href="#1-无序列表-unorder-list" class="headerlink" title="1 无序列表 unorder list"></a>1 无序列表 unorder list</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">	...</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">1. ul 中只能容纳 li</span><br><span class="line">2. li 中可以容纳所有元素, 但 li 必须出现在 ul 中</span><br><span class="line">3. 列表每一项前默认显示圆点标识</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-有序列表-order-list"><a href="#2-有序列表-order-list" class="headerlink" title="2 有序列表 order list"></a>2 有序列表 order list</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol&gt;</span><br><span class="line">	&lt;li type=&quot;1、A、a、I、i&quot; start=&quot;首项从第几个开始&quot;&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;/li&gt;</span><br><span class="line">	...</span><br><span class="line">&lt;/ol&gt;</span><br><span class="line"></span><br><span class="line">1. ol 中只能容纳 li</span><br><span class="line">2. li 中可以容纳所有元素, 但 li 必须出现在 ol 中</span><br><span class="line">3. 列表每一项默认以 1,2,3... 序号显示，可通过 li 的 type 属性修改</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-定义列表-definition-list"><a href="#3-定义列表-definition-list" class="headerlink" title="3 定义列表 definition list"></a>3 定义列表 definition list</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dt</span>&gt;</span>名词：孙悟空<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dd</span>&gt;</span>解释1：美猴王<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dd</span>&gt;</span>解释2：齐天大圣<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dd</span>&gt;</span>解释3：斗战胜佛<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br><span class="line"></span><br><span class="line">1. dl 用于容纳 dt 和 dd</span><br><span class="line">2. dt 和 dd 可以包含所有元素</span><br><span class="line">3. dt 表示自定义列表的主题</span><br><span class="line">4. dd 表示针对主题的每一项解释说明，会默认缩进</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-9-表单标签"><a href="#3-9-表单标签" class="headerlink" title="3.9 表单标签"></a>3.9 表单标签</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;&quot;</span> <span class="attr">name</span>=<span class="string">&quot;提交key&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;提交key&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;提交值&quot;</span> <span class="attr">selected</span>=<span class="string">&quot;&quot;</span>&gt;</span>页面显示值<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">&quot;提交key&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;每行字符数&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;显示的行数&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;label&gt;</code></td>
+<td>用于描述表单元素，点击时可以使表单元素获取焦点</td>
+</tr>
+<tr>
+<td><code>&lt;button&gt;</code></td>
+<td>按钮</td>
+</tr>
+<tr>
+<td><code>&lt;input&gt;</code></td>
+<td>表单交互式元素</td>
+</tr>
+<tr>
+<td><code>&lt;select&gt;</code></td>
+<td>下拉菜单</td>
+</tr>
+<tr>
+<td><code>&lt;textarea&gt;</code></td>
+<td>文本域</td>
+</tr>
+<tr>
+<td><code>&lt;datalist&gt;</code></td>
+<td>为表单输入框准备一些选项列表</td>
+</tr>
+</tbody></table>
+<h3 id="2-lt-form-gt"><a href="#2-lt-form-gt" class="headerlink" title="2 &lt;form&gt;"></a>2 <code>&lt;form&gt;</code></h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>action</code></td>
+<td>提交 url 地址</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>提交方式，默认 <code>get</code></td>
+</tr>
+<tr>
+<td><code>enctype</code></td>
+<td><code>post</code> 提交时表单内容提交给服务器的 MIME 类型</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>表单名称，用于区分同一个页面中的多个表单</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><code>enctype</code> 取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>application/x-www-form-urlencoded</code>（默认）</td>
+<td>在发送前编码所有字符，空格转换为 <code>+</code> 加号 ，特殊字符转换为 <code>ASCII HEX</code> 值</td>
+</tr>
+<tr>
+<td><code>multipart/form-data</code></td>
+<td>不对字符编码，用于文件上传</td>
+</tr>
+<tr>
+<td><code>text/plain</code></td>
+<td>空格转换为 <code>+</code> 加号，但不对特殊字符编码</td>
+</tr>
+</tbody></table>
+<h3 id="3-lt-label-gt"><a href="#3-lt-label-gt" class="headerlink" title="3 &lt;label&gt;"></a>3 <code>&lt;label&gt;</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 1 直接包裹要描述的表单元素 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">	描述 <span class="tag">&lt;<span class="name">input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 2 使用 for-id --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;test&quot;</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-lt-input-gt"><a href="#4-lt-input-gt" class="headerlink" title="4 &lt;input&gt;"></a>4 <code>&lt;input&gt;</code></h3><h4 id="1-属性"><a href="#1-属性" class="headerlink" title="1 属性"></a>1 属性</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>适用于</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>type</code></td>
+<td><code>All</code></td>
+<td>表单类型，默认为 <code>text</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>All</code></td>
+<td>提交的键名</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>All</code></td>
+<td>默认值</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td><code>All</code></td>
+<td>表单控件是否被禁用，不会提交到后台</td>
+</tr>
+<tr>
+<td><code>checked</code></td>
+<td><code>radio checkbox</code></td>
+<td>单/复选框是否选中</td>
+</tr>
+<tr>
+<td><code>selected</code></td>
+<td><code>option</code></td>
+<td>下拉框是否选中</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><code>text password ...</code></td>
+<td>提示文本内容，得到焦点不会消失，一输入值就消失</td>
+</tr>
+<tr>
+<td><code>multiple</code></td>
+<td><code>file email select</code></td>
+<td>是否允许多选</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td><code>almost All</code></td>
+<td>必须输入</td>
+</tr>
+<tr>
+<td><code>readonly</code></td>
+<td><code>almost All</code></td>
+<td>只读，不能修改值，可提交到后台</td>
+</tr>
+<tr>
+<td><code>minlength</code></td>
+<td><code>text password ...</code></td>
+<td><code>value</code> 的最小长度（最小字符数目）</td>
+</tr>
+<tr>
+<td><code>maxlength</code></td>
+<td><code>text password ...</code></td>
+<td><code>value</code> 的最大长度（最大字符数目）</td>
+</tr>
+<tr>
+<td><code>autocomplete</code></td>
+<td><code>All</code></td>
+<td>表单的自动填充功能，<code>off / on</code></td>
+</tr>
+<tr>
+<td><code>autofocus</code></td>
+<td></td>
+<td>指定的表单控件在页面加载时自动获得焦点，只能有一个</td>
+</tr>
+</tbody></table>
+<h4 id="2-type-属性"><a href="#2-type-属性" class="headerlink" title="2 type 属性"></a>2 type 属性</h4><table>
+<thead>
+<tr>
+<th>type</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>text（默认）</code></td>
+<td>文本框</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>密码框</td>
+</tr>
+<tr>
+<td><code>radio</code></td>
+<td>单选框，<code>name</code> 相同的是一个组，<code>value</code> 为提交值</td>
+</tr>
+<tr>
+<td><code>checkbox</code></td>
+<td>复选框，<code>name</code> 相同的是一个组，<code>value</code> 为提交值</td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td>上传文件，<code>multiple</code>：支持多选，<code>accept</code>：支持的文件类型</td>
+</tr>
+<tr>
+<td><code>button</code></td>
+<td>没有默认行为的按钮，<code>value</code> 显示值</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>图片提交按钮</td>
+</tr>
+<tr>
+<td><code>hidden</code></td>
+<td>隐藏域</td>
+</tr>
+<tr>
+<td><code>submit</code></td>
+<td>提交按钮，不指定服务端会提交到当前页面</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>重置按钮</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>数字框</td>
+</tr>
+<tr>
+<td><code>tel</code></td>
+<td>用于输入电话号码的控件</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td>搜索框</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>邮件框</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>URL 框</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>颜色选择框</td>
+</tr>
+<tr>
+<td><code>datetime-local</code></td>
+<td>输入日期和时间的控件</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>日期</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>时间</td>
+</tr>
+<tr>
+<td><code>month</code></td>
+<td>月</td>
+</tr>
+<tr>
+<td><code>week</code></td>
+<td>周</td>
+</tr>
+</tbody></table>
+<h4 id="3-表单提交方式"><a href="#3-表单提交方式" class="headerlink" title="3 表单提交方式"></a>3 表单提交方式</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 1 如果设置了name，按钮数据也会提交到后台，如果有多个表单项可以判断是哪个表单提交的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">value</span>=<span class="string">&quot;点我提交&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 2 html5 推荐使用 &lt;button&gt; 而不是表单的 &lt;input type=button&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>点我提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 3 图片也能提交 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;image&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-lt-select-gt"><a href="#5-lt-select-gt" class="headerlink" title="5 &lt;select&gt;"></a>5 <code>&lt;select&gt;</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">multiple</span>&gt;</span> // multiple：可以多选</span><br><span class="line">	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;提交值&quot;</span>&gt;</span>显示值<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">    // optfroup 仅仅是将 option 分了一下组</span><br><span class="line">	<span class="tag">&lt;<span class="name">optgroup</span> <span class="attr">label</span>=<span class="string">&quot;体育&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;lanqiu&quot;</span>&gt;</span>篮球<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;zuqiu&quot;</span>&gt;</span>足球<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;wangqiu&quot;</span> <span class="attr">selected</span>&gt;</span>网球<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">optgroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-lt-button-gt"><a href="#6-lt-button-gt" class="headerlink" title="6 &lt;button&gt;"></a>6 <code>&lt;button&gt;</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;&quot;</span>&gt;</span>可包裹其它内容：文字，图片...<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>submit（默认）</code></td>
+<td>提交按钮</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>重置按钮</td>
+</tr>
+<tr>
+<td><code>button</code></td>
+<td>纯按钮，没有默认行为</td>
+</tr>
+</tbody></table>
+<h3 id="7-lt-textarea-gt"><a href="#7-lt-textarea-gt" class="headerlink" title="7 &lt;textarea&gt;"></a>7 <code>&lt;textarea&gt;</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">cols</span>=<span class="string">&quot;每行中的字符数（可见宽度）&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;显示的行数（可见行数）&quot;</span>&gt;</span>预设文本<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-lt-datalist-gt"><a href="#8-lt-datalist-gt" class="headerlink" title="8 &lt;datalist&gt;"></a>8 <code>&lt;datalist&gt;</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 提供建议列表，仍然可以自定义输入 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">list</span>=<span class="string">&quot;dataID&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">datalist</span> <span class="attr">id</span>=<span class="string">&quot;dataID&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">datalist</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 问题：使用 value 时，用户在下拉菜单中能看到 value 的值，可以利用 data- 创建自定义属性，之后利用 js 获取 </span><br></pre></td></tr></table></figure>
+
+<h1 id="四-特殊字符"><a href="#四-特殊字符" class="headerlink" title="四 特殊字符"></a>四 特殊字符</h1><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>名称</th>
+<th>字符代码</th>
+<th>码点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>空格</td>
+<td><code>&amp;nbsp;</code></td>
+<td><code>&amp;#160;</code></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于号</td>
+<td><code>&amp;lt;</code></td>
+<td><code>&amp;#60;</code></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于号</td>
+<td><code>&amp;gt;</code></td>
+<td><code>&amp;#62;</code></td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>与</td>
+<td><code>&amp;amp;</code></td>
+<td><code>&amp;#38;</code></td>
+</tr>
+<tr>
+<td>“</td>
+<td>双引号</td>
+<td><code>&amp;quot;</code></td>
+<td><code>&amp;#34;</code></td>
+</tr>
+<tr>
+<td>‘</td>
+<td>单引号</td>
+<td><code>&amp;apos;</code></td>
+<td><code>&amp;#39;</code></td>
+</tr>
+<tr>
+<td>|</td>
+<td>竖线</td>
+<td><code>&amp;verbar;</code></td>
+<td><code>&amp;#124</code></td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠</td>
+<td><code>&amp;bsol;</code></td>
+<td><code>&amp;#92;</code></td>
+</tr>
+<tr>
+<td>©</td>
+<td>版权</td>
+<td><code>&amp;copy;</code></td>
+<td><code>&amp;#169;</code></td>
+</tr>
+<tr>
+<td>®</td>
+<td>注册</td>
+<td><code>&amp;reg;</code></td>
+<td><code>&amp;#174;</code></td>
+</tr>
+<tr>
+<td>™</td>
+<td>商标</td>
+<td><code>&amp;trade;</code></td>
+<td><code>&amp;#8482;</code></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #66ccff;font-size:14px;">-------------The End&nbsp;&nbsp;<i class="fa fa-paw"></i>&nbsp;&nbsp;客官请自便-------------</div>
+    
+</div
+      
+    </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/14/08-DOM/" rel="prev" title="08-DOM">
+      <i class="fa fa-chevron-left"></i> 08-DOM
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-Html%E7%BD%91%E9%A1%B5%E9%AA%A8%E6%9E%B6"><span class="nav-text">二 Html网页骨架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E6%A0%87%E7%AD%BE"><span class="nav-text">三 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E9%AA%A8%E6%9E%B6%E6%A0%87%E7%AD%BE"><span class="nav-text">3.1 骨架标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-html"><span class="nav-text">1 html</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-head"><span class="nav-text">2 head</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE"><span class="nav-text">3.2 语义化标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%8E%92%E7%89%88%E6%A0%87%E7%AD%BE"><span class="nav-text">3.3 排版标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E6%96%87%E6%9C%AC%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A0%87%E7%AD%BE"><span class="nav-text">3.4 文本格式化标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-%E5%AA%92%E4%BD%93%E6%A0%87%E7%AD%BE"><span class="nav-text">3.5 媒体标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE"><span class="nav-text">1 图片标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%9F%B3%E9%A2%91%E6%A0%87%E7%AD%BE"><span class="nav-text">2 音频标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A7%86%E9%A2%91%E6%A0%87%E7%AD%BE"><span class="nav-text">3 视频标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-%E8%B6%85%E9%93%BE%E6%8E%A5%E6%A0%87%E7%AD%BE"><span class="nav-text">3.6 超链接标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-%E8%A1%A8%E6%A0%BC%E6%A0%87%E7%AD%BE"><span class="nav-text">3.7 表格标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE"><span class="nav-text">3.8 列表标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8-unorder-list"><span class="nav-text">1 无序列表 unorder list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8-order-list"><span class="nav-text">2 有序列表 order list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%9A%E4%B9%89%E5%88%97%E8%A1%A8-definition-list"><span class="nav-text">3 定义列表 definition list</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-9-%E8%A1%A8%E5%8D%95%E6%A0%87%E7%AD%BE"><span class="nav-text">3.9 表单标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-lt-form-gt"><span class="nav-text">2 &lt;form&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-lt-label-gt"><span class="nav-text">3 &lt;label&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-lt-input-gt"><span class="nav-text">4 &lt;input&gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%B1%9E%E6%80%A7"><span class="nav-text">1 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-type-%E5%B1%9E%E6%80%A7"><span class="nav-text">2 type 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F"><span class="nav-text">3 表单提交方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-lt-select-gt"><span class="nav-text">5 &lt;select&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-lt-button-gt"><span class="nav-text">6 &lt;button&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-lt-textarea-gt"><span class="nav-text">7 &lt;textarea&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-lt-datalist-gt"><span class="nav-text">8 &lt;datalist&gt;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B-%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="nav-text">四 特殊字符</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="安₃"
+      src="/images/an3.JPG">
+  <p class="site-author-name" itemprop="name">安₃</p>
+  <div class="site-description" itemprop="description">我未成名君未嫁 可能俱是不如人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-star-and-crescent"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">安₃</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -23,27 +23,27 @@
   <meta name="description" content="我未成名君未嫁 可能俱是不如人">
 <meta property="og:type" content="website">
 <meta property="og:title" content="琅嬛福地">
-<meta property="og:url" content="http://example.com/categories/CS/index.html">
+<meta property="og:url" content="http://example.com/invalidate%20path/page/2/index.html">
 <meta property="og:site_name" content="琅嬛福地">
 <meta property="og:description" content="我未成名君未嫁 可能俱是不如人">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="安₃">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/categories/CS/">
+<link rel="canonical" href="http://example.com/invalidate%20path/page/2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
+    isHome : true,
     isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: CS | 琅嬛福地</title>
+  <title>琅嬛福地</title>
   
 
 
@@ -148,234 +148,138 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/18/vim%E6%A6%82%E5%BF%B5/">
 
-  
-  
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">CS
-          <small>分类</small>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/18/vim%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">vim 概念</a>
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-18 18:43:08 / 修改时间：18:49:36" itemprop="dateCreated datePublished" datetime="2022-01-18T18:43:08+08:00">2022-01-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/Soft/" itemprop="url" rel="index"><span itemprop="name">Soft</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/Soft/Vim/" itemprop="url" rel="index"><span itemprop="name">Vim</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+          <h1 id="一-模式"><a href="#一-模式" class="headerlink" title="一 模式"></a>一 模式</h1><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>normal mode</td>
+<td>普通模式（正常模式）</td>
+<td>打开 Vim 后进入的默认模式</td>
+</tr>
+<tr>
+<td>insert mode</td>
+<td>插入模式</td>
+<td>普通模式下按下 <code>i</code>、<code>I</code>、<code>a</code>、<code>A</code>、<code>o</code>、 <code>O</code> 等进入</td>
+</tr>
+<tr>
+<td>insert-normal mode</td>
+<td>插入-普通模式</td>
+<td>在插入模式下使用 <code>ctrl-o</code> 进入，执行一次普通模式命令后返回插入模式</td>
+</tr>
+<tr>
+<td>command-line mode</td>
+<td>命令行模式</td>
+<td>普通模式下按下 <code>:</code> 键进入，命令行模式中执行的命令又被称做 <strong>Ex</strong> 命令</td>
+</tr>
+<tr>
+<td>Visual Mode</td>
+<td>可视化模式</td>
+<td>可视化模式下可以选择一块编辑区域，然后对选中的内容执行各种操作</td>
+</tr>
+<tr>
+<td>Operator-Pending mode</td>
+<td>操作符待决模式</td>
+<td>命令通常为 <code>operator motion</code>，当只键入了操作符 <code>operator</code> 还没有键入动作 <code>motion</code> 时即为操作符待决模式</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 1 进入可视化模式</span><br><span class="line">v		字符选择模式（character-wise visual mode），选中光标经过的所有字符</span><br><span class="line">V		行选择模式（line-wise visual mode），上下移动选中光标经过的所有行</span><br><span class="line">ctrl-v	块选择模式（block-wise visual mode），选中矩形框中的内容</span><br><span class="line">gv		重新选择上次选中内容（reselect the last selection）</span><br><span class="line"></span><br><span class="line"># 2 可视化模式下的操作</span><br><span class="line">o   	切换选区的活动端为对角，默认为右下角</span><br><span class="line">O   	切换选区的活动端为同一行的另一个角 </span><br><span class="line">u   	选中内容切换为小写         </span><br><span class="line">U   	选中内容切换为大写         </span><br><span class="line">-   	大小写切换             </span><br><span class="line">&gt;   	向右缩进              </span><br><span class="line">&lt;   	向左缩进              </span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/18/vim%E6%A6%82%E5%BF%B5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-19T13:53:33+08:00"
-              content="2022-02-19">
-          02-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/19/HTML/" itemprop="url">
-            <span itemprop="name">HTML</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T19:57:59+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/08-DOM/" itemprop="url">
-            <span itemprop="name">08-DOM</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T19:57:51+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/07-BOM/" itemprop="url">
-            <span itemprop="name">07-BOM</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T19:57:35+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/06-JS%E5%BC%82%E6%AD%A5%E5%92%8C%E6%A8%A1%E5%9D%97/" itemprop="url">
-            <span itemprop="name">06-JS异步和模块</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T19:57:26+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/05-JS%E5%8E%9F%E5%9E%8B/" itemprop="url">
-            <span itemprop="name">05-JS原型</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T19:56:53+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/04-JS%E5%AF%B9%E8%B1%A1/" itemprop="url">
-            <span itemprop="name">04-JS对象</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T19:56:43+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/03-JS%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0/" itemprop="url">
-            <span itemprop="name">03-JS数组和函数</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T19:56:30+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/02-JS%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" itemprop="url">
-            <span itemprop="name">02-JS基本数据类型</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-02-14T19:50:53+08:00"
-              content="2022-02-14">
-          02-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/02/14/01-JS%E8%AF%AD%E6%B3%95/" itemprop="url">
-            <span itemprop="name">01-JS语法</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-18T18:43:12+08:00"
-              content="2022-01-18">
-          01-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/18/vim%E6%93%8D%E4%BD%9C/" itemprop="url">
-            <span itemprop="name">vim 操作</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+    <div>
+      
     </div>
-  </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
   
   
+
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/CS/page/2/">2</a><a class="extend next" rel="next" href="/categories/CS/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/invalidate%20path/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/invalidate%20path/">1</a><span class="page-number current">2</span>
   </nav>
 
 
