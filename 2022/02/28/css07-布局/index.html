@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一 文档流 标准流  特点 元素向右、向下排列 块级元素独占一行 行内级元素从左到右，空间不够自动折行   元素的层叠 父子元素：子元素层叠在父元素上 非父子元素 都是非定位元素：标准流中不存在层叠 1个定位1个非定位：定位元素层叠在非定位元素上 都是定位元素：z-index 控制层叠       脱离标准流  方式 position: absolute&#x2F;fixed float   特点 宽高默认">
+<meta property="og:type" content="article">
+<meta property="og:title" content="07-布局">
+<meta property="og:url" content="http://example.com/2022/02/28/css07-%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:site_name" content="琅嬛福地">
+<meta property="og:description" content="一 文档流 标准流  特点 元素向右、向下排列 块级元素独占一行 行内级元素从左到右，空间不够自动折行   元素的层叠 父子元素：子元素层叠在父元素上 非父子元素 都是非定位元素：标准流中不存在层叠 1个定位1个非定位：定位元素层叠在非定位元素上 都是定位元素：z-index 控制层叠       脱离标准流  方式 position: absolute&#x2F;fixed float   特点 宽高默认">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/an3/mbp/raw/master/css/flex.svg">
+<meta property="og:image" content="https://gitee.com/an3/mbp/raw/master/css/grid%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.png">
+<meta property="article:published_time" content="2022-02-28T12:39:50.000Z">
+<meta property="article:modified_time" content="2022-02-28T12:41:25.621Z">
+<meta property="article:author" content="安₃">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/an3/mbp/raw/master/css/flex.svg">
+
+<link rel="canonical" href="http://example.com/2022/02/28/css07-%E5%B8%83%E5%B1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>07-布局 | 琅嬛福地</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+<a target="_blank" rel="noopener" href="https://github.com/anama5" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">琅嬛福地</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/css07-%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          07-布局
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-28 20:39:50 / 修改时间：20:41:25" itemprop="dateCreated datePublished" datetime="2022-02-28T20:39:50+08:00">2022-02-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一-文档流"><a href="#一-文档流" class="headerlink" title="一 文档流"></a>一 文档流</h1><ol>
+<li><p>标准流</p>
+<ol>
+<li>特点<ol>
+<li>元素向右、向下排列</li>
+<li>块级元素独占一行</li>
+<li>行内级元素从左到右，空间不够自动折行</li>
+</ol>
+</li>
+<li>元素的层叠<ol>
+<li>父子元素：子元素层叠在父元素上</li>
+<li>非父子元素<ol>
+<li>都是非定位元素：标准流中不存在层叠</li>
+<li>1个定位1个非定位：定位元素层叠在非定位元素上</li>
+<li>都是定位元素：z-index 控制层叠</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>脱离标准流</p>
+<ol>
+<li>方式<ol>
+<li>position: absolute/fixed</li>
+<li>float</li>
+</ol>
+</li>
+<li>特点<ol>
+<li>宽高默认由内容决定，且可以设置宽高</li>
+<li>不再受标准流约束，不再向父元素报告宽高</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>display、postion 和 float 的联系</p>
+<ol>
+<li><p>display：none，则盒子消失，position、float 无效</p>
+</li>
+<li><p>否则，当元素脱标，则 display 按照下表改变</p>
+<table>
+<thead>
+<tr>
+<th>Specified value</th>
+<th>Computed value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>inline-table</td>
+<td>table</td>
+</tr>
+<tr>
+<td>inline, table-row-group, table-column, table-column-group, table-header-group, table-footer-group, table-row, table-cell, table-caption, inline-block</td>
+<td>block</td>
+</tr>
+<tr>
+<td>others</td>
+<td>same as specified</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>可以看到脱标元素会块级化</p>
+<ol>
+<li>注：块级元素不是独占一行，是独占父元素一行</li>
+<li>脱标元素是块级元素，只是表现的好像行内块元素一样，一行可以放多个</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="二-浮动"><a href="#二-浮动" class="headerlink" title="二 浮动"></a>二 浮动</h1><h2 id="2-1-语法"><a href="#2-1-语法" class="headerlink" title="2.1 语法"></a>2.1 语法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">float: none | left | right</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>早期浮动是为了实现图文环绕效果</li>
+<li>现在多用于网页布局<ol>
+<li>让块级盒子排成一行，即垂直布局的盒子变成水平布局</li>
+<li>盒子左右对齐</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-2-浮动的特性"><a href="#2-2-浮动的特性" class="headerlink" title="2.2 浮动的特性"></a>2.2 浮动的特性</h2><ol>
+<li>浮动会使元素脱离标准流，漂浮在标准流上方且不再占据标准流位置，直到边缘触及到包含块或其它浮动元素的边缘<ol>
+<li>浮动元素不能超出包含块</li>
+<li>浮动元素之间不会层叠</li>
+<li>浮动元素的顶端不能超过父元素的顶端，也不能超过之前所有浮动元素的顶端</li>
+</ol>
+</li>
+<li>浮动元素不会与行内级元素层叠</li>
+<li>浮动元素顶端会与所在行的顶端对齐</li>
+<li>当一个元素浮动时<ol>
+<li>其上一行<ol>
+<li>是行内级元素，且空间<ul>
+<li>能够放下浮动元素，则浮动元素会在上一行浮动直到边缘触及到包含块或另一个浮动元素</li>
+<li>放不下浮动元素，则浮动元素在当前行浮动</li>
+</ul>
+</li>
+<li>是块级元素<ul>
+<li>块级元素独占父元素一行，即上一行没有浮动元素的位置</li>
+<li>浮动元素在当前行浮动</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>其下一行<ol>
+<li>是行内级元素<ul>
+<li>会在合适的位置环绕浮动元素</li>
+</ul>
+</li>
+<li>是块级元素<ul>
+<li>会无视浮动元素的存在而上移</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-清除浮动"><a href="#2-3-清除浮动" class="headerlink" title="2.3 清除浮动"></a>2.3 清除浮动</h2><h3 id="1-语法"><a href="#1-语法" class="headerlink" title="1 语法"></a>1 语法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clear: none | left | right | both</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>clear 只能影响清除浮动的元素本身，无法影响其它元素</li>
+<li>clear 属性只对块级元素有效</li>
+<li>默认 none<ol>
+<li>left：要求设置 clear 的元素的顶部低于之前生成的所有左浮动元素的底部</li>
+<li>right：要求设置 clear 的元素的顶部低于之前生成的所有右浮动元素的底部</li>
+<li>both：要求设置 clear 的元素的顶部低于之前生成的所有浮动元素的底部</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-清除浮动的原因"><a href="#2-清除浮动的原因" class="headerlink" title="2 清除浮动的原因"></a>2 清除浮动的原因</h3><ol>
+<li>由于浮动元素会影响后边正常文档流中的元素，所以通常会把浮动元素放在一个处于正常文档流的父元素中</li>
+<li>父元素通常不会固定高度，而是根据子元素高度来撑开高度，而浮动元素脱离文档流，不占据文档流的位置，就会导致父元素高度塌陷</li>
+<li>清除浮动就是为了解决父级元素因为子级浮动引起内部高度为 0 的问题</li>
+</ol>
+<h3 id="3-清除浮动的方式"><a href="#3-清除浮动的方式" class="headerlink" title="3 清除浮动的方式"></a>3 清除浮动的方式</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 父元素显式定义高度 height</td>
+<td>不推荐，只适合高度固定时使用</td>
+</tr>
+<tr>
+<td>2 父元素末尾添加一个空标签并清除浮动</td>
+<td>不推荐，增加不必要的标签</td>
+</tr>
+<tr>
+<td>3 父元素创建伪元素并清除浮动</td>
+<td>推荐</td>
+</tr>
+<tr>
+<td>4 父元素 <code>overflow: hidden</code></td>
+<td>父元素触发 BFC</td>
+</tr>
+</tbody></table>
+<h4 id="1-父元素创建伪元素的方式"><a href="#1-父元素创建伪元素的方式" class="headerlink" title="1 父元素创建伪元素的方式"></a>1 父元素创建伪元素的方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 父元素添加 class=&quot;.clearfix&quot;</span><br><span class="line">// 1 单伪元素清除法</span><br><span class="line">.clearfix::after &#123;</span><br><span class="line">	content: &#x27;&#x27;;</span><br><span class="line">	display: block; // clear 只对块级元素有效，伪元素默认为内联元素</span><br><span class="line">	clear: both;</span><br><span class="line">	/* 为了使伪元素在网页中不可见，content 内容为空即可，但有的老浏览器要求 content 有内容，则需要以下两行代码 */</span><br><span class="line">    height: 0;</span><br><span class="line">	visibility: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 2 双伪元素清除法：即可清除浮动也能解决 margin 塌陷</span><br><span class="line">.clearfix::before,</span><br><span class="line">.clearfix::after &#123;</span><br><span class="line">	content: &#x27;&#x27;;</span><br><span class="line">	display: table;</span><br><span class="line">&#125;</span><br><span class="line">.clearfix::after &#123;</span><br><span class="line">	clear: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-BFC（Block-Formatting-Context）"><a href="#2-BFC（Block-Formatting-Context）" class="headerlink" title="2 BFC（Block Formatting Context）"></a>2 BFC（Block Formatting Context）</h4><h5 id="1-BFC-概念"><a href="#1-BFC-概念" class="headerlink" title="1 BFC 概念"></a>1 BFC 概念</h5><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FC（formattion context）</td>
+<td>格式化上下文，就是正常文档流</td>
+</tr>
+<tr>
+<td>BFC（Block Formatting Context）</td>
+<td>块级格式化上下文</td>
+</tr>
+<tr>
+<td>IFC（inline formattion context）</td>
+<td>行内格式化上下文</td>
+</tr>
+<tr>
+<td>GFC（grid formattion context）</td>
+<td>栅格格式化上下文</td>
+</tr>
+</tbody></table>
+<ul>
+<li>块级格式化上下文，是 css 布局的一个概念，是一块区域，一个环境</li>
+</ul>
+<h5 id="2-BFC-触发条件"><a href="#2-BFC-触发条件" class="headerlink" title="2 BFC 触发条件"></a>2 BFC 触发条件</h5><table>
+<thead>
+<tr>
+<th>元素</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>根元素</td>
+<td><code>&lt;html&gt;</code></td>
+</tr>
+<tr>
+<td>浮动元素</td>
+<td><code>float: left / right</code></td>
+</tr>
+<tr>
+<td>绝对定位元素</td>
+<td><code>position: absolute / fixed</code></td>
+</tr>
+<tr>
+<td>overflow 不为 visible</td>
+<td><code>overflow: hidden / auto / scroll</code></td>
+</tr>
+<tr>
+<td>display</td>
+<td><code>display: inline-block / table-cell / table-caption / flex / inline-flex</code></td>
+</tr>
+</tbody></table>
+<h5 id="3-BFC-布局规则"><a href="#3-BFC-布局规则" class="headerlink" title="3 BFC 布局规则"></a>3 BFC 布局规则</h5><ol>
+<li>计算 BFC 的高度时，浮动元素也参与计算（用来清除浮动影响）</li>
+<li>BFC 会形成一个隔离的独立容器，容器中的子元素不会影响到外面的元素；外面的元素也不会影响到容器中的子元素</li>
+<li>BFC 中每个子元素的 <code>margin-box</code> 的左边会接触 BFC容器的左边，无论子元素是否浮动</li>
+<li>BFC 的区域不会与 <code>float box</code> 重叠</li>
+</ol>
+<h5 id="4-BFC-应用"><a href="#4-BFC-应用" class="headerlink" title="4 BFC 应用"></a>4 BFC 应用</h5><ol>
+<li><p>清除浮动：</p>
+<ol>
+<li>BFC 盒子会默认包裹住内部子元素（不管是标准流子元素还是浮动子元素）</li>
+<li>由于 BFC 容器计算高度会计算浮动元素，所以只需父元素触发 BFC 即可清除浮动</li>
+</ol>
+</li>
+<li><p>两栏自适应布局</p>
+<ol>
+<li>左边元素浮动，右边元素触发 BFC即可，因为 BFC 的区域不会与 <code>float box</code> 重叠，如图文两栏布局</li>
+<li>图文排列时，图片浮动，就形成文字环绕</li>
+<li>如果想让图片在左，文字在右的两列布局，只需文字容器触发 BFC 即可</li>
+</ol>
+</li>
+<li><p>解决相邻元素 margin 合并</p>
+<ol>
+<li>由于 BFC 与外界元素不会相互影响，所以只需相邻元素不在同一个 BFC 容器中即可</li>
+<li>BFC 盒子本身与子元素之间不存在 margin 塌陷</li>
+</ol>
+</li>
+</ol>
+<h1 id="三-定位"><a href="#三-定位" class="headerlink" title="三 定位"></a>三 定位</h1><h2 id="3-1-语法"><a href="#3-1-语法" class="headerlink" title="3.1 语法"></a>3.1 语法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">position: static | relative | absolute | fixed | sticky</span><br><span class="line"></span><br><span class="line">1 默认 static</span><br><span class="line">2 定位 = 定位模式 + 边偏移量</span><br><span class="line">3 绝对定位会块级化元素，表现如同行内块：包裹性和自适应性</span><br><span class="line">4 定位之后元素会高于文档流和浮动元素，可以层叠在其它盒子上</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>名称</th>
+<th>基点</th>
+<th>特点</th>
+<th>元素块级化（行内块）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static</td>
+<td>静态定位</td>
+<td>正常标准流</td>
+<td>没有边偏移，就是正常标准流中的元素</td>
+<td>×</td>
+</tr>
+<tr>
+<td>relative</td>
+<td>相对定位</td>
+<td>相对于元素原来在标准流中的位置定位，不影响其它元素</td>
+<td>占据原标准流位置（飞起来了但还占着原来位置）</td>
+<td>×</td>
+</tr>
+<tr>
+<td>absolute</td>
+<td>绝对定位</td>
+<td>相对于离元素最近的非静态定位的长辈元素（直到浏览器可视窗口）定位</td>
+<td>不占据标准流位置，会随着滚动条滚动</td>
+<td>√</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>固定定位（绝对定位的一种特殊形式）</td>
+<td>相对于浏览器可视窗口定位</td>
+<td>不占据标准流位置，不会随着滚动条滚动</td>
+<td>√</td>
+</tr>
+<tr>
+<td>sticky</td>
+<td>粘性定位</td>
+<td></td>
+<td>占据标准流位置</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="1-粘性定位"><a href="#1-粘性定位" class="headerlink" title="1 粘性定位"></a>1 粘性定位</h3><ol>
+<li>sticky会产生动态效果，很像relative和fixed的结合：一些时候是relative定位（定位基点是自身默认位置），另一些时候自动变成fixed定位（定位基点是视口）</li>
+<li>sticky生效的前提是，必须搭配top、bottom、left、right这四个属性中的一个或多个一起使用（看滚动方向），不能省略，否则等同于relative定位，不产生”动态固定”的效果</li>
+<li>不能有任何祖先元素设置overflow:hidden，否则没有粘滞效果。因为改变了滚动容器（即使没有出现滚动条）</li>
+<li>父元素的高度不能低于sticky元素的高度</li>
+<li>sticky元素仅在其父元素内生效，不会超出父元素，滚动时会随着父元素一起消失</li>
+<li>当页面滚动，父元素开始脱离视口时（即部分不可见），只要与sticky元素的距离达到生效门槛（设置的top/bottom/left/right），relative定位自动切换为fixed定位，等到父元素完全脱离视口时，fixed定位恢复成relative定位</li>
+<li>同一个父容器中的sticky元素，如果定位值相等，则会重叠；如果属于不同父元素，则会随着父元素不再完整占据sticky元素的固定区域以后，再由其他父元素的sticky子元素占据固定位置</li>
+<li>我的理解就是设置了粘性定位的元素，没到达所设置的偏移量时，为相对定位，到达后就变为固定定位，但只局限在父元素在视口内，如果父元素都滚走了，也会一同滚走（当然此时为相对定位）</li>
+</ol>
+<h3 id="2-绝对定位元素居中的两种方式"><a href="#2-绝对定位元素居中的两种方式" class="headerlink" title="2 绝对定位元素居中的两种方式"></a>2 绝对定位元素居中的两种方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br><span class="line"></span><br><span class="line"># 1 </span><br><span class="line">// 1.1 向右向下移动父元素宽高的一半</span><br><span class="line">left: 50%; top: 50%;</span><br><span class="line">// 1.2 由于参照点是子元素的左上角，所以要向左向上分别移动子元素宽高的一半</span><br><span class="line">transform:translate(-50%, -50%);</span><br><span class="line"></span><br><span class="line"># 2</span><br><span class="line">// 2.1 使水平和垂直方向具有填充特性</span><br><span class="line">left: 0; right: 0; top:0; bottom:0;</span><br><span class="line">// 2.2 margin:auto 触发计算，自动平分</span><br><span class="line">margin: auto;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-边偏移"><a href="#3-2-边偏移" class="headerlink" title="3.2 边偏移"></a>3.2 边偏移</h2><table>
+<thead>
+<tr>
+<th>方位属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>top</code></td>
+<td>顶部偏移量，即距离上边的距离（CSS 中 X 轴向右为正，Y 轴向下为正）</td>
+</tr>
+<tr>
+<td><code>bottom</code></td>
+<td>底部偏移量，即距离下边的距离</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td>左侧偏移量，即距离左边的距离</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td>右侧偏移量，即距离右边的距离</td>
+</tr>
+</tbody></table>
+<h1 id="四-弹性布局"><a href="#四-弹性布局" class="headerlink" title="四 弹性布局"></a>四 弹性布局</h1><h2 id="4-1-Flexible-Box-概念"><a href="#4-1-Flexible-Box-概念" class="headerlink" title="4.1 Flexible Box 概念"></a>4.1 Flexible Box 概念</h2><p><img src="https://gitee.com/an3/mbp/raw/master/css/flex.svg"></p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flex container</td>
+<td>Flex 容器，采用 Flex 布局的元素</td>
+</tr>
+<tr>
+<td>flex item</td>
+<td>Flex 项目，Flex 容器中的元素</td>
+</tr>
+<tr>
+<td>main axis</td>
+<td>主轴，默认水平轴向右为主轴，</td>
+</tr>
+<tr>
+<td>main size</td>
+<td>单个项目占据的主轴空间</td>
+</tr>
+<tr>
+<td>cross axis</td>
+<td>交叉轴，默认垂直向下为交叉轴</td>
+</tr>
+<tr>
+<td>cross size</td>
+<td>单个项目占据的交叉轴空间</td>
+</tr>
+</tbody></table>
+<h2 id="4-2-声明容器"><a href="#4-2-声明容器" class="headerlink" title="4.2 声明容器"></a>4.2 声明容器</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>display: flex</code></td>
+<td>块级弹性盒子</td>
+</tr>
+<tr>
+<td><code>display: inline-flex</code></td>
+<td>行内级弹性盒子</td>
+</tr>
+</tbody></table>
+<h2 id="4-3-容器属性"><a href="#4-3-容器属性" class="headerlink" title="4.3 容器属性"></a>4.3 容器属性</h2><h3 id="1-flex-flow"><a href="#1-flex-flow" class="headerlink" title="1 flex-flow"></a>1 flex-flow</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-flow: flex-direction || flex-wrap</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-flex-direction"><a href="#1-flex-direction" class="headerlink" title="1 flex-direction"></a>1 flex-direction</h4><ul>
+<li>决定主轴及方向</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>row</code>（默认）</td>
+<td>水平方向为主轴，从左到右</td>
+</tr>
+<tr>
+<td><code>row-reverse</code></td>
+<td>水平方向为主轴，从右到左</td>
+</tr>
+<tr>
+<td><code>column</code></td>
+<td>垂直方向为主轴，从上到下</td>
+</tr>
+<tr>
+<td><code>column-reverse</code></td>
+<td>垂直方向为主轴，从下到上</td>
+</tr>
+</tbody></table>
+<h4 id="2-flex-wrap"><a href="#2-flex-wrap" class="headerlink" title="2 flex-wrap"></a>2 flex-wrap</h4><ul>
+<li>定义项目在主轴上的排列（单行 or 多行）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>水平主轴</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nowrap</code>（默认）</td>
+<td>单行（空间不足默认自动收缩）</td>
+</tr>
+<tr>
+<td><code>wrap</code></td>
+<td>多行（空间不足则换行，且新行在下）</td>
+</tr>
+<tr>
+<td><code>wrap-reverse</code></td>
+<td>多行（空间不足则换行，且新行在上）</td>
+</tr>
+</tbody></table>
+<h3 id="2-justify-content"><a href="#2-justify-content" class="headerlink" title="2 justify-content"></a>2 justify-content</h3><ul>
+<li>定义项目在主轴上的分布</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>flex-start</code>（默认）</td>
+<td>主轴起点对齐</td>
+</tr>
+<tr>
+<td><code>flex-end</code></td>
+<td>主轴终点对齐</td>
+</tr>
+<tr>
+<td><code>center</code></td>
+<td>主轴居中对齐</td>
+</tr>
+<tr>
+<td><code>space-between</code></td>
+<td>主轴两端对齐，两边项目紧挨边框，中间间距都相等</td>
+</tr>
+<tr>
+<td><code>space-around</code></td>
+<td>每个项目两侧的间距相等。即项目之间的间隔是项目与边框的间距的2倍</td>
+</tr>
+<tr>
+<td><code>space-evenly</code></td>
+<td>所有间距都相等</td>
+</tr>
+</tbody></table>
+<h3 id="3-align-items"><a href="#3-align-items" class="headerlink" title="3 align-items"></a>3 align-items</h3><ul>
+<li>定义主轴上每一行项目在交叉轴上的对齐方式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>stretch</code>（默认）</td>
+<td>如果项目未设置高度或设为auto，项目会拉伸占满整个容器的高度</td>
+</tr>
+<tr>
+<td><code>center</code></td>
+<td>交叉轴居中对齐</td>
+</tr>
+<tr>
+<td><code>flex-start</code></td>
+<td>交叉轴起点对齐</td>
+</tr>
+<tr>
+<td><code>flex-end</code></td>
+<td>交叉轴终点对齐</td>
+</tr>
+<tr>
+<td><code>baseline</code></td>
+<td>项目的第一行文字的基线对齐</td>
+</tr>
+</tbody></table>
+<h3 id="4-align-content"><a href="#4-align-content" class="headerlink" title="4 align-content"></a>4 align-content</h3><ul>
+<li>定义项目在交叉轴上的分布（单行无效，需要 flex-wrap: wrap/wrap-reverse）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>stretch</code>（默认）</td>
+<td>轴线占满整个交叉轴</td>
+</tr>
+<tr>
+<td><code>flex-start</code></td>
+<td>交叉轴起点对齐</td>
+</tr>
+<tr>
+<td><code>flex-end</code></td>
+<td>交叉轴终点对齐</td>
+</tr>
+<tr>
+<td><code>center</code></td>
+<td>交叉轴居中对齐</td>
+</tr>
+<tr>
+<td><code>space-between</code></td>
+<td>交叉轴两端对齐，两侧轴线紧挨边框，中间轴线间距相等</td>
+</tr>
+<tr>
+<td><code>space-around</code></td>
+<td>每根轴线两侧的间距都相等。所以，轴线之间的间距是轴线与边框的 2 倍</td>
+</tr>
+<tr>
+<td><code>space-evenly</code></td>
+<td>所有间距相等</td>
+</tr>
+</tbody></table>
+<h2 id="4-4-项目属性"><a href="#4-4-项目属性" class="headerlink" title="4.4 项目属性"></a>4.4 项目属性</h2><h3 id="1-flex"><a href="#1-flex" class="headerlink" title="1 flex"></a>1 flex</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex: flex-grow flex-shrink? || flex-basis</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0 1 auto</code>（默认）</td>
+<td>即三个属性分别的默认值</td>
+</tr>
+<tr>
+<td><code>auto</code></td>
+<td>相当于 <code>1 1 auto</code></td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>相当于 <code>0 0 auto</code></td>
+</tr>
+</tbody></table>
+<h4 id="1-flex-grow"><a href="#1-flex-grow" class="headerlink" title="1 flex-grow"></a>1 flex-grow</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-grow: &lt;number&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>设置放大比例，默认为 0，不能为负</li>
+<li>当所有项目宽度之和小于容器宽度，容器有 <code>剩余空间 = 容器宽度 - 项目宽度之和</code></li>
+<li>计算所有项目的 <code>flex-grow</code> 之和为 s<ol>
+<li>s &lt; 1，说明放大后不会用掉所有剩余空间，则每个项目的放大尺寸 = 每个项目的 <code>flex-grow</code> ✖ 剩余空间</li>
+<li>s ≥ 1，说明放大后会用掉所有剩余空间，则每个项目的放大尺寸 = （每个项目的 <code>flex-grow</code> ➗ s）✖ 剩余空间</li>
+</ol>
+</li>
+</ol>
+<h4 id="2-flex-shrink"><a href="#2-flex-shrink" class="headerlink" title="2 flex-shrink"></a>2 flex-shrink</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-shrink: &lt;number&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>设置缩小比例，默认为 1，不能为负</li>
+<li>当所有项目宽度之和大于容器宽度，容器不足，<code>溢出空间 = 项目宽度之和 - 容器宽度</code></li>
+<li>计算所有项目的 <code>flex-shrink</code> 之和为 s<ol>
+<li>s &lt; 1，说明缩小后不能释放所有溢出空间，则每个项目的缩小尺寸 = 每个项目的 <code>flex-shrink</code> ✖ 溢出空间</li>
+<li>s ≥ 1，说明缩小后能释放所有溢出空间，则每个项目的放大尺寸 = （每个项目的 <code>flex-shrink</code> ➗ s）✖ 溢出空间</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-flex-basis"><a href="#3-flex-basis" class="headerlink" title="3 flex-basis"></a>3 flex-basis</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">flex-basis: content | auto | &lt;length&gt; | &lt;percentage&gt; | min-content | max-content | fit-content</span><br><span class="line"></span><br><span class="line">1 指定了项目在主轴方向上的初始大小</span><br><span class="line">2 默认 auto：有 width 就是 width，没 width 就按内容宽度</span><br><span class="line">3 content：基于项目的内容自动调整大小</span><br><span class="line">4 &lt;percentage&gt;：相对于主轴尺寸的百分比</span><br><span class="line">5 优先级：min-width/max-width &gt; flex-basis &gt; width</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-align-self"><a href="#2-align-self" class="headerlink" title="2 align-self"></a>2 align-self</h3><ul>
+<li>单独定义项目自己在交叉轴上的对齐方式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>auto</code>（默认）</td>
+<td>设置为父元素的 <code>align-items</code> 值，如果该元素没有父元素的话，就设置为 <code>stretch</code></td>
+</tr>
+<tr>
+<td><code>strech</code></td>
+<td>如果项目未设置高度或设为 <code>auto</code>，将占满整个容器的高度</td>
+</tr>
+<tr>
+<td><code>flex-start</code></td>
+<td>交叉轴起点对齐</td>
+</tr>
+<tr>
+<td><code>flex-end</code></td>
+<td>交叉轴终点对齐</td>
+</tr>
+<tr>
+<td><code>center</code></td>
+<td>交叉轴居中对齐</td>
+</tr>
+<tr>
+<td><code>baseline</code></td>
+<td>项目的第一行文字的基线对齐</td>
+</tr>
+</tbody></table>
+<h3 id="3-order"><a href="#3-order" class="headerlink" title="3 order"></a>3 order</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">order: &lt;integer&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>定义项目的排列顺序，数值越小，排列越靠前</li>
+<li>默认为 0，可以为负</li>
+</ol>
+<h1 id="五-栅格布局"><a href="#五-栅格布局" class="headerlink" title="五 栅格布局"></a>五 栅格布局</h1><h2 id="5-1-Grid-概念"><a href="#5-1-Grid-概念" class="headerlink" title="5.1 Grid 概念"></a>5.1 Grid 概念</h2><p><img src="https://gitee.com/an3/mbp/raw/master/css/grid%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.png"></p>
+<h2 id="5-2-声明容器"><a href="#5-2-声明容器" class="headerlink" title="5.2 声明容器"></a>5.2 声明容器</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>display: grid</code></td>
+<td>块级栅格容器</td>
+</tr>
+<tr>
+<td><code>display: inline-grid</code></td>
+<td>内联栅格容器</td>
+</tr>
+</tbody></table>
+<h2 id="5-3-容器属性"><a href="#5-3-容器属性" class="headerlink" title="5.3 容器属性"></a>5.3 容器属性</h2><h3 id="1-grid"><a href="#1-grid" class="headerlink" title="1 grid"></a>1 grid</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid: grid-template-rows grid-template-columns grid-template-areas grid-auto-rows grid-auto-columns grid-auto-flow</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-grid-template"><a href="#2-grid-template" class="headerlink" title="2 grid-template"></a>2 grid-template</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-template: [ grid-template-rows / grid-template-columns ] | grid-template-areas</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>grid-template-rows</code></td>
+<td>定义行数及每一行的高度</td>
+</tr>
+<tr>
+<td><code>grid-template-columns</code></td>
+<td>定义列数及每一列的宽度</td>
+</tr>
+<tr>
+<td><code>grid-template-areas</code></td>
+<td>定义栅格区域</td>
+</tr>
+</tbody></table>
+<h4 id="1-grid-template-rows-amp-grid-template-columns"><a href="#1-grid-template-rows-amp-grid-template-columns" class="headerlink" title="1 grid-template-rows &amp; grid-template-columns"></a>1 grid-template-rows &amp; grid-template-columns</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[ </span><br><span class="line">	&lt;line-names&gt;? </span><br><span class="line">	[ &lt;length&gt; | &lt;percentage&gt; | auto | minmax(min, max) | &lt;number+fr&gt; | repeat(count, mode) ] </span><br><span class="line">]+  &lt;line-names&gt;?</span><br><span class="line">	</span><br><span class="line">&lt;line-names&gt; = [ &lt;custom-ident&gt;* ]</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-网格线名称"><a href="#1-网格线名称" class="headerlink" title="1 网格线名称"></a>1 网格线名称</h5><ol>
+<li>两个相邻单元格共用一条网格线，一条网格线可以有多个名称，格式：<code>[name1 name2 ...]</code></li>
+<li>若省略命名，则名称按顺序分配为 <code>1 2 3 ...</code> </li>
+</ol>
+<h5 id="2-单元格大小"><a href="#2-单元格大小" class="headerlink" title="2 单元格大小"></a>2 单元格大小</h5><table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>auto</code></td>
+<td>表示由浏览器自己决定长度</td>
+</tr>
+<tr>
+<td><code>&lt;length&gt;</code></td>
+<td>长度单位</td>
+</tr>
+<tr>
+<td><code>&lt;percentage&gt;</code></td>
+<td>相对于栅格容器原始宽/高的百分比</td>
+</tr>
+<tr>
+<td><code>&lt;number+fr&gt;</code></td>
+<td>相对于网格剩余可用空间的百分比，fr 是网格剩余空间比例单位（<code>fraction</code> 的缩写，意为”片段”）</td>
+</tr>
+<tr>
+<td><code>minmax(min, max)</code></td>
+<td>尺寸在min和max之间，若 min&gt;max，则max的值会被忽略</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">repeat( [ &lt;integer [1,∞]&gt; | auto-fill | auto-fit ] , mode )</span><br><span class="line"></span><br><span class="line">1 参数二 mode：可以是整个语法模式</span><br><span class="line">2 参数一</span><br><span class="line">	&lt;integer [1,∞]：重复次数</span><br><span class="line">	auto-fill：自动填充，若单元格大小固定，容器大小不定，会在一行/列中放置尽可能多的单元格</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-grid-template-areas"><a href="#2-grid-template-areas" class="headerlink" title="2 grid-template-areas"></a>2 grid-template-areas</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">一个区域由单个或多个单元格组成，区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为`区域名-start`，终止网格线自动命名为`区域名-end`</span><br><span class="line"></span><br><span class="line">// 1 一个单元格一个区域</span><br><span class="line">grid-template-areas: &quot;a b c&quot;</span><br><span class="line">					&quot;d e f&quot;</span><br><span class="line">					&quot;g h i&quot;;</span><br><span class="line">					</span><br><span class="line"></span><br><span class="line">// 2 多个单元格合并成一个区域：区域名相同即可</span><br><span class="line">grid-template-areas: &quot;a b c&quot;</span><br><span class="line">					&quot;a b c&quot;</span><br><span class="line">					&quot;a b c&quot;;</span><br><span class="line"></span><br><span class="line">grid-template-areas: &quot;header header header&quot;</span><br><span class="line">					&quot;main main sidebar&quot;</span><br><span class="line">					&quot;footer footer footer&quot;;</span><br><span class="line">					</span><br><span class="line">// 3 区域占位符（点）：表示没有用到该单元格，或者该单元格不属于任何区域</span><br><span class="line">grid-template-areas: &quot;a . c&quot;</span><br><span class="line">					&quot;. . f&quot;</span><br><span class="line">					&quot;g h .&quot;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-gap"><a href="#3-gap" class="headerlink" title="3 gap"></a>3 gap</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gap: row-gap column-gap?</span><br><span class="line"></span><br><span class="line">1 设置行间距和列间距 &lt;length&gt; | &lt;percentage&gt;</span><br><span class="line">2 若省略列间距，则默认等于行间距</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-grid-auto-flow"><a href="#4-grid-auto-flow" class="headerlink" title="4 grid-auto-flow"></a>4 grid-auto-flow</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grid-auto-flow: [ row | column ] || dense</span><br><span class="line"></span><br><span class="line">1 设置项目的排放顺序</span><br><span class="line">2 划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>row</code>（默认）</td>
+<td>先行后列，即先放满第一行，然后再放第二行…</td>
+</tr>
+<tr>
+<td><code>column</code></td>
+<td>先列后行</td>
+</tr>
+<tr>
+<td><code>row dense</code></td>
+<td>先行后列，并且尽量填满空格（意思是如果碰到某一个元素放不下，可以先放后边的元素）</td>
+</tr>
+<tr>
+<td><code>column dense</code></td>
+<td>先列后行，并且尽量填满空格</td>
+</tr>
+</tbody></table>
+<h3 id="5-place-items"><a href="#5-place-items" class="headerlink" title="5 place-items"></a>5 place-items</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">place-items: align-items justify-items? # 如果省略了第二个值，则等于第一个值</span><br><span class="line"></span><br><span class="line">justify-items：设置所有单元格中内容的水平对齐方式</span><br><span class="line">align-items：设置所有单元格中内容的垂直对齐方式</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>stretch</code>（默认）</td>
+<td>拉伸，占满单元格的整个宽度</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td>对齐单元格的起始边缘</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>对齐单元格的结束边缘</td>
+</tr>
+<tr>
+<td><code>center</code></td>
+<td>单元格内部居中</td>
+</tr>
+</tbody></table>
+<h3 id="6-place-content"><a href="#6-place-content" class="headerlink" title="6 place-content"></a>6 place-content</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">place-content: align-content justify-content? # 如果省略了第二个值，则等于第一个值</span><br><span class="line"></span><br><span class="line">justify-content：设置整个内容区域在容器中的水平对齐方式</span><br><span class="line">align-content：设置整个内容区域在容器中的垂直对齐方式</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stretch（默认）</td>
+<td>拉伸，占满单元格的整个宽度</td>
+</tr>
+<tr>
+<td>start</td>
+<td>对齐单元格的起始边缘</td>
+</tr>
+<tr>
+<td>end</td>
+<td>对齐单元格的结束边缘</td>
+</tr>
+<tr>
+<td>center</td>
+<td>单元格内部居中</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>两端对齐，两端紧挨边框中间平均分配</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍</td>
+</tr>
+<tr>
+<td>space-evenly</td>
+<td>项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔</td>
+</tr>
+</tbody></table>
+<h3 id="7-grid-auto-columns-amp-grid-auto-rows"><a href="#7-grid-auto-columns-amp-grid-auto-rows" class="headerlink" title="7 grid-auto-columns &amp; grid-auto-rows"></a>7 grid-auto-columns &amp; grid-auto-rows</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>grid-auto-columns</td>
+<td>浏览器自动创建的多余网格的列宽</td>
+</tr>
+<tr>
+<td>grid-auto-rows</td>
+<td>浏览器自动创建的多余网格的行高</td>
+</tr>
+</tbody></table>
+<ol>
+<li>指定任何自动生成的网格轨道（也称为隐式网格轨道）的大小。 当网格项目多于网格中的单元格或网格项目放置在显式网格之外时，将创建隐式轨道，这时，浏览器会自动生成多余的网格，以便放置项目。</li>
+<li>如果不指定这两个属性，浏览器完全根据单元格内容的大小，决定新增网格的列宽和行高</li>
+<li>这两个属性用来设置多出来的项目宽和高</li>
+</ol>
+<h2 id="5-4-项目属性"><a href="#5-4-项目属性" class="headerlink" title="5.4 项目属性"></a>5.4 项目属性</h2><h3 id="1-grid-row-start-end-amp-grid-column-start-end"><a href="#1-grid-row-start-end-amp-grid-column-start-end" class="headerlink" title="1 grid-row-start/end &amp; grid-column-start/end"></a>1 grid-row-start/end &amp; grid-column-start/end</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;integer&gt; | &lt;line-name&gt; | span &lt;integer&gt; | span &lt;line-name&gt; | auto</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;integer&gt;</code></td>
+<td>第几条网格线</td>
+</tr>
+<tr>
+<td><code>&lt;line-name&gt;</code></td>
+<td>网格线名称</td>
+</tr>
+<tr>
+<td><code>span &lt;integer&gt;</code></td>
+<td>跨越几个网格</td>
+</tr>
+<tr>
+<td><code>span &lt;line-name&gt;</code></td>
+<td>当前网格会自动扩展，直到命中指定的网格线名称</td>
+</tr>
+<tr>
+<td><code>auto</code></td>
+<td>自动</td>
+</tr>
+</tbody></table>
+<h3 id="2-grid-row-amp-grid-column"><a href="#2-grid-row-amp-grid-column" class="headerlink" title="2 grid-row &amp; grid-column"></a>2 grid-row &amp; grid-column</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grid-row: grid-row-start [ / grid-row-end ]?</span><br><span class="line"></span><br><span class="line">grid-column: grid-column-start [ / grid-column-end ]?</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-grid-area"><a href="#3-grid-area" class="headerlink" title="3 grid-area"></a>3 grid-area</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grid-area: &lt;area-name&gt;</span><br><span class="line"></span><br><span class="line">grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-place-self"><a href="#4-place-self" class="headerlink" title="4 place-self"></a>4 place-self</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">place-self: align-self justify-self? # 如果省略了第二个值，则等于第一个值</span><br><span class="line"></span><br><span class="line">justify-self：设置单个项目单元格中内容的水平对齐方式，用法同 justify-items</span><br><span class="line">align-self：设置单个项目单元格中内容的垂直对齐方式，用法同 align-items</span><br></pre></td></tr></table></figure>
+
+<h1 id="六-移动端"><a href="#六-移动端" class="headerlink" title="六 移动端"></a>六 移动端</h1><h2 id="6-1-概念"><a href="#6-1-概念" class="headerlink" title="6.1 概念"></a>6.1 概念</h2><ol>
+<li>屏幕尺寸：指的是屏幕对角线的长度，一般用英寸度量</li>
+<li>屏幕分辨率：<ol>
+<li>物理分辨率（Physical resolution）<ul>
+<li>硬件分辨率，出厂时就固定的，不能改变的</li>
+<li>屏幕实际的像素点数</li>
+</ul>
+</li>
+<li>逻辑分辨率（Logical resolution）<ul>
+<li>由软件（驱动）决定的，可以缩放调节的分辨率</li>
+<li>以一个 1920 * 1080 物理分辨率为例，当缩放 150% 时，分辨率会减小，因为每个像素变大了，一行的像素自然减少了，新的分辨率 = (1920/1.5) * (1080/1.5)</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>设备像素比率（Device Pixel Ratio，DPR）：<ul>
+<li>DPR = 物理分辨率 / 逻辑分辨率</li>
+<li>高分屏，指 DPR &gt; 1 的屏幕</li>
+</ul>
+</li>
+<li>布局<ol>
+<li>百分比布局（流式布局）：宽度百分比自适应，高度固定，是以前的一种布局方案</li>
+<li>弹性布局</li>
+<li>栅格布局</li>
+</ol>
+</li>
+</ol>
+<h2 id="6-2-支持高分屏"><a href="#6-2-支持高分屏" class="headerlink" title="6.2 支持高分屏"></a>6.2 支持高分屏</h2><ol>
+<li><p>iphone 6 物理分辨率 750 * 1334，逻辑分辨率 375 * 667，DPR = 2</p>
+</li>
+<li><p>写代码针对的是逻辑分辨率，一个 375 的图片放在 750 的设备上，如果想要占满屏幕需要放大，而放大会导致失真，所以通常会提供一个 ”二倍图“</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 根据 DPR 不同，选择不同的图片 srcset</span><br><span class="line">&lt;img scr=&quot;&quot; alt=&quot;&quot; srcset=&quot;url 1x, url 2x, url 3x&quot;&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="6-3-分辨率转换"><a href="#6-3-分辨率转换" class="headerlink" title="6.3 分辨率转换"></a>6.3 分辨率转换</h2><ol>
+<li><p>相同 DPR 的设备分辨率未必相同，而提供的图片是固定的尺寸，不同的设备可能会对图片进行缩放，如果都选择一种尺寸，缩放太多会浪费性能，所以多提供不同尺寸的图片，但不同的分辨率太多，我们无法提供所有图片，所以通常提供小中大三种尺寸供选择</p>
+</li>
+<li><p>使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 根据宽度不同，选择不同的图片 srcset</span><br><span class="line">&lt;img scr=&quot;&quot; alt=&quot;&quot; srcset=&quot;url 400w, url 800w, url 1200w&quot;&gt;</span><br><span class="line"></span><br><span class="line"># 如果设备选择完图片，还行设定显示方式 sizes</span><br><span class="line">&lt;img scr=&quot;&quot; alt=&quot;&quot; srcset=&quot;url 400w, url 800w, url 1200w&quot; sizes=&quot;(max-width: 500px) 100vw, (max-width: 700px) 50vw, 33vw&quot;&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="6-4-移动适配"><a href="#6-4-移动适配" class="headerlink" title="6.4 移动适配"></a>6.4 移动适配</h2><h3 id="1-移动适配的步骤"><a href="#1-移动适配的步骤" class="headerlink" title="1 移动适配的步骤"></a>1 移动适配的步骤</h3><ol>
+<li>动态设置 html 的 font-size<ol>
+<li>方式一：媒体查询<ol>
+<li>使用媒体查询根据不同的设备，给 html 标签设置不同的 font-size</li>
+<li>常用做法将网页分成10份，<code>&lt;html&gt;</code> 标签字号为视口宽度的 1/10</li>
+</ol>
+</li>
+<li>方式二：通过 js 动态计算<ol>
+<li><code>flexible.js</code> 是手机淘宝开发出的一个用来适配移动端的 js 框架</li>
+<li>原理就是根据不同的视口宽度给网页中的 <code>&lt;html&gt;</code> 设置不同的字号</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>动态计算 rem 值<ol>
+<li>利用 postcss-pxtorem</li>
+<li>利用 less、sass、stylus 的计算能力</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-媒体查询（Media-Querie）"><a href="#2-媒体查询（Media-Querie）" class="headerlink" title="2 媒体查询（Media Querie）"></a>2 媒体查询（Media Querie）</h3><h4 id="1-语法-1"><a href="#1-语法-1" class="headerlink" title="1 语法"></a>1 语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 可以针对不同的媒体类型定义不同的样式</span><br><span class="line">// 1</span><br><span class="line">&lt;style&gt;</span><br><span class="line">	@media meidatype and|not|only (media feature) &#123;</span><br><span class="line">		css code; // 满足条件则使用此内部样式</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">// 2 &lt;link&gt; 满足条件则使用导入的外部样式</span><br><span class="line">&lt;link rel=&quot;&quot; href=&quot;&quot; media=&quot;meidatype and|not|only (media feature)&quot;&gt;</span><br><span class="line"></span><br><span class="line">// 3 &lt;link&gt; + @import：通过 `&lt;link&gt;` 指定媒体类型需要导入不同的 css 文件，导致 `&lt;link&gt;` 语句过多，可以使用外部 css 文件一起导入</span><br><span class="line">// test.html</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</span><br><span class="line">// style.css</span><br><span class="line">@import url(1.css) all;</span><br><span class="line">@import url(2.css) screen;</span><br><span class="line">@import url(3.css) print;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>meidatype</code></td>
+<td>媒体类型，可以用逗号分隔同时支持多个媒体设备</td>
+</tr>
+<tr>
+<td><code>and</code></td>
+<td>逻辑与</td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>逻辑非，必须写在查询的最前面，表示对整个条件取反</td>
+</tr>
+<tr>
+<td><code>only</code></td>
+<td>必须写在查询的最前面，指定某个特定媒体类型</td>
+</tr>
+<tr>
+<td><code>media feature</code></td>
+<td>媒体特性</td>
+</tr>
+</tbody></table>
+<h4 id="2-媒体类型"><a href="#2-媒体类型" class="headerlink" title="2 媒体类型"></a>2 媒体类型</h4><table>
+<thead>
+<tr>
+<th>mediatype</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>all（默认）</td>
+<td>所有媒体类型</td>
+</tr>
+<tr>
+<td>screen</td>
+<td>用于电脑屏幕，平板电脑，智能手机等</td>
+</tr>
+<tr>
+<td>print</td>
+<td>打印设备</td>
+</tr>
+<tr>
+<td>speech</td>
+<td>应用于屏幕阅读器等发声设备</td>
+</tr>
+</tbody></table>
+<h4 id="3-媒体特性"><a href="#3-媒体特性" class="headerlink" title="3 媒体特性"></a>3 媒体特性</h4><table>
+<thead>
+<tr>
+<th>media feature</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>orientation: landscape/portrait</code></td>
+<td>横屏/竖屏</td>
+</tr>
+<tr>
+<td>width</td>
+<td>设备宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>设备高度</td>
+</tr>
+<tr>
+<td>min-width</td>
+<td>最小宽度</td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>最大宽度</td>
+</tr>
+<tr>
+<td>min-height</td>
+<td>最小高度</td>
+</tr>
+<tr>
+<td>max-height</td>
+<td>最大高度</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #66ccff;font-size:14px;">-------------The End&nbsp;&nbsp;<i class="fa fa-paw"></i>&nbsp;&nbsp;客官请自便-------------</div>
+    
+</div
+      
+    </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/28/css06-%E5%85%83%E7%B4%A0%E5%92%8C%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" rel="prev" title="06-元素和盒子模型">
+      <i class="fa fa-chevron-left"></i> 06-元素和盒子模型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/28/css08-%E8%BF%87%E6%B8%A1%E5%8F%98%E5%BD%A2%E5%92%8C%E5%8A%A8%E7%94%BB/" rel="next" title="08-过渡变形和动画">
+      08-过渡变形和动画 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E6%96%87%E6%A1%A3%E6%B5%81"><span class="nav-text">一 文档流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-%E6%B5%AE%E5%8A%A8"><span class="nav-text">二 浮动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E8%AF%AD%E6%B3%95"><span class="nav-text">2.1 语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%B5%AE%E5%8A%A8%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-text">2.2 浮动的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8"><span class="nav-text">2.3 清除浮动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%AF%AD%E6%B3%95"><span class="nav-text">1 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-text">2 清除浮动的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-text">3 清除浮动的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%88%B6%E5%85%83%E7%B4%A0%E5%88%9B%E5%BB%BA%E4%BC%AA%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-text">1 父元素创建伪元素的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-BFC%EF%BC%88Block-Formatting-Context%EF%BC%89"><span class="nav-text">2 BFC（Block Formatting Context）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-BFC-%E6%A6%82%E5%BF%B5"><span class="nav-text">1 BFC 概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-BFC-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6"><span class="nav-text">2 BFC 触发条件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-BFC-%E5%B8%83%E5%B1%80%E8%A7%84%E5%88%99"><span class="nav-text">3 BFC 布局规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-BFC-%E5%BA%94%E7%94%A8"><span class="nav-text">4 BFC 应用</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E5%AE%9A%E4%BD%8D"><span class="nav-text">三 定位</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E8%AF%AD%E6%B3%95"><span class="nav-text">3.1 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%B2%98%E6%80%A7%E5%AE%9A%E4%BD%8D"><span class="nav-text">1 粘性定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%85%83%E7%B4%A0%E5%B1%85%E4%B8%AD%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-text">2 绝对定位元素居中的两种方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E8%BE%B9%E5%81%8F%E7%A7%BB"><span class="nav-text">3.2 边偏移</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B-%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80"><span class="nav-text">四 弹性布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Flexible-Box-%E6%A6%82%E5%BF%B5"><span class="nav-text">4.1 Flexible Box 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E5%A3%B0%E6%98%8E%E5%AE%B9%E5%99%A8"><span class="nav-text">4.2 声明容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E5%AE%B9%E5%99%A8%E5%B1%9E%E6%80%A7"><span class="nav-text">4.3 容器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-flex-flow"><span class="nav-text">1 flex-flow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-flex-direction"><span class="nav-text">1 flex-direction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-flex-wrap"><span class="nav-text">2 flex-wrap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-justify-content"><span class="nav-text">2 justify-content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-align-items"><span class="nav-text">3 align-items</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-align-content"><span class="nav-text">4 align-content</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E9%A1%B9%E7%9B%AE%E5%B1%9E%E6%80%A7"><span class="nav-text">4.4 项目属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-flex"><span class="nav-text">1 flex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-flex-grow"><span class="nav-text">1 flex-grow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-flex-shrink"><span class="nav-text">2 flex-shrink</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-flex-basis"><span class="nav-text">3 flex-basis</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-align-self"><span class="nav-text">2 align-self</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-order"><span class="nav-text">3 order</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94-%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80"><span class="nav-text">五 栅格布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-Grid-%E6%A6%82%E5%BF%B5"><span class="nav-text">5.1 Grid 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E5%A3%B0%E6%98%8E%E5%AE%B9%E5%99%A8"><span class="nav-text">5.2 声明容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E5%AE%B9%E5%99%A8%E5%B1%9E%E6%80%A7"><span class="nav-text">5.3 容器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-grid"><span class="nav-text">1 grid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-grid-template"><span class="nav-text">2 grid-template</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-grid-template-rows-amp-grid-template-columns"><span class="nav-text">1 grid-template-rows &amp; grid-template-columns</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E7%BD%91%E6%A0%BC%E7%BA%BF%E5%90%8D%E7%A7%B0"><span class="nav-text">1 网格线名称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%8D%95%E5%85%83%E6%A0%BC%E5%A4%A7%E5%B0%8F"><span class="nav-text">2 单元格大小</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-grid-template-areas"><span class="nav-text">2 grid-template-areas</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-gap"><span class="nav-text">3 gap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-grid-auto-flow"><span class="nav-text">4 grid-auto-flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-place-items"><span class="nav-text">5 place-items</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-place-content"><span class="nav-text">6 place-content</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-grid-auto-columns-amp-grid-auto-rows"><span class="nav-text">7 grid-auto-columns &amp; grid-auto-rows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E9%A1%B9%E7%9B%AE%E5%B1%9E%E6%80%A7"><span class="nav-text">5.4 项目属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-grid-row-start-end-amp-grid-column-start-end"><span class="nav-text">1 grid-row-start&#x2F;end &amp; grid-column-start&#x2F;end</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-grid-row-amp-grid-column"><span class="nav-text">2 grid-row &amp; grid-column</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-grid-area"><span class="nav-text">3 grid-area</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-place-self"><span class="nav-text">4 place-self</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD-%E7%A7%BB%E5%8A%A8%E7%AB%AF"><span class="nav-text">六 移动端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-%E6%A6%82%E5%BF%B5"><span class="nav-text">6.1 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-%E6%94%AF%E6%8C%81%E9%AB%98%E5%88%86%E5%B1%8F"><span class="nav-text">6.2 支持高分屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-%E5%88%86%E8%BE%A8%E7%8E%87%E8%BD%AC%E6%8D%A2"><span class="nav-text">6.3 分辨率转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-%E7%A7%BB%E5%8A%A8%E9%80%82%E9%85%8D"><span class="nav-text">6.4 移动适配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A7%BB%E5%8A%A8%E9%80%82%E9%85%8D%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-text">1 移动适配的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%EF%BC%88Media-Querie%EF%BC%89"><span class="nav-text">2 媒体查询（Media Querie）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AF%AD%E6%B3%95-1"><span class="nav-text">1 语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AA%92%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="nav-text">2 媒体类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AA%92%E4%BD%93%E7%89%B9%E6%80%A7"><span class="nav-text">3 媒体特性</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="安₃"
+      src="/images/an3.JPG">
+  <p class="site-author-name" itemprop="name">安₃</p>
+  <div class="site-description" itemprop="description">我未成名君未嫁 可能俱是不如人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-star-and-crescent"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">安₃</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

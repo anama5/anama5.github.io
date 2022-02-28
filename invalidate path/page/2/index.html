@@ -154,6 +154,982 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/js07-BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/14/js07-BOM/" class="post-title-link" itemprop="url">07-BOM</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:57:51 / 修改时间：20:13:55" itemprop="dateCreated datePublished" datetime="2022-02-14T19:57:51+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><ol>
+<li>JavaScript 有一个非常重要的运行环境就是浏览器，而且浏览器本身又作为一个应用程序需要对其本身进行操作，所以通常浏览器会有对应的对象模型（BOM，Browser Object Model）</li>
+<li>BOM 可以看作连接 JavaScript 脚本与浏览器窗口的桥梁</li>
+<li>BOM 由浏览器厂商各自定义，兼容性较差</li>
+<li>BOM 包含 DOM</li>
+<li>BOM 主要包括一下的对象模型<ol>
+<li>window：包括全局属性、方法，控制浏览器窗口相关的属性、方法</li>
+<li>location：浏览器连接到的对象的位置（URL）</li>
+<li>history：操作浏览器的历史</li>
+<li>document：当前窗口操作文档的对象</li>
+</ol>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/14/js07-BOM/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/js06-JS%E5%BC%82%E6%AD%A5%E5%92%8C%E6%A8%A1%E5%9D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/14/js06-JS%E5%BC%82%E6%AD%A5%E5%92%8C%E6%A8%A1%E5%9D%97/" class="post-title-link" itemprop="url">06-JS异步和模块</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:57:35 / 修改时间：20:13:49" itemprop="dateCreated datePublished" datetime="2022-02-14T19:57:35+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一-promise"><a href="#一-promise" class="headerlink" title="一 promise"></a>一 promise</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><ol>
+<li>Promise 对象本质上表示的是一系列操作的中间状态，或者说是未来某时刻一个操作完成或失败后返回的结果</li>
+<li>Promise 的三种状态<ol>
+<li>pending：待定状态，初始化时的状态</li>
+<li>fulfilled：异步操作成功</li>
+<li>rejected：异步操作失败</li>
+</ol>
+</li>
+<li>promise 状态的改变是一次性的，一旦从 pending 变成 fulfilled 或 rejected，该 Promise 的状态不再可更改</li>
+<li>promise 的结果：<ol>
+<li>成功的值</li>
+<li>失败的原因</li>
+</ol>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/14/js06-JS%E5%BC%82%E6%AD%A5%E5%92%8C%E6%A8%A1%E5%9D%97/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/js05-JS%E5%8E%9F%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/14/js05-JS%E5%8E%9F%E5%9E%8B/" class="post-title-link" itemprop="url">05-JS原型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:57:26 / 修改时间：20:13:24" itemprop="dateCreated datePublished" datetime="2022-02-14T19:57:26+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><h2 id="1-1-原型"><a href="#1-1-原型" class="headerlink" title="1.1 原型"></a>1.1 原型</h2><p><img src="https://gitee.com/an3/mbp/raw/master/javascript/%E5%8E%9F%E5%9E%8B.png"></p>
+<h3 id="1-proto"><a href="#1-proto" class="headerlink" title="1 __proto__"></a>1 <code>__proto__</code></h3><ol>
+<li><p><code>__proto__</code> 是浏览器实现的非 JavaScript 标准的属性，在ES6写入了附录，用于获取或设置对象的原型，由于非标准，浏览器有这个属性，其它环境未必有。建议使用 Object中 的方法 替代<code> __proto__</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- <span class="built_in">Object</span>.getPrototypeOf(obj)</span><br><span class="line">- <span class="built_in">Object</span>.setPrototypeOf(obj, prototype)</span><br><span class="line">- <span class="built_in">Object</span>.create(proto[, propertiesObject])</span><br></pre></td></tr></table></figure></li>
+<li><p><code>obj.__proto__</code> 并非是普通的属性访问方式，而是通过 <code>getter/setter</code> 访问器，可以理解为 <code>prototype</code> 属性的 <code>getter/setter</code> 实现</p>
+</li>
+<li><p>每个对象都有 <code>__proto__</code> 属性，指向它的构造函数的原型对象，即如果A对象是由B函数构造的，则 <code>A.__proto__ === B.prototype</code></p>
+<ol>
+<li>普通对象的构造函数是其对应的构造函数，原型对象也是普通对象，其默认构造函数是 Object，则<ul>
+<li><code>对象.__proto__ === 构造函数.prototype</code></li>
+<li><code>原型对象.__proto__ === Object.prototype</code></li>
+</ul>
+</li>
+<li>原型对象中有两个特殊<ol>
+<li> <code>Object.prototype </code>：它是原型链的顶端，<code>Object.prototype.__proto__ === null</code></li>
+<li><code>Function.prototype</code><ul>
+<li>它是原型对象，但不属于普通对象而属于函数对象</li>
+<li>它是函数对象，但它没有 <code>prototype</code> 属性</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>函数对象（包括 Function 自身）的构造函数是 Function，则 <ul>
+<li><code>函数.__proto__ === Function.prototype</code></li>
+<li><code>Function.__proto__ === Function.prototype</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/14/js05-JS%E5%8E%9F%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/js04-JS%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/14/js04-JS%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">04-JS对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:56:53 / 修改时间：20:12:39" itemprop="dateCreated datePublished" datetime="2022-02-14T19:56:53+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><h2 id="1-1-创建对象的方式"><a href="#1-1-创建对象的方式" class="headerlink" title="1.1 创建对象的方式"></a>1.1 创建对象的方式</h2><h3 id="1-对象字面量"><a href="#1-对象字面量" class="headerlink" title="1 对象字面量"></a>1 对象字面量</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 标准形式</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">key</span>: value,</span><br><span class="line">	<span class="attr">key</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 属性的简写：Property Shorthand</span></span><br><span class="line"><span class="comment">// 如果属性名和属性值相同，可以简写</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;mm&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: name,</span><br><span class="line">    <span class="comment">// 简写</span></span><br><span class="line">	name,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3 方法的简写：Method Shorthand</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="attr">key</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">	<span class="comment">// 简写</span></span><br><span class="line">	<span class="function"><span class="title">key</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4 计算属性名：Computed Property Names</span></span><br><span class="line"><span class="comment">// 如果属性名是一个表达式，则使用[]包裹，意思是取表达式的值</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	[expr]: value</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>对象字面量内部调用了 <code>Object</code> 的构造函数</li>
+<li>对象字面量与 <code>json</code> 的区别<ol>
+<li>属性<ul>
+<li>JSON 属性只能是字符串，且必须加双引号</li>
+<li>JS 对象属性可以是字符串和Symbol，可以省略引号（单/双）</li>
+</ul>
+</li>
+<li>值<ul>
+<li>JSON 值不能是函数和 <code>undefined</code></li>
+<li>JS 对象值任意</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/14/js04-JS%E5%AF%B9%E8%B1%A1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/js03-JS%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/14/js03-JS%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">03-JS数组和函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:56:43 / 修改时间：20:12:26" itemprop="dateCreated datePublished" datetime="2022-02-14T19:56:43+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一-数组"><a href="#一-数组" class="headerlink" title="一 数组"></a>一 数组</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><ol>
+<li>数组都是 <code>Array</code> 的实例</li>
+<li>数组可以存任意类型的数据</li>
+<li>数组长度可变</li>
+<li>ES6 明确数组中空位值为 <code>undefined</code></li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/14/js03-JS%E6%95%B0%E7%BB%84%E5%92%8C%E5%87%BD%E6%95%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/js02-JS%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/14/js02-JS%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">02-JS基本数据类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:56:30 / 修改时间：20:12:17" itemprop="dateCreated datePublished" datetime="2022-02-14T19:56:30+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一-number"><a href="#一-number" class="headerlink" title="一 number"></a>一 number</h1><h2 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h2><table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>任意数字</code></td>
+<td>整数或者浮点数</td>
+</tr>
+<tr>
+<td><code>+Infinity</code></td>
+<td>正无穷</td>
+</tr>
+<tr>
+<td><code>-Infinity</code></td>
+<td>负无穷</td>
+</tr>
+<tr>
+<td><code>NaN</code></td>
+<td><code>not a number</code> 一个不是数字的数字类型</td>
+</tr>
+</tbody></table>
+<ol>
+<li>JavaScript 的 number 类型为双精度IEEE 754 64位浮点类型。范围（-2<sup>53</sup>- 2<sup>53</sup>） </li>
+<li>JavaScript 内部，整数和浮点数采用的是同样的储存方法。所以<code>1===1.0</code> 为true</li>
+<li>进制<ul>
+<li>十进制：默认</li>
+<li>二进制：以 <code>0b</code> 开头</li>
+<li>八进制：以 <code>0o </code>开头</li>
+<li>十六进制：以 <code>0x</code> 开头</li>
+</ul>
+</li>
+<li>数字过长时，用 _ 作为连接符：100_000_000</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/14/js02-JS%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/js01-JS%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/14/js01-JS%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">01-JS语法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-14 19:50:53 / 修改时间：20:12:10" itemprop="dateCreated datePublished" datetime="2022-02-14T19:50:53+08:00">2022-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一-JavaScript-机制"><a href="#一-JavaScript-机制" class="headerlink" title="一 JavaScript 机制"></a>一 JavaScript 机制</h1><h2 id="1-1-浏览器"><a href="#1-1-浏览器" class="headerlink" title="1.1 浏览器"></a>1.1 浏览器</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h3><ol>
+<li><p>浏览器由两部分组成</p>
+<ul>
+<li>浏览器内核（渲染引擎）：负责 Html 和 CSS 解析、布局、渲染等</li>
+<li>JavaScript 引擎：专门处理 JavaScript 脚本的虚拟机，也称 JS 解释器，负责将 JS 代码翻译成二进制指令交给 CPU 执行</li>
+</ul>
+</li>
+<li><p>浏览器内核</p>
+<ol>
+<li>Gecko：早期被 Netscape 和 Mozilla Firefox 浏览器浏览器使用</li>
+<li>Trident：微软开发，被 IE4~IE11 浏览器使用，但是Edge浏览器已经转向 Blink</li>
+<li>Webkit：苹果基于 KHTML 开发、开源的，用于Safari，Google Chrome之前也在使用</li>
+<li>Blink：是 Webkit 的一个分支，Google 开发，目前应用于Google Chrome、Edge、Opera 等</li>
+</ol>
+</li>
+<li><p>JavaScript 引擎</p>
+<ol>
+<li>SpiderMonkey：第一款 JavaScript引擎，由 Brendan Eich 开发（也就是 JavaScript 作者）</li>
+<li>Chakra：微软开发，用于 IE 浏览器</li>
+<li>JavaScriptCore：WebKit 中的 JavaScript 引擎，Apple 公司开发</li>
+<li>V8：Google 开发的强大 JavaScript 引擎</li>
+</ol>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/14/js01-JS%E8%AF%AD%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/18/vim%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/an3.JPG">
+      <meta itemprop="name" content="安₃">
+      <meta itemprop="description" content="我未成名君未嫁 可能俱是不如人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="琅嬛福地">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/18/vim%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">vim 操作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-18 18:43:12 / 修改时间：19:39:56" itemprop="dateCreated datePublished" datetime="2022-01-18T18:43:12+08:00">2022-01-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/Soft/" itemprop="url" rel="index"><span itemprop="name">Soft</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/Soft/Vim/" itemprop="url" rel="index"><span itemprop="name">Vim</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><h2 id="1-1-命令格式"><a href="#1-1-命令格式" class="headerlink" title="1.1 命令格式"></a>1.1 命令格式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[number][operator][number]motion</span><br><span class="line">	1 操作符：决定是什么操作</span><br><span class="line">	2 动作：决定被操作的文本（动作之前和之后光标之间的文本），注意 exclusive 和 inclusive</span><br><span class="line">	3 如果操作符和动作都有次数，则总次数为两者的乘积</span><br><span class="line">	4 当一个操作符命令被连续调用两次时，它会作用于当前行</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>d</code></td>
+<td>删除（delete）</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>复制（yank 抽出到寄存器）</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>修改（change）</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>粘贴（put）</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>增加缩进</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>减少缩进</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>自动缩进</td>
+</tr>
+<tr>
+<td><code>g~</code></td>
+<td>反转大小写</td>
+</tr>
+<tr>
+<td><code>gu</code></td>
+<td>转换为小写</td>
+</tr>
+<tr>
+<td><code>gU</code></td>
+<td>转换为大写</td>
+</tr>
+</tbody></table>
+<h2 id="1-2-单词-amp-字串"><a href="#1-2-单词-amp-字串" class="headerlink" title="1.2 单词 &amp; 字串"></a>1.2 单词 &amp; 字串</h2><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单词</td>
+<td>以 <strong>非字母</strong> 分隔，由字母、数字、下划线或其他非空白字符的序列组成</td>
+</tr>
+<tr>
+<td>字串</td>
+<td>以 **空白字符 **分隔，由非空白字符序列组成</td>
+</tr>
+</tbody></table>
+<h2 id="1-3-文本对象及范围"><a href="#1-3-文本对象及范围" class="headerlink" title="1.3 文本对象及范围"></a>1.3 文本对象及范围</h2><h3 id="1-文本对象"><a href="#1-文本对象" class="headerlink" title="1 文本对象"></a>1 文本对象</h3><table>
+<thead>
+<tr>
+<th>文本对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单词或字串</td>
+<td><code>w/W</code>（word）</td>
+</tr>
+<tr>
+<td>句子</td>
+<td><code>s</code>（sentence）</td>
+</tr>
+<tr>
+<td>段落</td>
+<td><code>p</code>（paragraph）</td>
+</tr>
+<tr>
+<td>引号</td>
+<td><code>'"&#96;</code>（单 双 反）</td>
+</tr>
+<tr>
+<td>括号</td>
+<td><code>&lt;&gt;()[]&#123;&#125;</code></td>
+</tr>
+</tbody></table>
+<h3 id="2-范围"><a href="#2-范围" class="headerlink" title="2 范围"></a>2 范围</h3><table>
+<thead>
+<tr>
+<th>范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>i</code></td>
+<td><code>inside</code></td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td><code>around</code></td>
+</tr>
+</tbody></table>
+<h3 id="3-组合"><a href="#3-组合" class="headerlink" title="3 组合"></a>3 组合</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>iw</code></td>
+<td>当前单词</td>
+</tr>
+<tr>
+<td><code>aw</code></td>
+<td>当前单词及其后空白</td>
+</tr>
+<tr>
+<td><code>iW</code></td>
+<td>当前字串</td>
+</tr>
+<tr>
+<td><code>aW</code></td>
+<td>当前字串及其后空白</td>
+</tr>
+<tr>
+<td><code>is</code></td>
+<td>当前句子</td>
+</tr>
+<tr>
+<td><code>as</code></td>
+<td>当前句子及其后空白</td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td>当前段落</td>
+</tr>
+<tr>
+<td><code>ap</code></td>
+<td>当前段落及一个空行</td>
+</tr>
+<tr>
+<td><code>i'"&#96;</code></td>
+<td>引号内部</td>
+</tr>
+<tr>
+<td><code>a'"&#96;</code></td>
+<td>引号及其后空白</td>
+</tr>
+<tr>
+<td><code>i&gt;)]&#125;</code></td>
+<td>括号内部</td>
+</tr>
+<tr>
+<td><code>a&gt;)]&#125;</code></td>
+<td>括号及其内部</td>
+</tr>
+<tr>
+<td><code>it</code></td>
+<td>Html 或 Xml 一对标签内部</td>
+</tr>
+<tr>
+<td><code>at</code></td>
+<td>Html 或 Xml 一对标签及其内部</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/18/vim%E6%93%8D%E4%BD%9C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/18/vim%E6%A6%82%E5%BF%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -347,14 +1323,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
