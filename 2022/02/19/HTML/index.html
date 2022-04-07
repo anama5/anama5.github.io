@@ -28,7 +28,7 @@
 <meta property="og:description" content="一 概述 HTML（Hyper Text Markup Language）：超文本标记语言  XHTML：可扩展超文本标记语言，是更严格更纯净的 HTML 版本  WEB 标准：W3C 组织及其它标准化组织制定的一系列标准的集合  结构：Html 表现：Css 行为：Javascript   浏览器内核（渲染引擎）：浏览器中专门对代码解析渲染的部分    浏览器 内核 说明    IE Tride">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-19T05:53:33.000Z">
-<meta property="article:modified_time" content="2022-03-30T14:47:08.916Z">
+<meta property="article:modified_time" content="2022-04-03T00:32:42.166Z">
 <meta property="article:author" content="安₃">
 <meta name="twitter:card" content="summary">
 
@@ -187,7 +187,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-30 22:47:08" itemprop="dateModified" datetime="2022-03-30T22:47:08+08:00">2022-03-30</time>
+                <time title="修改时间：2022-04-03 08:32:42" itemprop="dateModified" datetime="2022-04-03T08:32:42+08:00">2022-04-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -258,11 +258,13 @@
 </tbody></table>
 </li>
 </ol>
+<span id="more"></span>
+
 <h1 id="二-Html网页骨架"><a href="#二-Html网页骨架" class="headerlink" title="二 Html网页骨架"></a>二 Html网页骨架</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 文档声明 --&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;title&gt;网页标题&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <h1 id="三-标签"><a href="#三-标签" class="headerlink" title="三 标签"></a>三 标签</h1><h2 id="3-1-骨架标签"><a href="#3-1-骨架标签" class="headerlink" title="3.1 骨架标签"></a>3.1 骨架标签</h2><h3 id="1-html"><a href="#1-html" class="headerlink" title="1 html"></a>1 html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">lang：标识网页使用的语言，用于搜索引擎和浏览器翻译</span><br><span class="line">	1 作用：搜索引擎无法判断页面中的内容是什么语言，需要我们告诉它，浏览器会将读取到的页面语言和本地语言进行比较判断，如果一致，不做处理，否则提示是否需要翻译（如果有此功能），有时候明明页面是中文由于设置了lang=&quot;en&quot;，还会提示是否翻译，就是此原因</span><br><span class="line">	</span><br><span class="line">	2 取值</span><br><span class="line">		英文：en</span><br><span class="line">		中文：</span><br><span class="line">            zh-CN 		用的最多其实已过时</span><br><span class="line">            zh-Hans 	简体中文</span><br><span class="line">            zh-cmn-Hans 以简体中文书写的普通话用词</span><br><span class="line">            zh-yue-Hans 以简体中文书写的粤语用词</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-head"><a href="#2-head" class="headerlink" title="2 head"></a>2 head</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 标识网页使用的字符编码，即告诉浏览器用什么编码解析网页 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            width：视口(viewport) 的宽度 = 设备宽度（逻辑分辨率），PC 端视口宽度默认100%，但移动端默认为 980px</span></span><br><span class="line"><span class="comment">            initial-scale：初始缩放比</span></span><br><span class="line"><span class="comment">            maximum-scale：最大缩放比</span></span><br><span class="line"><span class="comment">            minimum-scale：最小缩放比</span></span><br><span class="line"><span class="comment">            user-scalable：是否可以缩放</span></span><br><span class="line"><span class="comment">       </span></span><br><span class="line"><span class="comment">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximu-scale=1.0, minimum-scale=1.0, user-scalable=no&quot;&gt;</span></span><br><span class="line"><span class="comment">    	&lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;</span></span><br><span class="line"><span class="comment">    	&lt;meta name=&quot;keywords&quot; content=&quot;&quot;&gt;</span></span><br><span class="line"><span class="comment">     	--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">&quot;此页面中所有相对 URL 的根 URL&quot;</span> <span class="attr">target</span>=<span class="string">&quot;此页面新连接的打开方式：_self（default）、_blank、_parent、_top&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-head"><a href="#2-head" class="headerlink" title="2 head"></a>2 head</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 标识网页使用的字符编码，即告诉浏览器用什么编码解析网页 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            width：视口(viewport) 的宽度 = 设备宽度（逻辑分辨率），PC 端视口宽度默认100%，但移动端默认为 980px</span></span><br><span class="line"><span class="comment">            initial-scale：初始缩放比</span></span><br><span class="line"><span class="comment">            maximum-scale：最大缩放比</span></span><br><span class="line"><span class="comment">            minimum-scale：最小缩放比</span></span><br><span class="line"><span class="comment">            user-scalable：是否可以缩放</span></span><br><span class="line"><span class="comment">       </span></span><br><span class="line"><span class="comment">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximu-scale=1.0, minimum-scale=1.0, user-scalable=no&quot;&gt;</span></span><br><span class="line"><span class="comment">    	&lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;</span></span><br><span class="line"><span class="comment">    	&lt;meta name=&quot;keywords&quot; content=&quot;&quot;&gt;</span></span><br><span class="line"><span class="comment">     	--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">&quot;此页面中所有相对 URL 的根 URL&quot;</span> <span class="attr">target</span>=<span class="string">&quot;此页面新连接的打开方式：_self（default）、_blank、_parent、_top&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;shortcut icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/x-icon&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>SEO（Search Engine Optimization)：搜索引擎优化</p>
@@ -437,7 +439,11 @@
 </thead>
 <tbody><tr>
 <td>src</td>
-<td>图片地址</td>
+<td>imgURL</td>
+</tr>
+<tr>
+<td>srcset</td>
+<td>imgURL 1x, imgURL 2x, …</td>
 </tr>
 <tr>
 <td>alt</td>
@@ -1041,6 +1047,17 @@
 <td><code>&amp;#8482;</code></td>
 </tr>
 </tbody></table>
+<ol>
+<li>html entity 表示方式<ol>
+<li>&name;</li>
+<li>&#Decimal;（十进制 Unicode 码）</li>
+<li>&#xHex;（十六进制 Unicode 码）</li>
+</ol>
+</li>
+<li>CSS 伪元素的 <code>content</code> 属性，直接使用 <code>\u码点</code></li>
+<li>JavaScript 文件中为防止乱码转义，使用 <code>\u码点</code></li>
+<li><code>unicode-range</code> 是 <code>U+码点</code></li>
+</ol>
 
     </div>
 
@@ -1147,7 +1164,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
