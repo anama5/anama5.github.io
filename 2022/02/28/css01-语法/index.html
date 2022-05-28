@@ -20,27 +20,24 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一 前言1.1 HTML 引入 CSS1 方式   方式 css 书写位置    行内样式 Html 标签的 style 属性中   内部样式 当前页面的 &lt;style&gt; 标签中   外部样式 外部 .css 文件中">
+  <meta name="description" content="一 前言1.1 HTML 引入 CSS1 分类   分类 css 书写位置    行内样式 Html 标签的 style 属性中   内部样式 当前页面的 &lt;style&gt; 标签中   外部样式 外部 .css 文件中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01-CSS语法">
 <meta property="og:url" content="http://example.com/2022/02/28/css01-%E8%AF%AD%E6%B3%95/index.html">
 <meta property="og:site_name" content="琅嬛福地">
-<meta property="og:description" content="一 前言1.1 HTML 引入 CSS1 方式   方式 css 书写位置    行内样式 Html 标签的 style 属性中   内部样式 当前页面的 &lt;style&gt; 标签中   外部样式 外部 .css 文件中">
+<meta property="og:description" content="一 前言1.1 HTML 引入 CSS1 分类   分类 css 书写位置    行内样式 Html 标签的 style 属性中   内部样式 当前页面的 &lt;style&gt; 标签中   外部样式 外部 .css 文件中">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/anama5/mbp/raw/main/css/URL.svg">
+<meta property="og:image" content="http://example.com/%E5%94%AF%E6%89%8B%E7%86%9F%E5%B0%94/02-CS/03-%E6%8B%9B%E5%BC%8F/01-%E5%89%8D%E7%AB%AF/02-CSS/img/URL.svg">
 <meta property="og:image" content="https://github.com/anama5/mbp/raw/main/css/rule.png">
+<meta property="og:image" content="http://example.com/%E5%94%AF%E6%89%8B%E7%86%9F%E5%B0%94/02-CS/03-%E6%8B%9B%E5%BC%8F/01-%E5%89%8D%E7%AB%AF/02-CSS/img/a_css_rule.png">
 <meta property="og:image" content="https://github.com/anama5/mbp/raw/main/css/token.png">
-<meta property="og:image" content="https://github.com/anama5/mbp/raw/main/css/%E5%B1%82%E5%8F%A0.png">
-<meta property="og:image" content="https://github.com/anama5/mbp/raw/main/css/media_query.png">
-<meta property="og:image" content="https://github.com/anama5/mbp/raw/main/css/media_query_list.png">
-<meta property="og:image" content="https://github.com/anama5/mbp/raw/main/css/media_feature.png">
-<meta property="og:image" content="https://github.com/anama5/mbp/raw/main/css/media_feature_range.png">
-<meta property="og:image" content="https://github.com/anama5/mbp/raw/main/css/stacking-order.png">
+<meta property="og:image" content="http://example.com/%E5%94%AF%E6%89%8B%E7%86%9F%E5%B0%94/02-CS/03-%E6%8B%9B%E5%BC%8F/01-%E5%89%8D%E7%AB%AF/02-CSS/img/write_good_hc.png">
+<meta property="og:image" content="http://example.com/%E5%94%AF%E6%89%8B%E7%86%9F%E5%B0%94/02-CS/03-%E6%8B%9B%E5%BC%8F/01-%E5%89%8D%E7%AB%AF/02-CSS/img/think_build_architect.png">
 <meta property="article:published_time" content="2022-02-28T12:26:11.000Z">
-<meta property="article:modified_time" content="2022-05-01T02:52:59.525Z">
+<meta property="article:modified_time" content="2022-05-28T10:18:56.847Z">
 <meta property="article:author" content="安₃">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/anama5/mbp/raw/main/css/URL.svg">
+<meta name="twitter:image" content="http://example.com/%E5%94%AF%E6%89%8B%E7%86%9F%E5%B0%94/02-CS/03-%E6%8B%9B%E5%BC%8F/01-%E5%89%8D%E7%AB%AF/02-CSS/img/URL.svg">
 
 <link rel="canonical" href="http://example.com/2022/02/28/css01-%E8%AF%AD%E6%B3%95/">
 
@@ -197,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-01 10:52:59" itemprop="dateModified" datetime="2022-05-01T10:52:59+08:00">2022-05-01</time>
+                <time title="修改时间：2022-05-28 18:18:56" itemprop="dateModified" datetime="2022-05-28T18:18:56+08:00">2022-05-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,10 +221,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="一-前言"><a href="#一-前言" class="headerlink" title="一 前言"></a>一 前言</h1><h2 id="1-1-HTML-引入-CSS"><a href="#1-1-HTML-引入-CSS" class="headerlink" title="1.1 HTML 引入 CSS"></a>1.1 HTML 引入 CSS</h2><h3 id="1-方式"><a href="#1-方式" class="headerlink" title="1 方式"></a>1 方式</h3><table>
+        <h1 id="一-前言"><a href="#一-前言" class="headerlink" title="一 前言"></a>一 前言</h1><h2 id="1-1-HTML-引入-CSS"><a href="#1-1-HTML-引入-CSS" class="headerlink" title="1.1 HTML 引入 CSS"></a>1.1 HTML 引入 CSS</h2><h3 id="1-分类"><a href="#1-分类" class="headerlink" title="1 分类"></a>1 分类</h3><table>
 <thead>
 <tr>
-<th>方式</th>
+<th>分类</th>
 <th>css 书写位置</th>
 </tr>
 </thead>
@@ -246,15 +243,15 @@
 </tbody></table>
 <span id="more"></span>
 
-<h3 id="2-外部样式的引入"><a href="#2-外部样式的引入" class="headerlink" title="2 外部样式的引入"></a>2 外部样式的引入</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 方式 <span class="number">1</span></span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;<span class="selector-class">.css</span> 文件路径&quot;&gt;</span><br><span class="line"></span><br><span class="line"># 方式 <span class="number">2</span></span><br><span class="line">&lt;style&gt;</span><br><span class="line">	<span class="keyword">@import</span> url(<span class="string">&quot;.css 文件路径&quot;</span>)</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-外部样式的引入"><a href="#2-外部样式的引入" class="headerlink" title="2 外部样式的引入"></a>2 外部样式的引入</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 方式 <span class="number">1</span></span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;<span class="selector-class">.css</span> 文件路径&quot;&gt;</span><br><span class="line"></span><br><span class="line"># 方式 <span class="number">2</span></span><br><span class="line">&lt;style&gt;</span><br><span class="line">	<span class="keyword">@import</span> url(<span class="string">&quot;.css 文件路径&quot;</span>)</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">        </span><br><span class="line">@import [ &lt;url&gt; | &lt;string&gt; ]</span><br><span class="line">        [ supports( [ &lt;supports-condition&gt; | &lt;declaration&gt; ] ) ]?</span><br><span class="line">        &lt;media-query-list&gt;? ;</span><br></pre></td></tr></table></figure>
 
 <ol>
-<li><code>link</code> 属于 HTML 标签，除了引入 CSS 外还能引入其它；而 <code>@import</code> 是 CSS 提供的，只能引入CSS，且需要写在 <code>&lt;style&gt;</code> 中</li>
-<li><code>@import</code> 只在 IE 5 以上才能识别，而 <code>link</code> 是 HTML 标签，无兼容问题</li>
-<li>页面被加载时，<code>link</code> 会同时被加载，而 <code>@import</code> 引用的 CSS 会等到页面被加载完再加载</li>
-<li><code>link</code> 方式的样式的权重高于 <code>@import</code> 权重</li>
+<li><code>&lt;link&gt;</code> 属于 HTML 标签，除了引入 CSS 外还能引入其它；而 <code>@import</code> 是 CSS 提供的，只能引入CSS，且需要写在 <code>&lt;style&gt;</code> 中</li>
+<li><code>@import</code> 只在 IE 5 以上才能识别，而 <code>&lt;link&gt;</code> 是 HTML 标签，无兼容问题</li>
+<li>页面被加载时，<code>&lt;link&gt;</code> 会同时被加载，而 <code>@import</code> 引用的 CSS 会等到页面被加载完再加载</li>
+<li><code>&lt;link&gt;</code> 方式的样式的权重高于 <code>@import</code> 权重</li>
 <li><code>@import</code> 不支持 js 的动态修改</li>
-<li>一般推荐<code>link</code>，<code>@import</code> 补充使用</li>
+<li>一般推荐<code>&lt;link&gt;</code>，<code>@import</code> 补充使用</li>
 </ol>
 <h2 id="1-2-URI-amp-URL"><a href="#1-2-URI-amp-URL" class="headerlink" title="1.2 URI &amp; URL"></a>1.2 URI &amp; URL</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h3><table>
 <thead>
@@ -284,7 +281,7 @@
 </ol>
 </li>
 </ol>
-<h3 id="2-URL-格式"><a href="#2-URL-格式" class="headerlink" title="2 URL 格式"></a>2 URL 格式</h3><p><img src="https://github.com/anama5/mbp/raw/main/css/URL.svg" alt="URL"></p>
+<h3 id="2-URL-格式"><a href="#2-URL-格式" class="headerlink" title="2 URL 格式"></a>2 URL 格式</h3><p><img src="../../../../../%E5%94%AF%E6%89%8B%E7%86%9F%E5%B0%94/02-CS/03-%E6%8B%9B%E5%BC%8F/01-%E5%89%8D%E7%AB%AF/02-CSS/img/URL.svg" alt="URL"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">URL = scheme &quot;:&quot; [&quot;//&quot; authority] path [&quot;?&quot; query] [&quot;#&quot; fragment]</span><br><span class="line"></span><br><span class="line">authority = [userinfo &quot;@&quot;] host [&quot;:&quot; port]</span><br></pre></td></tr></table></figure>
 
 <table>
@@ -328,375 +325,19 @@
 <li>fragment 会被浏览器根据文件媒体类型（MIME type）进行对应的处理</li>
 <li>Google 的搜索引擎会忽略 <code>#</code> 及其后面的字符串，可以使用 <code>#!</code> 的格式，Google 的搜索引擎就会将 fragment  转为 query 的格式</li>
 </ol>
-<h2 id="1-3-属性书写顺序"><a href="#1-3-属性书写顺序" class="headerlink" title="1.3 属性书写顺序"></a>1.3 属性书写顺序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># 1 显示样式</span><br><span class="line">display</span><br><span class="line">position</span><br><span class="line">	left</span><br><span class="line">	top</span><br><span class="line">	right</span><br><span class="line">	bottom</span><br><span class="line">	z-index</span><br><span class="line">float</span><br><span class="line">clear</span><br><span class="line">overflow</span><br><span class="line">visibility</span><br><span class="line"></span><br><span class="line"># 2 自身样式</span><br><span class="line">width</span><br><span class="line">height</span><br><span class="line">margin</span><br><span class="line">padding</span><br><span class="line">border</span><br><span class="line"></span><br><span class="line"># 3 文本样式</span><br><span class="line">background</span><br><span class="line">color</span><br><span class="line">font</span><br><span class="line">text-decoration</span><br><span class="line">text-align</span><br><span class="line">vertical-align</span><br><span class="line">white-space</span><br><span class="line">text-xxx</span><br><span class="line"></span><br><span class="line"># 4 css3 新样式</span><br></pre></td></tr></table></figure>
+<h1 id="二-语法"><a href="#二-语法" class="headerlink" title="二 语法"></a>二 语法</h1><h2 id="2-1-style-rules"><a href="#2-1-style-rules" class="headerlink" title="2.1 style rules"></a>2.1 style rules</h2><p><img src="https://github.com/anama5/mbp/raw/main/css/rule.png" alt="rule"></p>
+<p><img src="../../../../../%E5%94%AF%E6%89%8B%E7%86%9F%E5%B0%94/02-CS/03-%E6%8B%9B%E5%BC%8F/01-%E5%89%8D%E7%AB%AF/02-CSS/img/a_css_rule.png" alt="a_css_rule"></p>
+<h2 id="2-2-Token"><a href="#2-2-Token" class="headerlink" title="2.2 Token"></a>2.2 Token</h2><p><img src="https://github.com/anama5/mbp/raw/main/css/token.png" alt="token"></p>
+<h2 id="2-3-自定义变量"><a href="#2-3-自定义变量" class="headerlink" title="2.3 自定义变量"></a>2.3 自定义变量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--&lt;custom-property-name&gt;: &lt;delcaration-value&gt;?</span><br></pre></td></tr></table></figure>
 
-<h1 id="二-语法"><a href="#二-语法" class="headerlink" title="二 语法"></a>二 语法</h1><h2 id="2-1-style-rules"><a href="#2-1-style-rules" class="headerlink" title="2.1 style rules"></a>2.1 style rules</h2><p><img src="https://github.com/anama5/mbp/raw/main/css/rule.png"></p>
-<h2 id="2-2-Token"><a href="#2-2-Token" class="headerlink" title="2.2 Token"></a>2.2 Token</h2><p><img src="https://github.com/anama5/mbp/raw/main/css/token.png"></p>
-<h2 id="2-3-import"><a href="#2-3-import" class="headerlink" title="2.3 @import"></a>2.3 <code>@import</code></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@import [ &lt;url&gt; | &lt;string&gt; ]</span><br><span class="line">        [ supports( [ &lt;supports-condition&gt; | &lt;declaration&gt; ] ) ]?</span><br><span class="line">        &lt;media-query-list&gt;? ;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-4-Value-Processing"><a href="#2-4-Value-Processing" class="headerlink" title="2.4 Value Processing"></a>2.4 Value Processing</h2><h3 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1 概述"></a>1 概述</h3><ol>
-<li><p>The final value of a CSS property for a given element or box is the result of a multi-step calculation:</p>
 <ol>
-<li>First, all the <strong>declared values</strong> applied to an element are collected, for each property on each element. There may be zero or many declared values applied to the element</li>
-<li>Cascading yields the <strong>cascaded value</strong>. There is at most one cascaded value per property per element</li>
-<li>Defaulting yields the <strong>specified value</strong>. Every element has exactly one specified value per property</li>
-<li>Resolving value dependencies yields the <strong>computed value</strong>. Every element has exactly one computed value per property</li>
-<li>Formatting the document yields the <strong>used value</strong>. An element only has a used value for a given property if that property applies to the element</li>
-<li>Finally, the used value is transformed to the <strong>actual value</strong> based on constraints of the display environment. As with the <strong>used value</strong>, there may or may not be an actual value for a given property on an element</li>
+<li>作用域<ol>
+<li>定义在某个 rule 中，在其及其子 rule 中使用</li>
+<li>定义在 <code>:root</code> 中，其它 rule 都是 <code>:root</code> 子 rule，所以可以在全局使用</li>
 </ol>
 </li>
-<li><p>例</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Winning declaration</th>
-<th>Cascaded value</th>
-<th>Specified value</th>
-<th>Computed value</th>
-<th>Used value</th>
-<th>Actual value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>text-align</td>
-<td><code>text-align: left</code></td>
-<td>left</td>
-<td>left</td>
-<td>left</td>
-<td>left</td>
-<td>left</td>
-</tr>
-<tr>
-<td>width</td>
-<td>(none)</td>
-<td>(none)</td>
-<td>auto (initial value)</td>
-<td>auto</td>
-<td>120px</td>
-<td>120px</td>
-</tr>
-<tr>
-<td>font-size</td>
-<td><code>font-size: 1.2em</code></td>
-<td>1.2em</td>
-<td>1.2em</td>
-<td>14.1px</td>
-<td>14.1px</td>
-<td>14px</td>
-</tr>
-</tbody></table>
-</li>
+<li>通过 <code>var()</code> 使用</li>
 </ol>
-<h3 id="2-Cascading"><a href="#2-Cascading" class="headerlink" title="2 Cascading"></a>2 Cascading</h3><h4 id="1-概述-2"><a href="#1-概述-2" class="headerlink" title="1 概述"></a>1 概述</h4><p> <img src="https://github.com/anama5/mbp/raw/main/css/%E5%B1%82%E5%8F%A0.png" alt="层叠"></p>
-<ol>
-<li>Cascading：某个元素的某个属性同时有多个声明时，需要根据一些规则，最终确定一个声明即 cascaded value</li>
-<li>The cascade takes an unordered list of  <strong>declared values</strong> for a given property on a given element, sorts them by their declaration’s precedence as determined below, and outputs a single <strong>cascaded value</strong><ol>
-<li>样式表的来源：优先级 高→低<ol>
-<li>Transition declarations</li>
-<li>Important user agent declarations</li>
-<li>Important user declarations</li>
-<li>Important author declarations</li>
-<li>Animation declarations</li>
-<li>Normal author declarations</li>
-<li>Normal user declarations</li>
-<li>Normal user agent declarations</li>
-</ol>
-</li>
-<li>选择器优先级：根据<strong>选择器权重</strong>来决定</li>
-<li>源码顺序：后边覆盖前边</li>
-</ol>
-</li>
-</ol>
-<h4 id="2-选择器权重"><a href="#2-选择器权重" class="headerlink" title="2 选择器权重"></a>2 选择器权重</h4><table>
-<thead>
-<tr>
-<th>规则</th>
-<th>粒度</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>!important</code></td>
-<td><code>∞</code></td>
-</tr>
-<tr>
-<td><code>行内样式</code></td>
-<td><code>1, 0, 0, 0</code></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>0, 1, 0, 0</code></td>
-</tr>
-<tr>
-<td><code>class</code>，<code>伪类</code>，<code>属性</code></td>
-<td><code>0, 0, 1, 0</code></td>
-</tr>
-<tr>
-<td><code>标签</code>，<code>伪元素</code></td>
-<td><code>0, 0, 0, 1</code></td>
-</tr>
-<tr>
-<td><code>*</code></td>
-<td><code>0, 0, 0, 0</code></td>
-</tr>
-<tr>
-<td><code>继承</code></td>
-<td><code>null</code>（继承没有权重，比 <code>0</code> 小）</td>
-</tr>
-</tbody></table>
-<ol>
-<li>权重的四个数有低位高位的概念<ol>
-<li>不会进位，如 <code>0,0,0,8 + 0,0,0,7 = 0,0,0,15</code></li>
-<li>从左到右依次代表：行内样式的个数、id选择器的个数、类选择器的个数、标签选择器的个数</li>
-</ol>
-</li>
-<li>权重的计算<ol>
-<li>判断选择器能否直接选中标签，不能则说明是继承，优先级最低<ul>
-<li>全部是继承的时候，计算其父元素的权重</li>
-<li>一直重复，直到有结果</li>
-</ul>
-</li>
-<li>计算所有选择器的权重之和，然后从左到右比较每一位的大小，有结果则不再继续比较下一位</li>
-</ol>
-</li>
-</ol>
-<h3 id="3-Defaulting"><a href="#3-Defaulting" class="headerlink" title="3 Defaulting"></a>3 Defaulting</h3><h4 id="1-概述-3"><a href="#1-概述-3" class="headerlink" title="1 概述"></a>1 概述</h4><ol>
-<li><p>The <strong>specified value</strong> is the value of a given property that the style sheet authors intended for that element</p>
-</li>
-<li><p>In many cases, the <strong>specified value</strong> is the <strong>cascaded value</strong>. However, if there is no cascaded value at all, the specified value must be found some other way</p>
-<ol>
-<li><strong>Inherited properties</strong> draw their defaults from their parent element through <strong>inheritance</strong></li>
-<li>all other properties take their <strong>initial value</strong></li>
-</ol>
-</li>
-<li><p>Authors can explicitly request inheritance or initialization via the <code>inherit</code> and <code>initial</code> keywords</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>inherit</code></td>
-<td>显式开启继承（可以让属性强制继承）</td>
-</tr>
-<tr>
-<td><code>initial</code></td>
-<td>设置 CSS 属性为它的默认值</td>
-</tr>
-<tr>
-<td><code>unset</code></td>
-<td>如果该属性可继承，等同于 <code>inherit</code>，否则等同于 <code>initial</code></td>
-</tr>
-<tr>
-<td><code>revert</code></td>
-<td>只有很少的浏览器支持</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<h4 id="2-Inheritance"><a href="#2-Inheritance" class="headerlink" title="2 Inheritance"></a>2 Inheritance</h4><ol>
-<li><p>Inheritance propagates property values from parent elements to their children. </p>
-</li>
-<li><p>The inherited value of a property on an element is the <strong>computed value</strong> of the property on the element’s parent element. For the root element, which has no parent element, the <strong>inherited value</strong> is the <strong>initial value</strong> of the property</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 父元素</span><br><span class="line">line-height: 1.5</span><br><span class="line">line-height: 150%</span><br><span class="line">line-height: 1.5em</span><br><span class="line"></span><br><span class="line">1 三个声明本身计算方式相同： line-height = font-size * 1.5</span><br><span class="line">2 而由于继承的是计算值，数值计算结果是数值本身，长度和百分比计算结果是一个具体的值，即</span><br><span class="line">	1.5 → 1.5</span><br><span class="line">	150% → 父元素font-size * 1.5</span><br><span class="line">	1.5em → 父元素font-size * 1.5</span><br><span class="line"></span><br><span class="line">// 子元素</span><br><span class="line">line-height: 1.5 = 子元素font-size * 1.5</span><br><span class="line">line-height: 父元素font-size * 1.5</span><br><span class="line">line-height: 父元素font-size * 1.5</span><br></pre></td></tr></table></figure></li>
-<li><p>inherited properties</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 1 `font-*`， `color`，`line-height`</span><br><span class="line">font font-size font-weight font-family font-style font-variant </span><br><span class="line">color</span><br><span class="line">line-height </span><br><span class="line"></span><br><span class="line">// 2 `list-*`</span><br><span class="line">list-style list-style-image list-style-position list-style-type</span><br><span class="line"></span><br><span class="line">// 3 `text-*`，`letter-spacing`，`word-spacing`</span><br><span class="line">text-align text-indent text-transform</span><br><span class="line">letter-spacing </span><br><span class="line">word-spacing</span><br><span class="line">white-space</span><br><span class="line"></span><br><span class="line">// 4 `visibility`，`cursor`</span><br><span class="line">visibility</span><br><span class="line">cursor</span><br><span class="line"></span><br><span class="line">// 5 table</span><br><span class="line">border-collapse</span><br><span class="line">border-spacing</span><br><span class="line">caption-side</span><br><span class="line">empty-cells</span><br><span class="line"></span><br><span class="line">// 6 other</span><br><span class="line">azimuth</span><br><span class="line">direction</span><br><span class="line">elevation     </span><br><span class="line">orphans</span><br><span class="line">pitch-range pitch</span><br><span class="line">quotes</span><br><span class="line">richness</span><br><span class="line">speak-header speak-numeral speak-punctuation speak speech-rate stress</span><br><span class="line">voice-family volume</span><br><span class="line">widows </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="2-5-Media-Query"><a href="#2-5-Media-Query" class="headerlink" title="2.5 Media Query"></a>2.5 Media Query</h2><h3 id="1-使用场景"><a href="#1-使用场景" class="headerlink" title="1 使用场景"></a>1 使用场景</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 1 html</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; media=&quot;&lt;media-query&gt;&quot; href=&quot;example.css&quot; /&gt;</span><br><span class="line"></span><br><span class="line">// 2 css @import-rule</span><br><span class="line">import url(example.css) &lt;media-query&gt;</span><br><span class="line"></span><br><span class="line">// 3 css @media-rule</span><br><span class="line">@media &lt;media-query&gt; &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-语法"><a href="#2-语法" class="headerlink" title="2 语法"></a>2 语法</h3><h4 id="1-media-query"><a href="#1-media-query" class="headerlink" title="1 media query"></a>1 media query</h4><p><img src="https://github.com/anama5/mbp/raw/main/css/media_query.png" alt="media_query"></p>
-<ol>
-<li>The syntax of a media query consists of an optional media query modifier, an optional media type, and zero or more media features</li>
-<li>A media query is a logical expression that is either true or false<ol>
-<li>A media query is true if the media type, if specified, matches the media type of the device where the user agent is running, and the media condition is true</li>
-<li>If the media query list is empty, it evaluates to true.</li>
-</ol>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>语法</th>
-<th>名称</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>meidatype</code></td>
-<td>媒体类型</td>
-</tr>
-<tr>
-<td><code>and</code></td>
-<td>逻辑与</td>
-</tr>
-<tr>
-<td><code>,</code></td>
-<td>逻辑或，多个媒体查询以逗号分割，只要有一个为真则为真</td>
-</tr>
-<tr>
-<td><code>not</code></td>
-<td>逻辑非，必须写在查询的最前面，表示对整个条件取反</td>
-</tr>
-<tr>
-<td><code>only</code></td>
-<td>必须写在查询的最前面，指定某个特定媒体类型</td>
-</tr>
-<tr>
-<td><code>media feature</code></td>
-<td>媒体特性</td>
-</tr>
-</tbody></table>
-<h4 id="2-media-query-list"><a href="#2-media-query-list" class="headerlink" title="2 media query list"></a>2 media query list</h4><p><img src="https://github.com/anama5/mbp/raw/main/css/media_query_list.png" alt="media_query_list"></p>
-<ol>
-<li>a media query list is true if any of its component media queries are true, and false noly if all of its component media queries are false</li>
-<li>逗号就相当于逻辑或</li>
-</ol>
-<h3 id="3-media-type"><a href="#3-media-type" class="headerlink" title="3 media type"></a>3 media type</h3><table>
-<thead>
-<tr>
-<th>mediatype</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>all（默认）</td>
-<td>所有媒体类型</td>
-</tr>
-<tr>
-<td>screen</td>
-<td>用于电脑屏幕，平板电脑，智能手机等</td>
-</tr>
-<tr>
-<td>print</td>
-<td>打印设备</td>
-</tr>
-<tr>
-<td>speech</td>
-<td>应用于屏幕阅读器等发声设备</td>
-</tr>
-</tbody></table>
-<h3 id="4-media-feature"><a href="#4-media-feature" class="headerlink" title="4 media feature"></a>4 media feature</h3><p><img src="https://github.com/anama5/mbp/raw/main/css/media_feature.png" alt="media_feature"></p>
-<p><img src="https://github.com/anama5/mbp/raw/main/css/media_feature_range.png" alt="media_feature_range"></p>
-<ul>
-<li>media features with a “range” type can be alternately written in a range context that takes advantage of the fact that their values are ordered, using ordinary mathematical comparison operators</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>media feature</th>
-<th>说明</th>
-<th>value</th>
-<th>type</th>
-<th>accept min/max prefixes</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>width</td>
-<td>the width of the targeted display area of the output device</td>
-<td><code>&lt;length&gt;</code></td>
-<td>range</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>height</td>
-<td>the height of the targeted display area of the output device</td>
-<td><code>&lt;length&gt;</code></td>
-<td>range</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>aspect-ratio</td>
-<td>width/height</td>
-<td><code>&lt;ratio&gt;</code></td>
-<td>range</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>orientation</td>
-<td>横屏（landscape）/竖屏（portrait：height ≥ width）</td>
-<td>`portrait</td>
-<td>landscape`</td>
-<td>discrete</td>
-</tr>
-<tr>
-<td>resolution</td>
-<td>the resolution of the output device</td>
-<td>`<resolution></td>
-<td>infinite`</td>
-<td>range</td>
-</tr>
-<tr>
-<td>color</td>
-<td>the number of bits per color component of the output device</td>
-<td><code>&lt;integer&gt;</code></td>
-<td>range</td>
-<td>yes</td>
-</tr>
-</tbody></table>
-<h2 id="2-6-Stacking-context"><a href="#2-6-Stacking-context" class="headerlink" title="2.6 Stacking context"></a>2.6 Stacking context</h2><h3 id="1-概述-4"><a href="#1-概述-4" class="headerlink" title="1 概述"></a>1 概述</h3><ol>
-<li>The order in which the rendering tree is painted onto the canvas is described in terms of stacking contexts. Stacking contexts can contain further stacking contexts. A stacking context is atomic from the point of view of its parent stacking context; boxes in other stacking contexts may not come between any of its boxes</li>
-<li>Each box belongs to one stacking context.</li>
-<li>Each positioned box in a given stacking context has an integer stack level, which is its position on the z-axis relative other stack levels within the same stacking context.<ol>
-<li>Boxes with greater stack levels are always formatted in front of boxes with lower stack levels. Boxes may have negative stack levels.</li>
-<li>Boxes with the same stack level in a stacking context are stacked back-to-front according to document tree order.</li>
-</ol>
-</li>
-<li>stacking context：一个概念，可以想象成 z 轴上的一个栈空间</li>
-<li>stacking level：同一个 stacking context 中的元素在 z 轴栈空间的位置</li>
-</ol>
-<h3 id="2-创建-stacking-context"><a href="#2-创建-stacking-context" class="headerlink" title="2 创建 stacking context"></a>2 创建 stacking context</h3><ol>
-<li>The root element forms the root stacking context.</li>
-<li>定位元素（position 非 static）且其 z-index 不是 auto，会创建 stacking context</li>
-<li>other properties<ol>
-<li>元素为 flex 布局元素（即父元素 <code>display:flex / inline-flex</code>），同时 z-index 值不是 auto。</li>
-<li>元素的 opacity 值不是 1。</li>
-<li>元素的 transform 值不是 none。</li>
-<li>元素 mix-blend-mode 值不是 normal。</li>
-<li>元素的 filter 值不是 none。</li>
-<li>元素的 isolation 值是 isolate。</li>
-<li>元素的 will-change 属性值为上面 2～6 的任意一个（如willchange:opacity、will-chang:transform 等）。</li>
-<li>元素的-webkit-overflow-scrolling 设为 touch。</li>
-</ol>
-</li>
-</ol>
-<h3 id="3-stacking-level"><a href="#3-stacking-level" class="headerlink" title="3 stacking level"></a>3 stacking level</h3><p><img src="https://github.com/anama5/mbp/raw/main/css/stacking-order.png" alt="stacking-order"></p>
-<ol>
-<li>Within each stacking context, the following layers are painted in back-to-front order:<ol>
-<li>the background and borders of the element forming the stacking context.</li>
-<li>the child stacking contexts with negative stack levels (most negative first).</li>
-<li>the in-flow, non-inline-level, non-positioned descendants.</li>
-<li>the non-positioned floats.</li>
-<li>the in-flow, inline-level, non-positioned descendants, including inline tables and inline blocks.</li>
-<li>the child stacking contexts with stack level 0 and the positioned descendants with stack level 0.<ol>
-<li>stacking context 不依赖 z-index 的 stacking context（即元素创建 stacking context 时不是用的z-index）</li>
-<li>stacking context 中 z-index 值为 0 的 stacking context 元素</li>
-<li>stacking context 中 z-index 值为 auto 的普通定位元素<ol>
-<li>元素一旦成为定位元素，其 z-index 就会自动生效，默认为auto</li>
-<li>定位元素的 z-index 值为数值时才是 stacking context，所以此时是普通定位元素，并非 stacking context</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>the child stacking contexts with positive stack levels (least positive first).</li>
-</ol>
-</li>
-<li>比较步骤<ol>
-<li>首先查看两个元素是否在同一个 stacking context<ol>
-<li>否，则查看它们所在的 stacking context 是否在同一个 stacking context，如果还不是，继续往上…直到两个stacking context 在同一个 stacking context 中，最终肯定在同一个 stacking context，因为有 root stacking context。</li>
-<li>是，则根据它们的 stacking level 找到位置。</li>
-</ol>
-</li>
-<li>如果在 stacking level 中位置相同<ol>
-<li>如果明显的 stacking level 标识的，如生效的 <code>z-index</code>，则谁大谁在上</li>
-<li>否则，则后来居上（即在 DOM 流中处于后面的元素会覆盖前面的元素）</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-7-自定义变量"><a href="#2-7-自定义变量" class="headerlink" title="2.7 自定义变量"></a>2.7 自定义变量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--&lt;custom-property-name&gt;: &lt;delcaration-value&gt;?</span><br><span class="line"></span><br><span class="line">1 如果定义在 :root 中，可以在全网页使用</span><br><span class="line">2 通过 var() 使用</span><br></pre></td></tr></table></figure>
-
 <h1 id="三-选择器"><a href="#三-选择器" class="headerlink" title="三 选择器"></a>三 选择器</h1><h2 id="3-1-基础选择器"><a href="#3-1-基础选择器" class="headerlink" title="3.1 基础选择器"></a>3.1 基础选择器</h2><table>
 <thead>
 <tr>
@@ -809,7 +450,7 @@
 </thead>
 <tbody><tr>
 <td><code>:link</code></td>
-<td>未访问</td>
+<td>未访问（有 <code>href</code> 属性的 a 元素）</td>
 </tr>
 <tr>
 <td><code>:visited</code></td>
@@ -1022,6 +663,10 @@
 <tr>
 <td><code>::selection</code></td>
 <td>匹配被用户选中或者处于高亮状态的部分</td>
+</tr>
+<tr>
+<td><code>::placeholder</code></td>
+<td>匹配 placeholder 文本</td>
 </tr>
 </tbody></table>
 <ol>
@@ -1440,6 +1085,10 @@
 
 <h3 id="2-var"><a href="#2-var" class="headerlink" title="2 var()"></a>2 <code>var()</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var() = var( &lt;custom-property-name&gt; , &lt;declaration-value&gt;? )</span><br><span class="line"></span><br><span class="line">1 如果第一个参数指定的变量未定义，那么就会使用第二个值</span><br><span class="line">2 如果 var() 函数算出来的是一个非法值，对应的属性就会设置为其初始值</span><br></pre></td></tr></table></figure>
 
+<h1 id="五-技巧"><a href="#五-技巧" class="headerlink" title="五 技巧"></a>五 技巧</h1><h2 id="5-1-属性书写顺序"><a href="#5-1-属性书写顺序" class="headerlink" title="5.1 属性书写顺序"></a>5.1 属性书写顺序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"># 1 显示样式</span><br><span class="line">display</span><br><span class="line">position</span><br><span class="line">	left</span><br><span class="line">	top</span><br><span class="line">	right</span><br><span class="line">	bottom</span><br><span class="line">	z-index</span><br><span class="line">float</span><br><span class="line">clear</span><br><span class="line">overflow</span><br><span class="line">visibility</span><br><span class="line">opacity</span><br><span class="line"></span><br><span class="line"># 2 盒子模型</span><br><span class="line">width</span><br><span class="line">min/max-width</span><br><span class="line">height</span><br><span class="line">min/max-height</span><br><span class="line">margin</span><br><span class="line">padding</span><br><span class="line">border</span><br><span class="line">border-radius</span><br><span class="line">box-shadow</span><br><span class="line">background</span><br><span class="line"></span><br><span class="line"># 3 文本样式</span><br><span class="line">color</span><br><span class="line">font</span><br><span class="line">text-decoration</span><br><span class="line">text-align</span><br><span class="line">vertical-align</span><br><span class="line">white-space</span><br><span class="line">letter-spacing</span><br><span class="line">text-xxx</span><br><span class="line"></span><br><span class="line"># 4 过渡变形动画</span><br><span class="line">transform</span><br><span class="line">animation</span><br><span class="line">transition</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-2-Three-pillars-to-write-good-html-and-css"><a href="#5-2-Three-pillars-to-write-good-html-and-css" class="headerlink" title="5.2 Three pillars to write good html and css"></a>5.2 Three pillars to write good html and css</h2><p><img src="../../../../../%E5%94%AF%E6%89%8B%E7%86%9F%E5%B0%94/02-CS/03-%E6%8B%9B%E5%BC%8F/01-%E5%89%8D%E7%AB%AF/02-CSS/img/write_good_hc.png" alt="write_good_hc"></p>
+<h2 id="5-3-The-Think-Build-Architect-Mindset"><a href="#5-3-The-Think-Build-Architect-Mindset" class="headerlink" title="5.3 The Think - Build - Architect Mindset"></a>5.3 The Think - Build - Architect Mindset</h2><p><img src="../../../../../%E5%94%AF%E6%89%8B%E7%86%9F%E5%B0%94/02-CS/03-%E6%8B%9B%E5%BC%8F/01-%E5%89%8D%E7%AB%AF/02-CSS/img/think_build_architect.png" alt="think_build_architect"></p>
 
     </div>
 
@@ -1530,7 +1179,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E5%89%8D%E8%A8%80"><span class="nav-text">一 前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-HTML-%E5%BC%95%E5%85%A5-CSS"><span class="nav-text">1.1 HTML 引入 CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%96%B9%E5%BC%8F"><span class="nav-text">1 方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%BC%95%E5%85%A5"><span class="nav-text">2 外部样式的引入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-URI-amp-URL"><span class="nav-text">1.2 URI &amp; URL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-URL-%E6%A0%BC%E5%BC%8F"><span class="nav-text">2 URL 格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%B1%9E%E6%80%A7%E4%B9%A6%E5%86%99%E9%A1%BA%E5%BA%8F"><span class="nav-text">1.3 属性书写顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-%E8%AF%AD%E6%B3%95"><span class="nav-text">二 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-style-rules"><span class="nav-text">2.1 style rules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Token"><span class="nav-text">2.2 Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-import"><span class="nav-text">2.3 @import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Value-Processing"><span class="nav-text">2.4 Value Processing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-1"><span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Cascading"><span class="nav-text">2 Cascading</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-2"><span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%89%E6%8B%A9%E5%99%A8%E6%9D%83%E9%87%8D"><span class="nav-text">2 选择器权重</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Defaulting"><span class="nav-text">3 Defaulting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-3"><span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Inheritance"><span class="nav-text">2 Inheritance</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-Media-Query"><span class="nav-text">2.5 Media Query</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">1 使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%AD%E6%B3%95"><span class="nav-text">2 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-media-query"><span class="nav-text">1 media query</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-media-query-list"><span class="nav-text">2 media query list</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-media-type"><span class="nav-text">3 media type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-media-feature"><span class="nav-text">4 media feature</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-Stacking-context"><span class="nav-text">2.6 Stacking context</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0-4"><span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA-stacking-context"><span class="nav-text">2 创建 stacking context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-stacking-level"><span class="nav-text">3 stacking level</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="nav-text">2.7 自定义变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">三 选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.1 基础选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%85%B3%E7%B3%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.2 关系选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.3 属性选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.4 伪类选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8A%A8%E6%80%81%E4%BC%AA%E7%B1%BB"><span class="nav-text">1 动态伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BB%93%E6%9E%84%E4%BC%AA%E7%B1%BB"><span class="nav-text">2 结构伪类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A0%B9"><span class="nav-text">1 根</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%97%A0%E7%B1%BB%E5%9E%8B"><span class="nav-text">2 无类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%B8%A6%E7%B1%BB%E5%9E%8B"><span class="nav-text">3 带类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-An-B"><span class="nav-text">4 An + B</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%83%E7%B4%A0%E7%8A%B6%E6%80%81%E4%BC%AA%E7%B1%BB"><span class="nav-text">3 元素状态伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%90%A6%E5%AE%9A%E4%BC%AA%E7%B1%BB"><span class="nav-text">4 否定伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%9B%AE%E6%A0%87%E4%BC%AA%E7%B1%BB"><span class="nav-text">5 目标伪类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-%E4%BC%AA%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.5 伪元素选择器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B-Values-and-Units"><span class="nav-text">四 Values and Units</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E8%AF%AD%E6%B3%95%E7%AC%A6%E5%8F%B7"><span class="nav-text">4.1 语法符号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%BB%84%E5%90%88%E7%AC%A6%E5%8F%B7"><span class="nav-text">1 组合符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%95%B0%E9%87%8F%E7%AC%A6%E5%8F%B7"><span class="nav-text">2 数量符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%B6%E5%AE%83%E7%AC%A6%E5%8F%B7"><span class="nav-text">3 其它符号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-Units"><span class="nav-text">4.2 Units</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Distance-Unites"><span class="nav-text">1 Distance Unites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Angle-Unites"><span class="nav-text">2 Angle Unites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Duration-Unites"><span class="nav-text">3 Duration Unites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Frequency-Units"><span class="nav-text">4 Frequency Units</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Resolution-Units"><span class="nav-text">5 Resolution Units</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-Data-Types"><span class="nav-text">4.3 Data Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Textual-Data-Types"><span class="nav-text">1 Textual Data Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Numeric-Data-Types"><span class="nav-text">2 Numeric Data Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Colors"><span class="nav-text">3 Colors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-lt-color-gt"><span class="nav-text">1 &lt;color&gt;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-lt-color-stop-gt"><span class="nav-text">2 &lt;color-stop&gt;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2d-Positioning"><span class="nav-text">4 2d Positioning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Images"><span class="nav-text">5 Images</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Gradients"><span class="nav-text">6 Gradients</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AF%AD%E6%B3%95"><span class="nav-text">1 语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98"><span class="nav-text">2 线性渐变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%BE%84%E5%90%91%E6%B8%90%E5%8F%98"><span class="nav-text">3 径向渐变</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-Functional-Notation"><span class="nav-text">4.4 Functional Notation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-calc"><span class="nav-text">1 calc()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-var"><span class="nav-text">2 var()</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-%E5%89%8D%E8%A8%80"><span class="nav-text">一 前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-HTML-%E5%BC%95%E5%85%A5-CSS"><span class="nav-text">1.1 HTML 引入 CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%86%E7%B1%BB"><span class="nav-text">1 分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%BC%95%E5%85%A5"><span class="nav-text">2 外部样式的引入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-URI-amp-URL"><span class="nav-text">1.2 URI &amp; URL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-URL-%E6%A0%BC%E5%BC%8F"><span class="nav-text">2 URL 格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-%E8%AF%AD%E6%B3%95"><span class="nav-text">二 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-style-rules"><span class="nav-text">2.1 style rules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Token"><span class="nav-text">2.2 Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="nav-text">2.3 自定义变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">三 选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.1 基础选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%85%B3%E7%B3%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.2 关系选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.3 属性选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.4 伪类选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8A%A8%E6%80%81%E4%BC%AA%E7%B1%BB"><span class="nav-text">1 动态伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BB%93%E6%9E%84%E4%BC%AA%E7%B1%BB"><span class="nav-text">2 结构伪类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A0%B9"><span class="nav-text">1 根</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%97%A0%E7%B1%BB%E5%9E%8B"><span class="nav-text">2 无类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%B8%A6%E7%B1%BB%E5%9E%8B"><span class="nav-text">3 带类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-An-B"><span class="nav-text">4 An + B</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%83%E7%B4%A0%E7%8A%B6%E6%80%81%E4%BC%AA%E7%B1%BB"><span class="nav-text">3 元素状态伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%90%A6%E5%AE%9A%E4%BC%AA%E7%B1%BB"><span class="nav-text">4 否定伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%9B%AE%E6%A0%87%E4%BC%AA%E7%B1%BB"><span class="nav-text">5 目标伪类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-%E4%BC%AA%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">3.5 伪元素选择器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B-Values-and-Units"><span class="nav-text">四 Values and Units</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E8%AF%AD%E6%B3%95%E7%AC%A6%E5%8F%B7"><span class="nav-text">4.1 语法符号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%BB%84%E5%90%88%E7%AC%A6%E5%8F%B7"><span class="nav-text">1 组合符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%95%B0%E9%87%8F%E7%AC%A6%E5%8F%B7"><span class="nav-text">2 数量符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%B6%E5%AE%83%E7%AC%A6%E5%8F%B7"><span class="nav-text">3 其它符号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-Units"><span class="nav-text">4.2 Units</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Distance-Unites"><span class="nav-text">1 Distance Unites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Angle-Unites"><span class="nav-text">2 Angle Unites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Duration-Unites"><span class="nav-text">3 Duration Unites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Frequency-Units"><span class="nav-text">4 Frequency Units</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Resolution-Units"><span class="nav-text">5 Resolution Units</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-Data-Types"><span class="nav-text">4.3 Data Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Textual-Data-Types"><span class="nav-text">1 Textual Data Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Numeric-Data-Types"><span class="nav-text">2 Numeric Data Types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Colors"><span class="nav-text">3 Colors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-lt-color-gt"><span class="nav-text">1 &lt;color&gt;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-lt-color-stop-gt"><span class="nav-text">2 &lt;color-stop&gt;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2d-Positioning"><span class="nav-text">4 2d Positioning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Images"><span class="nav-text">5 Images</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Gradients"><span class="nav-text">6 Gradients</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AF%AD%E6%B3%95"><span class="nav-text">1 语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98"><span class="nav-text">2 线性渐变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%BE%84%E5%90%91%E6%B8%90%E5%8F%98"><span class="nav-text">3 径向渐变</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-Functional-Notation"><span class="nav-text">4.4 Functional Notation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-calc"><span class="nav-text">1 calc()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-var"><span class="nav-text">2 var()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94-%E6%8A%80%E5%B7%A7"><span class="nav-text">五 技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E5%B1%9E%E6%80%A7%E4%B9%A6%E5%86%99%E9%A1%BA%E5%BA%8F"><span class="nav-text">5.1 属性书写顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-Three-pillars-to-write-good-html-and-css"><span class="nav-text">5.2 Three pillars to write good html and css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-The-Think-Build-Architect-Mindset"><span class="nav-text">5.3 The Think - Build - Architect Mindset</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
